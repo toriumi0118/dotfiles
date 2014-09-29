@@ -1,0 +1,9 @@
+[user]
+	name = Yasuyuki Toriumi mac
+	email = toriumi0118@gmail.com 
+[core]
+	precomposeunicode = true
+[merge]
+	ff = only
+[push]
+	default = simple

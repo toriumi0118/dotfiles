@@ -6,11 +6,9 @@ alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 export ANT_HOME="/usr/local/bin/apache-ant-1.9.2"
-export PLAY_HOME="/Users/toriumi/Dev/Github/toriumi0118/tools/play"
 export AFI_HOME="/Users/toriumi/Work/afi"
 
 export PATH=$ANT_HOME/bin:$PATH
-export PATH=$PLAY_HOME:$PATH
 export PATH=$AFI_HOME/bin:$PATH
 
 # Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x

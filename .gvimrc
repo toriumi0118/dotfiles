@@ -2,7 +2,7 @@
 "" 基本的な設定
 "----------
 set showtabline=2
-set transparency=5
+"set transparency=5
 set imdisable
 set guioptions-=T
 set antialias

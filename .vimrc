@@ -20,8 +20,8 @@ set directory=$HOME/.vimbackup
 set expandtab
 
 "タブの代わりに空白4文字分
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 
 "変更中のファイルでも、保存しないで他のファイルを表示する
 set hidden
@@ -51,6 +51,12 @@ set smarttab
 set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f
 set grepprg=grep\ -nh
 
+"backspaceを有効にする
+set backspace=indent,eol,start
+
+"検索結果をハイライト表示する
+set hlsearch
+
 "検索結果のハイライトをesc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
@@ -62,11 +68,11 @@ let g:solarized_termtrans=1
 
 "NeoBundleでpluginの設定
 set runtimepath+=~/.vim/bundle/neobundle.vim
-call neobundle#rc(expand('~/.vim/bundle/'))
-
+call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
 \    'build' : {
+\        'windows' : 'tools//update-dll-mingw',
 \        'mac' : 'make -f make_mac.mak',
 \    },
 \}
@@ -75,6 +81,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'itchyny/lightline.vim'
+call neobundle#end()
 
 filetype plugin indent on
 

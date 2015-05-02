@@ -60,6 +60,9 @@ set hlsearch
 "検索結果のハイライトをesc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
+"検索時に大文字小文字を無視する
+set ic
+
 "色設定
 syntax enable
 set background=dark

@@ -1,6 +1,5 @@
 "--------------------------
-"基本的な設定
-"--------------------------
+"基本的な設定 "--------------------------
 "新しい行のインデントを現在行と同じにする
 set autoindent
 
@@ -72,11 +71,14 @@ let g:solarized_termtrans=1
 "NeoBundleでpluginの設定
 set runtimepath+=~/.vim/bundle/neobundle.vim
 call neobundle#begin(expand('~/.vim/bundle/'))
+
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
 \    'build' : {
-\        'windows' : 'tools//update-dll-mingw',
+\        'windows' : 'tools\\update-dll-mingw',
 \        'mac' : 'make -f make_mac.mak',
+\        'linux' : 'make',
+\        'cygwin' : 'make -f make_cygwin.mak',
 \    },
 \}
 NeoBundle 'git://github.com/Shougo/vimshell.git'
@@ -84,6 +86,10 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'kchmck/vim-coffee-script'
 call neobundle#end()
 
 filetype plugin indent on
@@ -132,6 +138,35 @@ call submode#map('bufmove', 'n', '', '+', '<C-w>+')
 call submode#map('bufmove', 'n', '', '-', '<C-w>-')
 
 " lightline設定(ステータスライン)
- let g:lightline = {
-    \ 'colorscheme' : 'wombat',
-    \}
+let g:lightline = {
+  \ 'colorscheme' : 'wombat',
+  \}
+
+" vimfiler
+command Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
+" Like Textmate icons.
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_marked_file_icon = '*'
+let g:vimfiler_safe_mode_by_default = 0
+
+" unite
+" バッファ一覧
+nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+" ファイル一覧
+nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+" レジスタ一覧
+nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+" 最近使用したファイル一覧
+nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+" 常用セット
+nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+" 全部乗せ
+nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+

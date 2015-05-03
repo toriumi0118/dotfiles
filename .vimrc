@@ -19,9 +19,9 @@ set directory=$HOME/.vimbackup
 "タブの代わりに空白文字を指定する
 set expandtab
 
-"タブの代わりに空白4文字分
-set tabstop=4
-set shiftwidth=4
+"タブの代わりに空白2文字分
+set tabstop=2
+set shiftwidth=2
 
 "変更中のファイルでも、保存しないで他のファイルを表示する
 set hidden
@@ -54,6 +54,11 @@ set grepprg=grep\ -nh
 "検索結果のハイライトをesc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
+"undoの設定
+silent !mkdir ~/.vim_undo > /dev/null 2>&1
+set undofile
+set undodir=~/.vim_undo
+
 "色設定
 syntax enable
 set background=dark
@@ -65,6 +70,8 @@ set runtimepath+=~/.vim/bundle/neobundle.vim
 call neobundle#rc(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc', {
 \    'build' : {
 \        'mac' : 'make -f make_mac.mak',
@@ -75,6 +82,8 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'groenewege/vim-less'
 
 filetype plugin indent on
 

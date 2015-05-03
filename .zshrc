@@ -3,6 +3,8 @@ alias ls='ls -G'
 alias ll='ls -l'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias vf='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim +VimFiler "$@"'
+alias vir='vim -R'
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
 export ANT_HOME="/usr/local/bin/apache-ant-1.9.2"
@@ -31,3 +33,6 @@ export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 # Add environment variable ANT_ROOT for cocos2d-x
 export ANT_ROOT=/usr/local/bin/apache-ant-1.9.2/bin
 export PATH=$ANT_ROOT:$PATH
+
+source ~/.nvm/nvm.sh
+nvm use v0.12.2 > /dev/null

@@ -8,5 +8,6 @@ ln -sf $SH_DIR/.vim/colors/desert.vim ~/.vim/colors/desert.vim
 ln -sf $SH_DIR/.vim/colors/molokai.vim ~/.vim/colors/molokai.vim
 ln -sf $SH_DIR/.vimrc ~/.vimrc
 ln -sf $SH_DIR/.minttyrc ~/.minttyrc
-curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+cd
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 source ~/.zshrc

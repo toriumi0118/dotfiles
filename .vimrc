@@ -78,23 +78,22 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc', {
 \    'build' : {
-\        'mac' : 'make -f make_mac.mak',
+\        'linux' : 'make',
+\        'unix' : 'gmake',
 \    },
 \}
-NeoBundle 'git://github.com/Shougo/vimshell.git'
+NeoBundle 'Shougo/vimshell.git'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'groenewege/vim-less'
-NeoBundle 'mattn/webapi-vim'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'kana/vim-filetype-haskell'
 
-NeoBundle 'gavocanov/vim-js-indent'
-NeoBundle 'othree/yajs.vim'
-NeoBundle 'mattn/jscomplete-vim'
-
-NeoBundle 'vim-ruby/vim-ruby'
+call neobundle#end()
 
 filetype plugin indent on
 

@@ -67,6 +67,7 @@ syntax enable
 set background=dark
 colorscheme solarized
 let g:solarized_termtrans=1
+set t_Co=16
 
 "NeoBundleでpluginの設定
 set runtimepath+=~/.vim/bundle/neobundle.vim
@@ -90,6 +91,8 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'vim-jp/vim-go-extra'
 call neobundle#end()
 
 filetype plugin indent on
@@ -113,20 +116,20 @@ nnoremap sJ <C-w>J
 nnoremap sK <C-w>K
 nnoremap sL <C-w>L
 nnoremap sH <C-w>H
-nnoremap sn gt
-nnoremap sp gT
-nnoremap sr <C-w>r
+" nnoremap sn gt
+" nnoremap sp gT
+" nnoremap sr <C-w>r
 nnoremap s= <C-w>=
-nnoremap sw <C-w>w
+" nnoremap sw <C-w>w
 nnoremap so <C-w>_<C-w>|
-nnoremap sO <C-w>=
-nnoremap sN :<C-u>bn<CR>
-nnoremap sP :<C-u>bp<CR>
-nnoremap st :<C-u>tabnew<CR>
+" nnoremap sO <C-w>=
+" nnoremap sN :<C-u>bn<CR>
+" nnoremap sP :<C-u>bp<CR>
+" nnoremap st :<C-u>tabnew<CR>
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
-nnoremap sq :<C-u>q<CR>
-nnoremap sQ :<C-u>bd<CR>
+" nnoremap sq :<C-u>q<CR>
+" nnoremap sQ :<C-u>bd<CR>
 
 call submode#enter_with('bufmove', 'n', '', 's>', '<C-w>>')
 call submode#enter_with('bufmove', 'n', '', 's<', '<C-w><')
@@ -149,7 +152,6 @@ let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_file_icon = '-'
 let g:vimfiler_marked_file_icon = '*'
 let g:vimfiler_safe_mode_by_default = 0
-let g:vimfiler_edit_action = 'tabopen'
 
 " unite
 " バッファ一覧
@@ -171,3 +173,66 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split
 au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 
+" neobundle log
+let g:neobundle#log_filename = "~/.vim/neobundle.log"
+
+" vim-go
+" let g:go_fmt_command = "goimports"
+let g:go_fmt_autosave = 0
+au FileType go nmap ,gr <Plug>(go-run)
+au FileType go nmap ,gb <Plug>(go-build)
+au FileType go nmap ,gt <Plug>(go-test)
+au FileType go nmap ,gc <Plug>(go-coverage)
+au FileType go nmap ,gds <Plug>(go-def-split)
+au FileType go nmap ,gdv <Plug>(go-def-vertical)
+au FileType go nmap ,gdt <Plug>(go-def-tab)
+au BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4 completeopt=menu,preview
+
+" tab page
+" TabLineSel
+" hi TabLineSel term=bold cterm=bold,underline ctermfg=5
+
+" Anywhere SID.
+function! s:SID_PREFIX()
+  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+endfunction
+
+" Set tabline.
+function! s:my_tabline()  "{{{
+  let s = ''
+  for i in range(1, tabpagenr('$'))
+    let bufnrs = tabpagebuflist(i)
+    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
+    let no = i  " display 0-origin tabpagenr.
+    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+    let title = fnamemodify(bufname(bufnr), ':t')
+    let title = '[' . title . ']'
+    let s .= '%'.i.'T'
+    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
+    let s .= no . ':' . title
+    let s .= mod
+    let s .= '%#TabLineFill# '
+  endfor
+  let s .= '%#TabLineFill#%T%=%#TabLine#'
+  return s
+endfunction "}}}
+let &tabline = '%!'.  s:SID_PREFIX() .  'my_tabline()'
+set showtabline=2 " 常にタブラインを表示
+
+" The prefix key.
+map    [Tag] <Nop>
+map    s [Tag]
+" Tab jump
+for n in range(1, 9)
+  execute 'nnoremap <silent> [Tag]'.n ':<C-u>tabnext'.n.'<CR>'
+endfor
+" t1 で1番左のタブ、t2 で1番左から2番目のタブにジャンプ
+
+map <silent> [Tag]t :tablast <bar> :tabnew<CR>
+" tt 新しいタブを一番右に作る
+map <silent> [Tag]x :tabclose<CR>
+" tx タブを閉じる
+map <silent> [Tag]n :tabnext<CR>
+" tn 次のタブ
+map <silent> [Tag]p :tabprevious<CR>
+" tp 前のタブ

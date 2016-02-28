@@ -1,5 +1,5 @@
 BoldAsFont=no
-Transparency=low
+Transparency=medium
 Font=Inconsolata
 FontIsBold=no
 FontHeight=10
@@ -33,3 +33,4 @@ BoldWhite=253,246,227
 OpaqueWhenFocused=no
 Columns=143
 Rows=43
+Term=xterm

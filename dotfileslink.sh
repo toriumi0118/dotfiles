@@ -8,4 +8,5 @@ ln -sf $SH_DIR/.vim/colors/desert.vim ~/.vim/colors/desert.vim
 ln -sf $SH_DIR/.vim/colors/molokai.vim ~/.vim/colors/molokai.vim
 ln -sf $SH_DIR/.vimrc ~/.vimrc
 ln -sf $SH_DIR/.zshrc ~/.zshrc
+ln -sf $SH_DIR/.snippets.js ~/.snippets.js
 

@@ -1,4 +1,3 @@
-"--------------------------
 "基本的な設定 "--------------------------
 "新しい行のインデントを現在行と同じにする
 set autoindent
@@ -88,7 +87,6 @@ NeoBundle 'Shougo/vimproc', {
 \        'mac' : 'make -f make_mac.mak',
 \        'linux' : 'make',
 \        'unix' : 'gmake',
-\        'cygwin' : 'make -f make_cygwin.mak',
 \    },
 \}
 NeoBundle 'Shougo/vimshell.git'
@@ -97,6 +95,7 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'groenewege/vim-less'
+NeoBundle 'mattn/webapi-vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'kana/vim-filetype-haskell'
@@ -106,9 +105,6 @@ NeoBundle 'vim-jp/vim-go-extra'
 call neobundle#end()
 
 filetype plugin indent on
-
-NeoBundleCheck
-call neobundle#end()
 
 "emmet用設定
 let g:user_emmet_expandabbr_key = '<c-e>'
@@ -157,7 +153,7 @@ let g:lightline = {
   \}
 
 " vimfiler
-command Vf VimFiler -buffer-name=explorer -split -simple -winwidth=35 -toggle -no-quit
+command Vf VimFiler -buffer-name=explorer -split -simple -winwidth=45 -toggle -no-quit
 " Like Textmate icons.
 let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_file_icon = '-'

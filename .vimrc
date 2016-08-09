@@ -1,4 +1,7 @@
 "基本的な設定 "--------------------------
+"バルチバイトでずれるのを修正
+set ambiwidth=double
+
 "新しい行のインデントを現在行と同じにする
 set autoindent
 
@@ -47,6 +50,9 @@ set cmdheight=1
 "新しい行を作ったときに高度な自動インデントを行う
 set smarttab
 
+"smartcase
+set smartcase
+
 "grep検索を設定する
 set grepformat=%f:%l:%m,%f:%l%m,%f\ \ %l%m,%f
 set grepprg=grep\ -nh
@@ -68,6 +74,8 @@ set ic
 
 "色設定
 syntax enable
+set synmaxcol=200
+
 set background=dark
 colorscheme solarized
 let g:solarized_termtrans=1
@@ -98,10 +106,14 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'kana/vim-filetype-haskell'
+"NeoBundle 'kana/vim-filetype-haskell'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'vim-jp/vim-go-extra'
+"NeoBundle 'fatih/vim-go'
+"NeoBundle 'vim-jp/vim-go-extra'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'slim-template/vim-slim'
+NeoBundle 'kchmck/vim-coffee-script'
+
 call neobundle#end()
 
 filetype plugin indent on
@@ -161,6 +173,11 @@ let g:vimfiler_marked_file_icon = '*'
 let g:vimfiler_safe_mode_by_default = 0
 
 " unite
+" insert modeで開始
+let g:unite_enable_start_insert = 1
+" 大文字小文字を区別しない
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
 " バッファ一覧
 nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
 " ファイル一覧
@@ -173,6 +190,19 @@ nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
 nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
 " 全部乗せ
 nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+" grep
+nnoremap <silent> ,g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+" カーソル位置の単語のgrep
+nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
+" カーソル位置の単語のgrep再呼び出し
+nnoremap <silent> ,r :<C-u>UniteResume search-buffer<CR><C-R><C-W>
+" unit grepにAgを使う
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
+
 " ウィンドウを分割して開く
 au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
@@ -320,3 +350,9 @@ map <silent> [Tag]n :tabnext<CR>
 " tn 次のタブ
 map <silent> [Tag]p :tabprevious<CR>
 " tp 前のタブ
+
+autocmd BufNewFile,BufRead, *.slim set ft=slim
+
+" coffee
+au BufRead,BufNewFile,BufReadPre *.coffee set filetype=coffee
+autocmd FileType coffee setlocal sw=2 sts=2 ts=2 et

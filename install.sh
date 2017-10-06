@@ -1,9 +1,5 @@
-#!/bin/sh
-# Standalone installer for Unixs
-# Original version is created by shoma2da
-# https://github.com/shoma2da/neobundle_installer
+brew install fish tmux reattach-to-user-namespace
 
-# Installation directory
 BUNDLE_DIR=~/.vim/bundle
 INSTALL_DIR="$BUNDLE_DIR/neobundle.vim"
 echo "$INSTALL_DIR"

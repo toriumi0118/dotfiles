@@ -1,3 +1,4 @@
+### Add Command for peco with z
 function peco_z
   set -l query (commandline)
 

@@ -1,3 +1,7 @@
+### Aliases
+alias vi='/Applications/MacVim.app/Contents/bin/vim'
+alias vim='/Applications/MacVim.app/Contents/bin/vim'
+
 ### Add Command for peco with z
 function peco_z
   set -l query (commandline)

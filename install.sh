@@ -12,7 +12,12 @@ fisher z fzf
 # copy setting files
 cp -R .ssh ~/
 cp -R .config ~/
+cp -R .vim ~/
 
+# install vim plugins
+## vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 ### 
 ### 

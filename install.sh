@@ -1,6 +1,6 @@
 # !/bin/bash
-
 echo >>>>> START install.sh
+
 # install fish
 echo >>>>>>> INSTALL fish
 brew install fish reattach-to-user-namespace

@@ -38,46 +38,35 @@ nnoremap s< <C-w><
 nnoremap s+ <C-w>+
 nnoremap s- <C-w>-
 "" Tab
-map [Tag] <Nop>
-map s [Tag]
+map [Tab] <Nop>
+map s [Tab]
 for n in range(1, 9)
-  execute 'nnoremap <silent> [Tag]'.n ':<C-u>tabnext'.n.'<CR>'
+  execute 'nnoremap <silent> [Tab]'.n ':<C-u>tabnext'.n.'<CR>'
 endfor
-map <silent> [Tag]t :tablast <bar> :tabnew<CR>
-map <silent> [Tag]x :tabclose<CR>
-map <silent> [Tag]n :tabnext<CR>
-map <silent> [Tag]p :tabprevious<CR>
-"" easy-align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-"" vim-go
-au FileType go nmap ,gr <Plug>(go-run)
-au FileType go nmap ,gb <Plug>(go-build)
-au FileType go nmap ,gt <Plug>(go-test)
-au FileType go nmap ,gc <Plug>(go-coverage)
-au FileType go nmap ,gds <Plug>(go-def-split)
-au FileType go nmap ,gdv <Plug>(go-def-vertical)
-au FileType go nmap ,gdt <Plug>(go-def-tab)
+map <silent> [Tab]t :tablast <bar> :tabnew<CR>
+map <silent> [Tab]x :tabclose<CR>
+map <silent> [Tab]n :tabnext<CR>
+map <silent> [Tab]p :tabprevious<CR>
 
 " plugin installation
 call plug#begin('~/.vim/plugged')
-"" XXX: Make sure you use single quotes
-Plug 'junegunn/vim-easy-align'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " for snippet
-Plug 'fatih/vim-go', { 'for': 'go', 'tag': '*' }
-Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-surround'
-Plug 'mattn/emmet-vim'
-Plug 'itchyny/lightline.vim'
-Plug 'groenewege/vim-less'
-Plug 'kana/vim-filetype-haskell', { 'for': 'haskell' }
-Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
-Plug 'rking/ag.vim'
-Plug 'slim-template/vim-slim', { 'for': 'slim' }
-Plug 'mxw/vim-jsx', { 'for': 'jsx' }
-Plug 'othree/yajs.vim'
+  "" XXX: Make sure you use single quotes
+  Plug 'itchyny/lightline.vim'
+  Plug 'junegunn/vim-easy-align'
+  Plug 'tpope/vim-surround'
+  Plug 'mattn/emmet-vim'
+  Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " for snippet
+  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'groenewege/vim-less'
+  Plug 'rking/ag.vim'
+  Plug 'fatih/vim-go', { 'for': 'go', 'tag': '*' }
+  Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
+  Plug 'kana/vim-filetype-haskell', { 'for': 'haskell' }
+  Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
+  Plug 'mxw/vim-jsx', { 'for': 'jsx' }
+  Plug 'othree/yajs.vim'
+  Plug 'slim-template/vim-slim', { 'for': 'slim' }
 call plug#end()
 
 " display settings
@@ -99,9 +88,20 @@ colorscheme jellybeans
 set showtabline=2              " 常にタブラインを表示
 
 " plugin settings
-let g:user_emmet_expandabbr_key = '<c-e>'      " emmet
-let g:lightline = { 'colorscheme' : 'jellybeans' } " lightline
-
+"" easy-align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+"" emmet
+let g:user_emmet_expandabbr_key = '<c-e>'
+"" lightline
+let g:lightline = { 'colorscheme' : 'jellybeans' }
 "" vim-go
 let g:go_fmt_autosave = 0
 au BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4 completeopt=menu,preview
+au FileType go nmap ,gr <Plug>(go-run)
+au FileType go nmap ,gb <Plug>(go-build)
+au FileType go nmap ,gt <Plug>(go-test)
+au FileType go nmap ,gc <Plug>(go-coverage)
+au FileType go nmap ,gds <Plug>(go-def-split)
+au FileType go nmap ,gdv <Plug>(go-def-vertical)
+au FileType go nmap ,gdt <Plug>(go-def-tab)

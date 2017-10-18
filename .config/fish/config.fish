@@ -1,5 +1,8 @@
 ### Aliases
-alias vi='/Applications/MacVim.app/Contents/bin/vim'
+# For MacVim (ctagsとVimを優先するため前置)
+# set -gx PATH '/Applications/MacVim.app/Contents/bin' $PATH
+# alias vi='/Applications/MacVim.app/Contents/bin/vim'
+. ~/.config/fish/aliases.fish
 alias vim='/Applications/MacVim.app/Contents/bin/vim'
 
 ### Add Command for peco with z

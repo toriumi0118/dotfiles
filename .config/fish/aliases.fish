@@ -10,6 +10,7 @@ end
 
 alias gc='git commit -v'
 alias gca='git commit -v -a'
+alias gcam='git commit -v -a -m'
 alias gcm='git commit -m'
 alias gco='git checkout'
 alias gr='git remote'

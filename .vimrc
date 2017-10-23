@@ -3,9 +3,9 @@
 silent !mkdir $HOME/.vim/swp > /dev/null 2>&1
 silent !mkdir $HOME/.vim/undo > /dev/null 2>&1
 set directory=$HOME/.vim/swp
-set nobackup " バックアップをオフする
 set undofile " undoを使う
-set undodir=~/.vim_undo
+set undodir=$HOME/.vim/undo
+set nobackup
 
 " controll settings
 set nocompatible " vi互換をオフする

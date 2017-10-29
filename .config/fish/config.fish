@@ -5,6 +5,9 @@
 . ~/.config/fish/aliases.fish
 alias vim='/Applications/MacVim.app/Contents/bin/vim'
 
+# use rbenv
+rbenv init - | source
+
 ### Add Command for peco with z
 function peco_z
   set -l query (commandline)

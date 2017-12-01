@@ -119,3 +119,6 @@ command! -bang -nargs=? -complete=dir HFiles
   \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git -g ""'}, <bang>0) " hidden fileを含む
 nnoremap <C-p> :call FzfOmniFiles()<CR>
 nnoremap <C-p><C-p> :HFiles<CR>
+" ag
+" Ctrl+sでカーソル上の文字を検索
+nnoremap <C-s> :Ag "<C-R><C-W>"<CR>

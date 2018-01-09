@@ -107,18 +107,10 @@ au FileType go nmap ,gdv <Plug>(go-def-vertical)
 au FileType go nmap ,gdt <Plug>(go-def-tab)
 "" fzf
 let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit' } " 他のTab動作と同じmapping
-fun! FzfOmniFiles()
-  let is_git = system('git status')
-  if v:shell_error
-    :Files
-  else
-    :GitFiles
-  endif
-endfun " gitの有無によって探索ファイルを変更する
 command! -bang -nargs=? -complete=dir HFiles
   \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git -g ""'}, <bang>0) " hidden fileを含む
-nnoremap <C-p> :HFiles<CR>
-nnoremap <C-p><C-p> :call FzfOmniFiles()<CR>
+nnoremap <C-h> :HFiles<CR>
+nnoremap <C-p> :GFiles<CR>
 " ag
 " Ctrl+sでカーソル上の文字を検索
 nnoremap <C-s> :Ag "<C-R><C-W>"<CR>

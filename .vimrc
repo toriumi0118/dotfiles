@@ -86,6 +86,9 @@ set hlsearch                   " 検索結果をハイライト表示する
 syntax enable                  " 色設定
 colorscheme jellybeans
 set showtabline=2              " 常にタブラインを表示
+let g:netrw_liststyle = 3      " netrwは常にtree view
+let g:netrw_altv = 1           " 'v'でファイルを開くときは右側
+let g:netrw_alto = 1           " 'o'でファイルを開くときは下側
 
 " plugin settings
 "" easy-align

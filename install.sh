@@ -14,6 +14,10 @@ brew install tmux
 echo >>>>>>> INSTALL other utils
 brew install peco
 fisher z fzf
+git clone https://github.com/riywo/anyenv ~/.anyenv
+echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.your_profile
+echo 'eval "$(anyenv init -)"' >> ~/.your_profile
+exec $SHELL -l
 
 # copy setting files
 echo >>>>>>> COPY setting files

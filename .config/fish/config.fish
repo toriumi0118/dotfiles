@@ -4,9 +4,10 @@
 # alias vi='/Applications/MacVim.app/Contents/bin/vim'
 . ~/.config/fish/aliases.fish
 alias vim='/Applications/MacVim.app/Contents/bin/vim'
+alias tmux='tmux -u'
 
-# use rbenv
-rbenv init - | source
+# use anyenv
+set -x PATH $HOME/.anyenv/bin $PATH
 
 ### Add Command for peco with z
 function peco_z

@@ -67,6 +67,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mxw/vim-jsx', { 'for': 'jsx' }
   Plug 'othree/yajs.vim'
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
+  Plug 'scrooloose/nerdtree'
 call plug#end()
 
 " display settings
@@ -86,9 +87,6 @@ set hlsearch                   " 検索結果をハイライト表示する
 syntax enable                  " 色設定
 colorscheme jellybeans
 set showtabline=2              " 常にタブラインを表示
-let g:netrw_liststyle = 3      " netrwは常にtree view
-let g:netrw_altv = 1           " 'v'でファイルを開くときは右側
-let g:netrw_alto = 1           " 'o'でファイルを開くときは下側
 
 " plugin settings
 "" easy-align
@@ -117,3 +115,5 @@ nnoremap <C-p> :GFiles<CR>
 " ag
 " Ctrl+sでカーソル上の文字を検索
 nnoremap <C-s> :Ag "<C-R><C-W>"<CR>
+" nerdtree
+map <C-n> :NERDTreeToggle<CR>

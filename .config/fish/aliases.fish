@@ -1,6 +1,7 @@
 alias g='git'
 alias gst='git status'
 alias gd='git diff'
+alias gdd='git branch --merged|egrep -v "\\*|develop|master"|xargs git branch -d'
 alias gdc='git diff --cached'
 alias gp='git push'
 

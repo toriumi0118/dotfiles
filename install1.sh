@@ -1,4 +1,4 @@
-# !/bin/bash
+#!/bin/bash
 echo '>>>>> START install1.sh'
 
 # install fish

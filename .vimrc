@@ -50,12 +50,12 @@ map <silent> [Tab]p :tabprevious<CR>
 
 " plugin installation
 call plug#begin('~/.vim/plugged')
-  "" XXX: Make sure you use single quotes
+  "" XXX: Make sure to use single quotes
   Plug 'itchyny/lightline.vim'
   Plug 'junegunn/vim-easy-align'
   Plug 'tpope/vim-surround'
   Plug 'mattn/emmet-vim'
-  Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' " for snippet
+  Plug 'SirVer/ultisnips'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'groenewege/vim-less'

@@ -42,6 +42,7 @@ map [Tab] <Nop>
 map s [Tab]
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tab]'.n ':<C-u>tabnext'.n.'<CR>'
+  execute 'nnoremap <silent> [Tab]m'.n ':<C-u>tabmove'.n.'<CR>'
 endfor
 map <silent> [Tab]t :tablast <bar> :tabnew<CR>
 map <silent> [Tab]x :tabclose<CR>

@@ -119,4 +119,4 @@ nnoremap <C-s> :Ag "<C-R><C-W>"<CR>
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
 " ctags
-nnoremap <C-]> g<C-]> 
+nmap <C-]> g<C-]> 

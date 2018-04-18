@@ -11,5 +11,9 @@ echo 'source ~/.asdf/asdf.fish' >> ~/.config/fish/config.fish
 mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 brew install coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc
 
+echo '>>>>>>> INSTALL vim utils'
+brew tap universal-ctags/universal-ctags
+brew install --HEAD universal-ctags
+
 echo ''
 echo '>>>>> FINISH install2.sh'

@@ -14,6 +14,7 @@ brew install coreutils automake autoconf openssl libyaml readline libxslt libtoo
 echo '>>>>>>> INSTALL vim utils'
 brew tap universal-ctags/universal-ctags
 brew install --HEAD universal-ctags
+brew install the_silver_searcher
 
 echo ''
 echo '>>>>> FINISH install2.sh'

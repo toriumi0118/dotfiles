@@ -60,7 +60,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'groenewege/vim-less'
-  Plug 'rking/ag.vim'
   Plug 'fatih/vim-go', { 'for': 'go', 'tag': '*' }
   Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
   Plug 'kana/vim-filetype-haskell', { 'for': 'haskell' }
@@ -108,15 +107,25 @@ au FileType go nmap ,gds <Plug>(go-def-split)
 au FileType go nmap ,gdv <Plug>(go-def-vertical)
 au FileType go nmap ,gdt <Plug>(go-def-tab)
 "" fzf
-let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-v': 'vsplit' } " 他のTab動作と同じmapping
+function! s:build_quickfix_list(lines)
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
 command! -bang -nargs=? -complete=dir HFiles
   \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git -g ""'}, <bang>0) " hidden fileを含む
 nnoremap <C-h> :HFiles<CR>
 nnoremap <C-p> :GFiles<CR>
+let g:fzf_action = {
+  \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 " ag
-" Ctrl+sでカーソル上の文字を検索
-nnoremap <C-s> :Ag "<C-R><C-W>"<CR>
+nnoremap <C-s> :Ag <C-R><C-W><CR>
 " nerdtree
 map <C-n> :NERDTreeToggle<CR>
 " ctags
 nmap <C-]> g<C-]> 
+

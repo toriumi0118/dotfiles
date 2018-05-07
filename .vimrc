@@ -85,7 +85,7 @@ set smartcase                  " smartcase
 set backspace=indent,eol,start " backspaceを有効にする
 set hlsearch                   " 検索結果をハイライト表示する
 syntax enable                  " 色設定
-colorscheme jellybeans
+colorscheme molokai
 set showtabline=2              " 常にタブラインを表示
 
 " plugin settings

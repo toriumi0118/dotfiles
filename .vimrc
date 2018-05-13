@@ -68,6 +68,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'othree/yajs.vim'
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
   Plug 'scrooloose/nerdtree'
+  Plug 'raichoo/purescript-vim'
 call plug#end()
 
 " display settings

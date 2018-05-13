@@ -69,6 +69,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
   Plug 'scrooloose/nerdtree'
   Plug 'raichoo/purescript-vim'
+  Plug 'frigoeu/psc-ide-vim'
 call plug#end()
 
 " display settings

@@ -1,7 +1,8 @@
 function fish_user_key_bindings
     ### peco_z ###
-    bind \cf peco_z # Ctrl-[にバインドする
+    bind \cf peco_z # Ctrl-fにバインドする
     ### peco_z ###
+
     ### fzf ###
     set -q FZF_LEGACY_KEYBINDINGS
     or set -l FZF_LEGACY_KEYBINDINGS 1

@@ -4,7 +4,7 @@ echo '>>>>> START install2.sh'
 # install file utils
 echo ''
 echo '>>>>>>> INSTALL fish utils'
-brew install peco ghq
+brew install peco ghq tree
 fisher z fzf oh-my-fish/plugin-balias
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.2
 echo 'source ~/.asdf/asdf.fish' >> ~/.config/fish/config.fish

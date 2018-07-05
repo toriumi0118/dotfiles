@@ -19,5 +19,5 @@ function peco_z
     cd $recent
     commandline -r ''
     commandline -f repaint
-    end
+  end
 end

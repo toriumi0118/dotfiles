@@ -1,3 +1,8 @@
+" workaround for ultisnips
+" https://github.com/SirVer/ultisnips/issues/996
+if has('python3')
+  silent! python3 1
+endif
 " directory settings
 " スワップファイル用のディレクトリを指定する
 silent !mkdir $HOME/.vim/swp > /dev/null 2>&1
@@ -70,6 +75,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'raichoo/purescript-vim'
   Plug 'frigoeu/psc-ide-vim'
+  Plug 'Shougo/deoplete.nvim'     " コード補完
+  Plug 'roxma/nvim-yarp'          " deoplete dependencies
+  Plug 'roxma/vim-hug-neovim-rpc' " deoplete dependencies
+  Plug 'w0rp/ale'                 " auto linter
+  Plug 'tomtom/tcomment_vim'      " commenter
 call plug#end()
 
 " display settings
@@ -124,13 +134,13 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
-" ag
+"" ag
 nnoremap <C-s> :Ag <C-R><C-W><CR>
-" nerdtree
+"" nerdtree
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeMapOpenSplit = 'ss'
 let g:NERDTreeMapOpenVSplit = 'sv'
-
-" ctags
+"" ctags
 nmap <C-]> g<C-]> 
-
+"" deoplete
+let g:deoplete#enable_at_startup = 1

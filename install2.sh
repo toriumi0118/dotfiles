@@ -15,6 +15,7 @@ echo '>>>>>>> INSTALL vim utils'
 brew tap universal-ctags/universal-ctags
 brew install --HEAD universal-ctags
 brew install the_silver_searcher
+pip3 install neovim
 
 echo ''
 echo '>>>>> FINISH install2.sh'

@@ -3,7 +3,7 @@
 # set -gx PATH '/Applications/MacVim.app/Contents/bin' $PATH
 # alias vi='/Applications/MacVim.app/Contents/bin/vim'
 . ~/.config/fish/aliases.fish
-alias vim='/Applications/MacVim.app/Contents/bin/vim'
+alias vim='mvim -v'
 alias tmux='tmux -u'
 
 ### Add Command for peco with z

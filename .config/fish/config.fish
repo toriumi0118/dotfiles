@@ -6,6 +6,9 @@
 alias vim='mvim -v'
 alias tmux='tmux -u'
 
+### Setup direnv
+eval (direnv hook fish)
+
 ### Add Command for peco with z
 function peco_z
   set -l query (commandline)

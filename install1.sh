@@ -4,7 +4,7 @@ echo '>>>>> START install1.sh'
 # install fish
 echo ''
 echo '>>>>>>> INSTALL fish'
-brew install fish reattach-to-user-namespace
+brew install fish reattach-to-user-namespace direnv
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
 # install tmux

@@ -65,7 +65,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'groenewege/vim-less'
-  Plug 'fatih/vim-go', { 'for': 'go', 'tag': '*' }
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
   Plug 'kana/vim-filetype-haskell', { 'for': 'haskell' }
   Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
@@ -73,8 +73,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'othree/yajs.vim'
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
   Plug 'scrooloose/nerdtree'
-  Plug 'raichoo/purescript-vim'
-  Plug 'frigoeu/psc-ide-vim'
   Plug 'Shougo/deoplete.nvim'     " コード補完
   Plug 'roxma/nvim-yarp'          " deoplete dependencies
   Plug 'roxma/vim-hug-neovim-rpc' " deoplete dependencies

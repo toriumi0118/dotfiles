@@ -116,6 +116,12 @@ au FileType go nmap ,gc <Plug>(go-coverage)
 au FileType go nmap ,gds <Plug>(go-def-split)
 au FileType go nmap ,gdv <Plug>(go-def-vertical)
 au FileType go nmap ,gdt <Plug>(go-def-tab)
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1  
+let g:go_highlight_operators = 1  
+let g:go_highlight_build_constraints = 1  
 "" fzf
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))

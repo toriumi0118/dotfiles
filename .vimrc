@@ -70,6 +70,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'kana/vim-filetype-haskell', { 'for': 'haskell' }
   Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
   Plug 'othree/yajs.vim'
+  Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
   Plug 'maxmellon/vim-jsx-pretty', { 'for': 'javascript.jsx' }
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
   Plug 'scrooloose/nerdtree'

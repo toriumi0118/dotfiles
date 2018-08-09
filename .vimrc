@@ -70,7 +70,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'kana/vim-filetype-haskell', { 'for': 'haskell' }
   Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
   Plug 'othree/yajs.vim'
-  Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'maxmellon/vim-jsx-pretty', { 'for': 'javascript.jsx' }
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
   Plug 'scrooloose/nerdtree'
   Plug 'Shougo/deoplete.nvim'     " コード補完
@@ -148,3 +148,5 @@ let g:NERDTreeMapOpenVSplit = 'sv'
 nmap <C-]> g<C-]> 
 "" deoplete
 let g:deoplete#enable_at_startup = 1
+"" jsx
+au BufRead,BufNewFile *.jsx set filetype=javascript.jsx

@@ -24,3 +24,6 @@ function peco_z
     commandline -f repaint
   end
 end
+
+### Default Environments
+set --export EDITOR vim

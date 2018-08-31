@@ -148,3 +148,9 @@ let g:NERDTreeMapOpenVSplit = 'sv'
 nmap <C-]> g<C-]> 
 "" deoplete
 let g:deoplete#enable_at_startup = 1
+"" ale
+let g:ale_fixers = {
+      \ 'javascript': ['prettier'],
+      \ 'ruby': ['rubocop'],
+      \ }
+let g:ale_fix_on_save = 1

@@ -69,8 +69,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
   Plug 'kana/vim-filetype-haskell', { 'for': 'haskell' }
   Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
-  Plug 'mxw/vim-jsx', { 'for': 'jsx' }
   Plug 'othree/yajs.vim'
+  Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+  Plug 'maxmellon/vim-jsx-pretty', { 'for': 'javascript.jsx' }
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
   Plug 'scrooloose/nerdtree'
   Plug 'Shougo/deoplete.nvim'     " コード補完
@@ -154,3 +155,5 @@ let g:ale_fixers = {
       \ 'ruby': ['rubocop'],
       \ }
 let g:ale_fix_on_save = 1
+"" jsx
+au BufRead,BufNewFile *.jsx set filetype=javascript.jsx

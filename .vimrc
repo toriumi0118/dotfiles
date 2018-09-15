@@ -69,9 +69,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
   Plug 'kana/vim-filetype-haskell', { 'for': 'haskell' }
   Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
+  Plug 'mxw/vim-jsx', { 'for': 'jsx' }
   Plug 'othree/yajs.vim'
-  Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-  Plug 'maxmellon/vim-jsx-pretty', { 'for': 'javascript.jsx' }
+  Plug 'elixir-editors/vim-elixir'
+  Plug 'mattreduce/vim-mix'
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
   Plug 'scrooloose/nerdtree'
   Plug 'Shougo/deoplete.nvim'     " コード補完
@@ -108,7 +109,7 @@ let g:user_emmet_expandabbr_key = '<c-e>'
 "" lightline
 let g:lightline = { 'colorscheme' : 'jellybeans' }
 "" vim-go
-let g:go_fmt_autosave = 0
+let g:go_fmt_autosave = 1
 au BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4 completeopt=menu,preview
 au FileType go nmap ,gr <Plug>(go-run)
 au FileType go nmap ,gb <Plug>(go-build)
@@ -153,6 +154,7 @@ let g:deoplete#enable_at_startup = 1
 let g:ale_fixers = {
       \ 'javascript': ['prettier'],
       \ 'ruby': ['rubocop'],
+      \ 'elixir': ['mix_format'],
       \ }
 let g:ale_lint_on_text_changed = 0 " setting for linter only run file changed
 let g:ale_fix_on_save = 1          " setting for linter only run file changed

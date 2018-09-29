@@ -58,6 +58,7 @@ map <silent> [Tab]p :tabprevious<CR>
 call plug#begin('~/.vim/plugged')
   "" XXX: Make sure to use single quotes
   Plug 'itchyny/lightline.vim'
+  Plug 'scrooloose/nerdtree'
   Plug 'junegunn/vim-easy-align'
   Plug 'tpope/vim-surround'
   Plug 'mattn/emmet-vim'
@@ -69,12 +70,11 @@ call plug#begin('~/.vim/plugged')
   Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
   Plug 'kana/vim-filetype-haskell', { 'for': 'haskell' }
   Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
-  Plug 'mxw/vim-jsx', { 'for': 'jsx' }
   Plug 'othree/yajs.vim'
+  Plug 'maxmellon/vim-jsx-pretty'
   Plug 'elixir-editors/vim-elixir'
   Plug 'mattreduce/vim-mix'
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
-  Plug 'scrooloose/nerdtree'
   Plug 'Shougo/deoplete.nvim'     " コード補完
   Plug 'roxma/nvim-yarp'          " deoplete dependencies
   Plug 'roxma/vim-hug-neovim-rpc' " deoplete dependencies
@@ -159,5 +159,3 @@ let g:ale_fixers = {
 let g:ale_lint_on_text_changed = 0 " setting for linter only run file changed
 let g:ale_fix_on_save = 1          " setting for linter only run file changed
 let g:ale_ruby_rubocop_executable = 'bundle' " fix rubucop executor
-"" jsx
-au BufRead,BufNewFile *.jsx set filetype=javascript.jsx

@@ -80,6 +80,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'roxma/vim-hug-neovim-rpc' " deoplete dependencies
   Plug 'w0rp/ale'                 " auto linter
   Plug 'tomtom/tcomment_vim'      " commenter
+  " Plug 'prabirshrestha/async.vim' " Language Server Protocol
+  " Plug 'prabirshrestha/vim-lsp'   " Language Server Protocol
+  " Plug 'prabirshrestha/asyncomplete.vim' " Language Server Protocol async
+  " Plug 'prabirshrestha/asyncomplete-lsp.vim' " Language Server Protocol async
 call plug#end()
 
 " display settings

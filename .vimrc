@@ -20,6 +20,10 @@ set shiftwidth=2
 set hidden       " 変更中のファイルでも、保存しないで他のファイルを表示する
 set incsearch    " インクリメンタルサーチを行う
 set ic           " ignore case
+filetype plugin on                   " omni completion (default function)
+set omnifunc=syntaxcomplete#Complete " omni completion (default function)
+set fileformats=unix,dos,mac
+set fileencodings=utf-8,sjis
 
 " keymap settings
 "" 検索結果のハイライトをesc連打でクリアする
@@ -153,6 +157,3 @@ let g:ale_fixers = {
 let g:ale_lint_on_text_changed = 0 " setting for linter only run file changed
 let g:ale_fix_on_save = 1          " setting for linter only run file changed
 let g:ale_ruby_rubocop_executable = 'bundle' " fix rubucop executor
-"" omni completion (default function)
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete

@@ -78,8 +78,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'elixir-editors/vim-elixir'
   Plug 'mattreduce/vim-mix'
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
-  Plug 'w0rp/ale'                 " auto linter
-  Plug 'tomtom/tcomment_vim'      " commenter
+  Plug 'w0rp/ale'            " auto linter
+  Plug 'tomtom/tcomment_vim' " commenter
+  Plug 'Townk/vim-autoclose' " auto close
+  Plug 'majutsushi/tagbar'   " ctag panel
 call plug#end()
 
 " display settings
@@ -157,3 +159,25 @@ let g:ale_fixers = {
 let g:ale_lint_on_text_changed = 0 " setting for linter only run file changed
 let g:ale_fix_on_save = 1          " setting for linter only run file changed
 let g:ale_ruby_rubocop_executable = 'bundle' " fix rubucop executor
+"" tagbar
+map <C-m> :TagbarToggle<CR>
+let g:tagbar_type_elixir = {
+    \ 'ctagstype' : 'elixir',
+    \ 'kinds' : [
+        \ 'f:functions',
+        \ 'functions:functions',
+        \ 'c:callbacks',
+        \ 'd:delegates',
+        \ 'e:exceptions',
+        \ 'i:implementations',
+        \ 'a:macros',
+        \ 'o:operators',
+        \ 'm:modules',
+        \ 'p:protocols',
+        \ 'r:records',
+        \ 't:tests'
+    \ ]
+\ }
+"" for elixir
+autocmd FileType elixir imap >> \|><Space>
+

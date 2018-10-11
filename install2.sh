@@ -12,8 +12,7 @@ mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.con
 brew install coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc gpg
 
 echo '>>>>>>> INSTALL vim utils'
-brew tap universal-ctags/universal-ctags
-brew install --HEAD universal-ctags
+brew install ctags
 brew install the_silver_searcher
 pip3 install neovim
 

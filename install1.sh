@@ -20,6 +20,7 @@ cp -R .config ~/
 cp -R .vim ~/
 cp .tmux.conf ~/
 cp .vimrc ~/
+cp .ctags ~/
 
 # install vim plugins
 echo ''

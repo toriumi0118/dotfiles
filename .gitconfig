@@ -8,3 +8,5 @@
 	ff = only
 [push]
 	default = simple
+[ghq]
+  root = ~/Dev/src

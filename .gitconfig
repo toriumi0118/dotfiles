@@ -3,7 +3,7 @@
 	email = toriumi0118@gmail.com 
 [core]
 	precomposeunicode = true
-	editor = vim
+	editor = /usr/local/bin/mvim -v
 [merge]
 	ff = only
 [push]

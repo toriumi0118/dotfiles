@@ -62,7 +62,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/vim-easy-align'
   Plug 'tpope/vim-surround'
   Plug 'mattn/emmet-vim'
-  Plug 'SirVer/ultisnips'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'groenewege/vim-less'
@@ -78,12 +77,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'Shougo/deoplete.nvim'     " コード補完
   Plug 'roxma/nvim-yarp'          " deoplete dependencies
   Plug 'roxma/vim-hug-neovim-rpc' " deoplete dependencies
+  Plug 'slashmili/alchemist.vim'  " deoplete source of elixir
   Plug 'w0rp/ale'                 " auto linter
   Plug 'tomtom/tcomment_vim'      " commenter
-  " Plug 'prabirshrestha/async.vim' " Language Server Protocol
-  " Plug 'prabirshrestha/vim-lsp'   " Language Server Protocol
-  " Plug 'prabirshrestha/asyncomplete.vim' " Language Server Protocol async
-  " Plug 'prabirshrestha/asyncomplete-lsp.vim' " Language Server Protocol async
 call plug#end()
 
 " display settings

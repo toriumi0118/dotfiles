@@ -74,10 +74,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'elixir-editors/vim-elixir'
   Plug 'mattreduce/vim-mix'
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
-  Plug 'Shougo/deoplete.nvim'     " コード補完
-  Plug 'roxma/nvim-yarp'          " deoplete dependencies
-  Plug 'roxma/vim-hug-neovim-rpc' " deoplete dependencies
-  Plug 'slashmili/alchemist.vim'  " deoplete source of elixir
   Plug 'w0rp/ale'                 " auto linter
   Plug 'tomtom/tcomment_vim'      " commenter
 call plug#end()
@@ -148,8 +144,6 @@ let g:NERDTreeMapOpenSplit = 'ss'
 let g:NERDTreeMapOpenVSplit = 'sv'
 "" ctags
 nmap <C-]> g<C-]> 
-"" deoplete
-let g:deoplete#enable_at_startup = 1
 "" ale
 let g:ale_fixers = {
       \ 'javascript': ['prettier'],

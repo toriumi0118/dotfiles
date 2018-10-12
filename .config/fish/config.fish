@@ -27,3 +27,8 @@ end
 
 ### Default Environments
 set --export EDITOR vim
+
+### For Language
+if yarn -V >> /dev/null
+  set -x PATH $PATH (yarn global bin)
+end

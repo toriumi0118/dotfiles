@@ -29,6 +29,6 @@ end
 set --export EDITOR vim
 
 ### For Language
-# if yarn -v > /dev/null 2>&1
-#   set -x PATH $PATH (yarn global bin)
-# end
+if yarn -v > /dev/null 2>&1
+  set -x PATH $PATH (yarn global bin)
+end

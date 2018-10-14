@@ -79,6 +79,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattreduce/vim-mix'
   Plug 'posva/vim-vue'
   Plug 'leafgarland/typescript-vim'
+  Plug 'elmcast/elm-vim'
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
   Plug 'w0rp/ale'            " auto linter
   Plug 'tomtom/tcomment_vim' " commenter
@@ -158,6 +159,7 @@ let g:ale_fixers = {
       \ 'vue': ['prettier', 'eslint'],
       \ 'ruby': ['rubocop'],
       \ 'elixir': ['mix_format'],
+      \ 'elm': ['elm-format'],
       \ }
 let g:ale_lint_on_text_changed = 0 " setting for linter only run file changed
 let g:ale_fix_on_save = 1          " setting for linter only run file changed

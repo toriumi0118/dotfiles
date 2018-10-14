@@ -166,3 +166,5 @@ let g:ale_fix_on_save = 1          " setting for linter only run file changed
 let g:ale_ruby_rubocop_executable = 'bundle' " fix rubucop executor
 "" for elixir
 autocmd FileType elixir imap >> \|><Space>
+"" for elm
+autocmd FileType elm imap >> -><Space>

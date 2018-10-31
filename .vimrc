@@ -160,6 +160,7 @@ let g:ale_fixers = {
       \ 'ruby': ['rubocop'],
       \ 'elixir': ['mix_format'],
       \ 'elm': ['elm-format'],
+      \ 'scss': ['stylelint'],
       \ }
 let g:ale_lint_on_text_changed = 0 " setting for linter only run file changed
 let g:ale_fix_on_save = 1          " setting for linter only run file changed

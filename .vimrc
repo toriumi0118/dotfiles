@@ -151,6 +151,7 @@ map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeMapOpenSplit = 'ss'
 let g:NERDTreeMapOpenVSplit = 'sv'
 "" ctags
+set tags=./tags,tags,.tags
 nmap <C-]> g<C-]> 
 "" ale
 let g:ale_fixers = {

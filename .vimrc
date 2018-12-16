@@ -57,6 +57,9 @@ map <silent> [Tab]t :tablast <bar> :tabnew<CR>
 map <silent> [Tab]x :tabclose<CR>
 map <silent> [Tab]n :tabnext<CR>
 map <silent> [Tab]p :tabprevious<CR>
+"" clipboard
+""" cpで現在のファイルをclipboardへ
+nmap cp :let @+ = expand("%")<CR>
 
 " plugin installation
 call plug#begin('~/.vim/plugged')
@@ -81,9 +84,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'leafgarland/typescript-vim'
   Plug 'elmcast/elm-vim'
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
-  Plug 'w0rp/ale'            " auto linter
-  Plug 'tomtom/tcomment_vim' " commenter
-  Plug 'Townk/vim-autoclose' " auto close
+  Plug 'w0rp/ale'               " auto linter
+  Plug 'tomtom/tcomment_vim'    " commenter
 call plug#end()
 
 " display settings
@@ -156,11 +158,12 @@ nmap <C-]> g<C-]>
 "" ale
 let g:ale_fixers = {
       \ 'javascript': ['prettier', 'eslint'],
-      \ 'typescript': ['prettier', 'eslint'],
+      \ 'typescript': ['prettier', 'tslint'],
       \ 'vue': ['prettier', 'eslint'],
       \ 'ruby': ['rubocop'],
       \ 'elixir': ['mix_format'],
       \ 'elm': ['elm-format'],
+      \ 'css': ['stylelint'],
       \ 'scss': ['stylelint'],
       \ }
 let g:ale_lint_on_text_changed = 0 " setting for linter only run file changed
@@ -168,5 +171,3 @@ let g:ale_fix_on_save = 1          " setting for linter only run file changed
 let g:ale_ruby_rubocop_executable = 'bundle' " fix rubucop executor
 "" for elixir
 autocmd FileType elixir imap >> \|><Space>
-"" for elm
-autocmd FileType elm imap >> -><Space>

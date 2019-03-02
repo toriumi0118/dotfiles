@@ -158,7 +158,7 @@ nmap <C-]> g<C-]>
 "" ale
 let g:ale_fixers = {
       \ 'javascript': ['prettier', 'eslint'],
-      \ 'typescript': ['prettier', 'tslint'],
+      \ 'typescript': ['prettier', 'eslint', 'tslint'],
       \ 'vue': ['prettier', 'eslint'],
       \ 'ruby': ['rubocop'],
       \ 'elixir': ['mix_format'],

@@ -15,8 +15,8 @@ set nobackup
 " controll settings
 set nocompatible " vi互換をオフする
 set expandtab    " タブの代わりに空白文字を指定する
-set tabstop=2
-set shiftwidth=2
+set tabstop=4
+set shiftwidth=4
 set hidden       " 変更中のファイルでも、保存しないで他のファイルを表示する
 set incsearch    " インクリメンタルサーチを行う
 set ic           " ignore case
@@ -65,6 +65,8 @@ nmap cp :let @+ = expand("%")<CR>
 call plug#begin('~/.vim/plugged')
   "" XXX: Make sure to use single quotes
   Plug 'itchyny/lightline.vim'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-fugitive'
   Plug 'scrooloose/nerdtree'
   Plug 'junegunn/vim-easy-align'
   Plug 'tpope/vim-surround'
@@ -82,8 +84,10 @@ call plug#begin('~/.vim/plugged')
   Plug 'mattreduce/vim-mix'
   Plug 'posva/vim-vue'
   Plug 'leafgarland/typescript-vim'
+  Plug 'Quramy/tsuquyomi'
   Plug 'elmcast/elm-vim'
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
+  Plug 'delphinus/vim-firestore'
   Plug 'w0rp/ale'               " auto linter
   Plug 'tomtom/tcomment_vim'    " commenter
 call plug#end()
@@ -105,6 +109,7 @@ set hlsearch                   " 検索結果をハイライト表示する
 syntax enable                  " 色設定
 colorscheme molokai
 set showtabline=2              " 常にタブラインを表示
+set noshowmode                 " mode表示はlight lineに任せた
 
 " plugin settings
 "" easy-align
@@ -113,7 +118,18 @@ nmap ga <Plug>(EasyAlign)
 "" emmet
 let g:user_emmet_expandabbr_key = '<c-e>'
 "" lightline
-let g:lightline = { 'colorscheme' : 'jellybeans' }
+let g:lightline = {
+      \  'colorscheme': 'jellybeans',
+      \  'active': {
+      \    'left': [
+      \      ['mode', 'paste'],
+      \      ['gitbranch', 'filename']
+      \    ]
+      \  },
+      \  'component_function': {
+      \    'gitbranch': 'fugitive#head'
+      \  }
+      \}
 "" vim-go
 let g:go_fmt_autosave = 1
 au BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4 completeopt=menu,preview

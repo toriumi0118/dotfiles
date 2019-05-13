@@ -14,7 +14,7 @@ brew install coreutils automake autoconf openssl libyaml readline libxslt libtoo
 echo '>>>>>>> INSTALL vim utils'
 brew install ctags
 brew install the_silver_searcher
-brew install yarn --without-node
+brew install yarn --ignore-dependencies
 pip3 install neovim
 
 echo '>>>>>>> INSTALL yarn utils'

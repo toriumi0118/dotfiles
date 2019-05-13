@@ -5,7 +5,7 @@ echo '>>>>> START install2.sh'
 echo ''
 echo '>>>>>>> INSTALL fish utils'
 brew install peco ghq tree macvim
-fisher z fzf oh-my-fish/plugin-balias
+fisher add jethrokuan/z jethrokuan/fzf oh-my-fish/plugin-balias
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.1
 echo 'source ~/.asdf/asdf.fish' >> ~/.config/fish/config.fish
 mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions

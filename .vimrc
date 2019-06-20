@@ -14,9 +14,6 @@ set nobackup
 
 " controll settings
 set nocompatible " vi互換をオフする
-set expandtab    " タブの代わりに空白文字を指定する
-set tabstop=4
-set shiftwidth=4
 set hidden       " 変更中のファイルでも、保存しないで他のファイルを表示する
 set incsearch    " インクリメンタルサーチを行う
 set ic           " ignore case
@@ -24,6 +21,25 @@ filetype plugin on                   " omni completion (default function)
 set omnifunc=syntaxcomplete#Complete " omni completion (default function)
 set fileformats=unix,dos,mac
 set fileencodings=utf-8,sjis
+
+" indent settings
+set tabstop=4    " 画面上で表示するtabの幅
+set shiftwidth=4 " 自動インデントでのインデントの長さ
+set expandtab    " タブの代わりに空白文字を指定する
+set autoindent   " 新しい行のインデントを現在行と同じにする
+set smarttab     " 新しい行を作ったときに高度な自動インデントを行う
+set smartindent  " 前の行末をみて改行時のインデントを判断する
+
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.elm setlocal tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.py  setlocal tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.rb  setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.js  setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.ts  setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.jsx setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.tsx setlocal tabstop=2 shiftwidth=2
+augroup END
 
 " keymap settings
 "" 検索結果のハイライトをesc連打でクリアする
@@ -79,12 +95,14 @@ call plug#begin('~/.vim/plugged')
   Plug 'kana/vim-filetype-haskell', { 'for': 'haskell' }
   Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
   Plug 'othree/yajs.vim'
+  Plug 'othree/javascript-libraries-syntax.vim'
+  Plug 'othree/es.next.syntax.vim'
   Plug 'maxmellon/vim-jsx-pretty'
-  Plug 'elixir-editors/vim-elixir'
-  Plug 'mattreduce/vim-mix'
-  Plug 'posva/vim-vue'
+  " Plug 'peitalin/vim-jsx-typescript'
   Plug 'leafgarland/typescript-vim'
   Plug 'Quramy/tsuquyomi'
+  Plug 'elixir-editors/vim-elixir'
+  Plug 'mattreduce/vim-mix'
   Plug 'elmcast/elm-vim'
   Plug 'slim-template/vim-slim', { 'for': 'slim' }
   Plug 'delphinus/vim-firestore'
@@ -96,13 +114,11 @@ call plug#end()
 "" ステータスラインに文字コードと改行文字を表示する
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l,%c%V%8P
 set ambiwidth=double           " バルチバイトでずれるのを修正
-set autoindent                 " 新しい行のインデントを現在行と同じにする
 set clipboard=unnamed          " クリップボードのレジスタ指定を不要にする
 set number                     " 行番号を表示する
 set showmatch                  " 閉括弧が入力された時、対応する括弧を強調する
 set showcmd                    " コマンドの表示
 set cmdheight=1                " コマンドラインの高さを調整
-set smarttab                   " 新しい行を作ったときに高度な自動インデントを行う
 set smartcase                  " smartcase
 set backspace=indent,eol,start " backspaceを有効にする
 set hlsearch                   " 検索結果をハイライト表示する
@@ -140,7 +156,10 @@ au FileType go nmap ,gc <Plug>(go-coverage)
 au FileType go nmap ,gds <Plug>(go-def-split)
 au FileType go nmap ,gdv <Plug>(go-def-vertical)
 au FileType go nmap ,gdt <Plug>(go-def-tab)
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1  
@@ -174,7 +193,7 @@ nmap <C-]> g<C-]>
 "" ale
 let g:ale_fixers = {
       \ 'javascript': ['prettier', 'eslint'],
-      \ 'typescript': ['prettier', 'eslint', 'tslint'],
+      \ 'typescript': ['prettier', 'eslint'],
       \ 'vue': ['prettier', 'eslint'],
       \ 'ruby': ['rubocop'],
       \ 'elixir': ['mix_format'],
@@ -185,5 +204,5 @@ let g:ale_fixers = {
 let g:ale_lint_on_text_changed = 0 " setting for linter only run file changed
 let g:ale_fix_on_save = 1          " setting for linter only run file changed
 let g:ale_ruby_rubocop_executable = 'bundle' " fix rubucop executor
-"" for elixir
+"" elixir
 autocmd FileType elixir imap >> \|><Space>

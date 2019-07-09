@@ -30,16 +30,17 @@ set autoindent   " 新しい行のインデントを現在行と同じにする
 set smarttab     " 新しい行を作ったときに高度な自動インデントを行う
 set smartindent  " 前の行末をみて改行時のインデントを判断する
 
-augroup fileTypeIndent
-    autocmd!
-    autocmd BufNewFile,BufRead *.elm setlocal tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.py  setlocal tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.rb  setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.js  setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.ts  setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.jsx setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.tsx setlocal tabstop=2 shiftwidth=2
-augroup END
+" augroup fileTypeIndent
+"     autocmd!
+"     autocmd BufNewFile,BufRead *.elm setlocal tabstop=4 shiftwidth=4
+"     autocmd BufNewFile,BufRead *.py  setlocal tabstop=4 shiftwidth=4
+"     autocmd BufNewFile,BufRead *.rb  setlocal tabstop=2 shiftwidth=2
+"     autocmd BufNewFile,BufRead *.js  setlocal tabstop=2 shiftwidth=2
+"     autocmd BufNewFile,BufRead *.ts  setlocal tabstop=2 shiftwidth=2
+"     autocmd BufNewFile,BufRead *.jsx setlocal tabstop=2 shiftwidth=2
+"     autocmd BufNewFile,BufRead *.tsx setlocal tabstop=2 shiftwidth=2
+"     autocmd BufNewFile,BufRead *.go  setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
+" augroup END
 
 " keymap settings
 "" 検索結果のハイライトをesc連打でクリアする
@@ -148,7 +149,6 @@ let g:lightline = {
       \}
 "" vim-go
 let g:go_fmt_autosave = 1
-au BufNewFile,BufRead *.go set sw=4 noexpandtab ts=4 completeopt=menu,preview
 au FileType go nmap ,gr <Plug>(go-run)
 au FileType go nmap ,gb <Plug>(go-build)
 au FileType go nmap ,gt <Plug>(go-test)
@@ -206,3 +206,6 @@ let g:ale_fix_on_save = 1          " setting for linter only run file changed
 let g:ale_ruby_rubocop_executable = 'bundle' " fix rubucop executor
 "" elixir
 autocmd FileType elixir imap >> \|><Space>
+"" ts
+" let g:tsuquyomi_disable_quickfix = 1
+" autocmd FileType typescript nmap <C-[> :call tsuquyomi#asyncGeterr()<CR>

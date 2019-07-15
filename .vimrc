@@ -30,17 +30,17 @@ set autoindent   " 新しい行のインデントを現在行と同じにする
 set smarttab     " 新しい行を作ったときに高度な自動インデントを行う
 set smartindent  " 前の行末をみて改行時のインデントを判断する
 
-" augroup fileTypeIndent
-"     autocmd!
-"     autocmd BufNewFile,BufRead *.elm setlocal tabstop=4 shiftwidth=4
-"     autocmd BufNewFile,BufRead *.py  setlocal tabstop=4 shiftwidth=4
-"     autocmd BufNewFile,BufRead *.rb  setlocal tabstop=2 shiftwidth=2
-"     autocmd BufNewFile,BufRead *.js  setlocal tabstop=2 shiftwidth=2
-"     autocmd BufNewFile,BufRead *.ts  setlocal tabstop=2 shiftwidth=2
-"     autocmd BufNewFile,BufRead *.jsx setlocal tabstop=2 shiftwidth=2
-"     autocmd BufNewFile,BufRead *.tsx setlocal tabstop=2 shiftwidth=2
-"     autocmd BufNewFile,BufRead *.go  setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
-" augroup END
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.elm setlocal tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.py  setlocal tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.rb  setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.js  setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.ts  setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.jsx setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.tsx setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.go  setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
+augroup END
 
 " keymap settings
 "" 検索結果のハイライトをesc連打でクリアする
@@ -82,31 +82,29 @@ nmap cp :let @+ = expand("%")<CR>
 call plug#begin('~/.vim/plugged')
   "" XXX: Make sure to use single quotes
   Plug 'itchyny/lightline.vim'
-  Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
   Plug 'scrooloose/nerdtree'
   Plug 'junegunn/vim-easy-align'
   Plug 'tpope/vim-surround'
   Plug 'mattn/emmet-vim'
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf',                           { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'groenewege/vim-less'
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  Plug 'vim-jp/vim-go-extra', { 'for': 'go' }
-  Plug 'kana/vim-filetype-haskell', { 'for': 'haskell' }
-  Plug 'itchyny/vim-haskell-indent', { 'for': 'haskell' }
-  Plug 'othree/yajs.vim'
-  Plug 'othree/javascript-libraries-syntax.vim'
-  Plug 'othree/es.next.syntax.vim'
-  Plug 'maxmellon/vim-jsx-pretty'
-  " Plug 'peitalin/vim-jsx-typescript'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'Quramy/tsuquyomi'
-  Plug 'elixir-editors/vim-elixir'
-  Plug 'mattreduce/vim-mix'
-  Plug 'elmcast/elm-vim'
-  Plug 'slim-template/vim-slim', { 'for': 'slim' }
-  Plug 'delphinus/vim-firestore'
+  Plug 'fatih/vim-go',                           { 'do': ':GoUpdateBinaries' }
+  Plug 'vim-jp/vim-go-extra',                    { 'for': 'go' }
+  Plug 'kana/vim-filetype-haskell',              { 'for': 'haskell' }
+  Plug 'itchyny/vim-haskell-indent',             { 'for': 'haskell' }
+  Plug 'othree/yajs.vim',                        { 'for': 'javascript' }
+  Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
+  Plug 'othree/es.next.syntax.vim',              { 'for': 'javascript' }
+  Plug 'maxmellon/vim-jsx-pretty',               { 'for': 'javascript' }
+  Plug 'leafgarland/typescript-vim',             { 'for': 'typescript' }
+  Plug 'Quramy/tsuquyomi',                       { 'for': 'typescript' }
+  Plug 'elixir-editors/vim-elixir',              { 'for': 'elixir' }
+  Plug 'mattreduce/vim-mix',                     { 'for': 'elixir' }
+  Plug 'elmcast/elm-vim',                        { 'for': 'elm' }
+  Plug 'slim-template/vim-slim',                 { 'for': 'slim' }
+  Plug 'delphinus/vim-firestore',                { 'for': 'firestore' }
   Plug 'w0rp/ale'               " auto linter
   Plug 'tomtom/tcomment_vim'    " commenter
 call plug#end()

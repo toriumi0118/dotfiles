@@ -39,6 +39,7 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.ts  setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.jsx setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.tsx setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.vue setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.go  setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
 augroup END
 
@@ -100,6 +101,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'maxmellon/vim-jsx-pretty',               { 'for': 'javascript' }
   Plug 'leafgarland/typescript-vim',             { 'for': 'typescript' }
   Plug 'mhartington/nvim-typescript',            { 'for': 'typescript', 'do': './install.sh' }
+  Plug 'posva/vim-vue',                          { 'for': 'vue' }
   Plug 'elixir-editors/vim-elixir',              { 'for': 'elixir' }
   Plug 'mattreduce/vim-mix',                     { 'for': 'elixir' }
   Plug 'elmcast/elm-vim',                        { 'for': 'elm' }
@@ -211,3 +213,5 @@ autocmd FileType elixir imap >> \|><Space>
 "" ts
 let g:nvim_typescript#default_mappings = 1
 let g:nvim_typescript#diagnostics_enable = 0
+"" vue
+autocmd FileType vue syntax sync fromstart

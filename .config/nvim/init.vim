@@ -82,6 +82,7 @@ nmap cp :let @+ = expand("%")<CR>
 " plugin installation
 call plug#begin('~/.vim/plugged')
   "" XXX: Make sure to use single quotes
+  Plug 'neoclide/coc.nvim', { 'branch': 'release'}
   Plug 'itchyny/lightline.vim'
   Plug 'tpope/vim-fugitive'
   Plug 'scrooloose/nerdtree'

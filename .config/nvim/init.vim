@@ -11,6 +11,7 @@ set directory=$HOME/.vim/swp
 set undofile " undoを使う
 set undodir=$HOME/.vim/undo
 set nobackup
+set nowritebackup
 
 " controll settings
 set nocompatible " vi互換をオフする
@@ -94,14 +95,13 @@ call plug#begin('~/.vim/plugged')
   Plug 'groenewege/vim-less'
   Plug 'fatih/vim-go',                           { 'do': ':GoUpdateBinaries' }
   Plug 'vim-jp/vim-go-extra',                    { 'for': 'go' }
-  Plug 'kana/vim-filetype-haskell',              { 'for': 'haskell' }
-  Plug 'itchyny/vim-haskell-indent',             { 'for': 'haskell' }
+  " Plug 'kana/vim-filetype-haskell',              { 'for': 'haskell' }
+  " Plug 'itchyny/vim-haskell-indent',             { 'for': 'haskell' }
   Plug 'othree/yajs.vim',                        { 'for': 'javascript' }
   Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
   Plug 'othree/es.next.syntax.vim',              { 'for': 'javascript' }
   Plug 'maxmellon/vim-jsx-pretty',               { 'for': 'javascript' }
   Plug 'leafgarland/typescript-vim',             { 'for': 'typescript' }
-  Plug 'mhartington/nvim-typescript',            { 'for': 'typescript', 'do': './install.sh' }
   Plug 'posva/vim-vue',                          { 'for': 'vue' }
   Plug 'elixir-editors/vim-elixir',              { 'for': 'elixir' }
   Plug 'mattreduce/vim-mix',                     { 'for': 'elixir' }
@@ -145,10 +145,14 @@ let g:lightline = {
       \    'left': [
       \      ['mode', 'paste'],
       \      ['gitbranch', 'filename']
-      \    ]
+      \    ],
+      \    'right': [
+      \      ['coc']
+      \    ],
       \  },
       \  'component_function': {
-      \    'gitbranch': 'fugitive#head'
+      \    'gitbranch': 'fugitive#head',
+      \    'coc': 'coc#status'
       \  }
       \}
 "" vim-go
@@ -191,9 +195,6 @@ nnoremap <C-s> :Ag <C-R><C-W><CR>
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeMapOpenSplit = 'ss'
 let g:NERDTreeMapOpenVSplit = 'sv'
-"" ctags
-set tags=./tags,tags,.tags
-nmap <C-]> g<C-]> 
 "" ale
 let g:ale_fixers = {
       \ 'javascript': ['prettier', 'eslint'],
@@ -205,14 +206,32 @@ let g:ale_fixers = {
       \ 'css': ['stylelint'],
       \ 'scss': ['stylelint'],
       \ }
-let g:ale_sign_error = "!"                   " error sign
 let g:ale_lint_on_text_changed = 'never'     " setting for linter only run file changed
 let g:ale_fix_on_save = 1                    " setting for linter only run file changed
 let g:ale_ruby_rubocop_executable = 'bundle' " fix rubucop executor
 "" elixir
 autocmd FileType elixir imap >> \|><Space>
-"" ts
-let g:nvim_typescript#default_mappings = 1
-let g:nvim_typescript#diagnostics_enable = 0
 "" vue
 autocmd FileType vue syntax sync fromstart
+"" coc
+""" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+""" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+""" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+""" Remap for rename current word
+nmap <silent> <space>rn <Plug>(coc-rename)
+""" Using CocList
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>

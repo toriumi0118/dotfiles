@@ -140,7 +140,7 @@ nmap ga <Plug>(EasyAlign)
 let g:user_emmet_expandabbr_key = '<c-e>'
 "" lightline
 let g:lightline = {
-      \  'colorscheme': 'jellybeans',
+      \  'colorscheme': 'molokai',
       \  'active': {
       \    'left': [
       \      ['mode', 'paste'],

@@ -195,6 +195,7 @@ nnoremap <C-s> :Ag <C-R><C-W><CR>
 map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeMapOpenSplit = 'ss'
 let g:NERDTreeMapOpenVSplit = 'sv'
+nmap sg :NERDTreeFind<CR>
 "" ale
 let g:ale_fixers = {
       \ 'javascript': ['prettier', 'eslint'],

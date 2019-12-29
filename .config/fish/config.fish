@@ -3,7 +3,7 @@
 # set -gx PATH '/Applications/MacVim.app/Contents/bin' $PATH
 # alias vi='/Applications/MacVim.app/Contents/bin/vim'
 . ~/.config/fish/aliases.fish
-alias vim='mvim -v'
+alias vim='nvim'
 alias tmux='tmux -u'
 
 ### Setup direnv
@@ -22,13 +22,13 @@ function peco_z
     cd $recent
     commandline -r ''
     commandline -f repaint
-  end
+    end
 end
+source ~/.asdf/asdf.fish
 
 ### Default Environments
-set --export EDITOR vim
+set --export EDITOR nvim
+set --export PATH /Users/toriumi0118/Dev/src/github.com/flutter/flutter/bin $PATH # flutter
 
-### For Language
-if yarn -v > /dev/null 2>&1
-  set -x PATH $PATH (yarn global bin)
-end
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/toriumi0118/google-cloud-sdk/path.fish.inc' ]; . '/Users/toriumi0118/google-cloud-sdk/path.fish.inc'; end

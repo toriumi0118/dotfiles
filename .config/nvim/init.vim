@@ -33,15 +33,16 @@ set smartindent  " 前の行末をみて改行時のインデントを判断す�
 
 augroup fileTypeIndent
     autocmd!
-    autocmd BufNewFile,BufRead *.elm setlocal tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.py  setlocal tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.rb  setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.js  setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.ts  setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.jsx setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.tsx setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.vue setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.go  setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
+    autocmd BufNewFile,BufRead *.elm  setlocal tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.py   setlocal tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.rb   setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.js   setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.ts   setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.jsx  setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.tsx  setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.vue  setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.go   setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
+    autocmd BufNewFile,BufRead *.dart setlocal tabstop=2 shiftwidth=2 expandtab
 augroup END
 
 " keymap settings
@@ -109,6 +110,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'slim-template/vim-slim',                 { 'for': 'slim' }
   Plug 'delphinus/vim-firestore',                { 'for': 'firestore' }
   Plug 'dart-lang/dart-vim-plugin',              { 'for': 'dart' }
+  Plug 'udalov/kotlin-vim',                      { 'for': 'kotlin' }
   Plug 'w0rp/ale'               " auto linter
   Plug 'tomtom/tcomment_vim'    " commenter
 call plug#end()

@@ -3,6 +3,11 @@
 if has('python3')
   silent! python3 1
 endif
+" workaround: paste時に何か ^[[~201 とか入るやつのfix
+" https://vimhelp.org/term.txt.html#xterm-bracketed-paste
+" https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/31
+" https://github.com/johndgiese/dotvim/issues/4
+set t_BE=
 " directory settings
 " スワップファイル用のディレクトリを指定する
 silent !mkdir $HOME/.vim/swp > /dev/null 2>&1
@@ -38,8 +43,8 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.rb  setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.js  setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.ts  setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.jsx setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.tsx setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.jsx setlocal tabstop=2 shiftwidth=2 filetype=javascript.jsx
+    autocmd BufNewFile,BufRead *.tsx setlocal tabstop=2 shiftwidth=2 filetype=typescript.tsx
     autocmd BufNewFile,BufRead *.vue setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.go  setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
 augroup END
@@ -110,6 +115,8 @@ call plug#begin('~/.vim/plugged')
   Plug 'delphinus/vim-firestore',                { 'for': 'firestore' }
   Plug 'w0rp/ale'               " auto linter
   Plug 'tomtom/tcomment_vim'    " commenter
+  Plug 'SirVer/ultisnips'
+  Plug 'mlaursen/vim-react-snippets'
 call plug#end()
 
 " display settings

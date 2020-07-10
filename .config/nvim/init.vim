@@ -1,5 +1,4 @@
-" workaround for ultisnips
-" https://github.com/SirVer/ultisnips/issues/996
+set t_BE=0 " https://github.com/vim/vim/issues/1404#issuecomment-274723175
 if has('python3')
   silent! python3 1
 endif
@@ -30,19 +29,25 @@ set expandtab    " タブの代わりに空白文字を指定する
 set autoindent   " 新しい行のインデントを現在行と同じにする
 set smarttab     " 新しい行を作ったときに高度な自動インデントを行う
 set smartindent  " 前の行末をみて改行時のインデントを判断する
+set synmaxcol=0  " シンタックスハイライトの行上限をなくす
 
 augroup fileTypeIndent
     autocmd!
-    autocmd BufNewFile,BufRead *.elm  setlocal tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.py   setlocal tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.rb   setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.js   setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.ts   setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.jsx  setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.tsx  setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.vue  setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.go   setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
-    autocmd BufNewFile,BufRead *.dart setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd BufNewFile,BufRead *.elm     setlocal tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.py      setlocal tabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.rb      setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.js      setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.ts      setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.jsx     setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.tsx     setlocal tabstop=2 shiftwidth=2 filetype=typescript.tsx
+    autocmd BufNewFile,BufRead *.vue     setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.go      setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
+    autocmd BufNewFile,BufRead *.dart    setlocal tabstop=2 shiftwidth=2 expandtab
+    autocmd BufNewFile,BufRead *.scss    setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead Appfile   setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
+    autocmd BufNewFile,BufRead Fastfile  setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
+    autocmd BufNewFile,BufRead Matchfile setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
+    autocmd BufNewFile,BufRead *.rules   setlocal tabstop=2 shiftwidth=2 filetype=firestore syntax=firestore
 augroup END
 
 " keymap settings
@@ -111,8 +116,12 @@ call plug#begin('~/.vim/plugged')
   Plug 'delphinus/vim-firestore',                { 'for': 'firestore' }
   Plug 'dart-lang/dart-vim-plugin',              { 'for': 'dart' }
   Plug 'udalov/kotlin-vim',                      { 'for': 'kotlin' }
-  Plug 'w0rp/ale'               " auto linter
-  Plug 'tomtom/tcomment_vim'    " commenter
+  Plug 'kballard/vim-swift',                     { 'for': 'swift' }
+  Plug 'keith/swift.vim',                        { 'for': 'swift' }
+  Plug 'w0rp/ale'                    " auto linter
+  Plug 'tomtom/tcomment_vim'         " commenter
+  Plug 'mlaursen/vim-react-snippets' " react snippets
+  Plug 'SirVer/ultisnips'            " react snippets
 call plug#end()
 
 " display settings
@@ -200,15 +209,15 @@ let g:NERDTreeMapOpenSplit = 'ss'
 let g:NERDTreeMapOpenVSplit = 'sv'
 nmap sg :NERDTreeFind<CR>
 "" ale
+" \ 'javascript': ['prettier', 'eslint'], cocに任せる
+" \ 'typescript': ['prettier', 'eslint'], cocに任せる
+" \ 'scss': ['stylelint'],
+" \ 'css': ['stylelint'],
 let g:ale_fixers = {
-      \ 'javascript': ['prettier', 'eslint'],
-      \ 'typescript': ['prettier', 'eslint'],
       \ 'vue': ['prettier', 'eslint', 'stylelint'],
       \ 'ruby': ['rubocop'],
       \ 'elixir': ['mix_format'],
       \ 'elm': ['elm-format'],
-      \ 'css': ['stylelint'],
-      \ 'scss': ['stylelint'],
       \ }
 let g:ale_lint_on_text_changed = 'never'     " setting for linter only run file changed
 let g:ale_fix_on_save = 1                    " setting for linter only run file changed
@@ -218,6 +227,8 @@ autocmd FileType elixir imap >> \|><Space>
 "" vue
 autocmd FileType vue syntax sync fromstart
 "" coc
+""" extensions
+let g:coc_global_extensions = [ 'coc-css', 'coc-eslint', 'coc-flutter', 'coc-prettier', 'coc-stylelintplus', 'coc-tsserver', 'coc-vetur', 'coc-html' ]
 """ Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)

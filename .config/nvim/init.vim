@@ -1,12 +1,12 @@
-set t_BE=0 " https://github.com/vim/vim/issues/1404#issuecomment-274723175
-if has('python3')
-  silent! python3 1
-endif
 " workaround: paste時に何か ^[[~201 とか入るやつのfix
 " https://vimhelp.org/term.txt.html#xterm-bracketed-paste
 " https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/31
 " https://github.com/johndgiese/dotvim/issues/4
+" https://github.com/vim/vim/issues/1404#issuecomment-274723175
 set t_BE=
+if has('python3')
+  silent! python3 1
+endif
 " directory settings
 " スワップファイル用のディレクトリを指定する
 silent !mkdir $HOME/.vim/swp > /dev/null 2>&1
@@ -93,14 +93,14 @@ nmap cp :let @+ = expand("%")<CR>
 " plugin installation
 call plug#begin('~/.vim/plugged')
   "" XXX: Make sure to use single quotes
-  Plug 'neoclide/coc.nvim',                      { 'branch': 'release'}
+  Plug 'neoclide/coc.nvim', { 'branch': 'release'}
   Plug 'itchyny/lightline.vim'
   Plug 'tpope/vim-fugitive'
   Plug 'scrooloose/nerdtree'
   Plug 'junegunn/vim-easy-align'
   Plug 'tpope/vim-surround'
   Plug 'mattn/emmet-vim'
-  Plug 'junegunn/fzf',                           { 'dir': '~/.fzf', 'do': './install --all' }
+  Plug 'junegunn/fzf',                           { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'groenewege/vim-less'
   " Plug 'fatih/vim-go',                           { 'for': 'go', 'do': ':GoUpdateBinaries' }
@@ -117,14 +117,15 @@ call plug#begin('~/.vim/plugged')
   Plug 'leafgarland/typescript-vim',             { 'for': 'typescript' }
   Plug 'slim-template/vim-slim',                 { 'for': 'slim' }
   Plug 'delphinus/vim-firestore',                { 'for': 'firestore' }
-  Plug 'dart-lang/dart-vim-plugin',              { 'for': 'dart' }
-  Plug 'udalov/kotlin-vim',                      { 'for': 'kotlin' }
-  Plug 'kballard/vim-swift',                     { 'for': 'swift' }
-  Plug 'keith/swift.vim',                        { 'for': 'swift' }
+  " Plug 'dart-lang/dart-vim-plugin',              { 'for': 'dart' }
+  " Plug 'udalov/kotlin-vim',                      { 'for': 'kotlin' }
+  " Plug 'kballard/vim-swift',                     { 'for': 'swift' }
+  " Plug 'keith/swift.vim',                        { 'for': 'swift' }
   Plug 'w0rp/ale'                    " auto linter
   Plug 'tomtom/tcomment_vim'         " commenter
   Plug 'mlaursen/vim-react-snippets' " react snippets
   Plug 'SirVer/ultisnips'            " react snippets
+  " Plug 'alunny/pegjs-vim'            " pegjs
 call plug#end()
 
 " display settings

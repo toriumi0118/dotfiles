@@ -2,6 +2,11 @@ set t_BE=0 " https://github.com/vim/vim/issues/1404#issuecomment-274723175
 if has('python3')
   silent! python3 1
 endif
+" workaround: paste時に何か ^[[~201 とか入るやつのfix
+" https://vimhelp.org/term.txt.html#xterm-bracketed-paste
+" https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard/issues/31
+" https://github.com/johndgiese/dotvim/issues/4
+set t_BE=
 " directory settings
 " スワップファイル用のディレクトリを指定する
 silent !mkdir $HOME/.vim/swp > /dev/null 2>&1
@@ -38,9 +43,8 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.rb      setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.js      setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.ts      setlocal tabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.jsx     setlocal tabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.jsx     setlocal tabstop=2 shiftwidth=2 filetype=javascript.jsx
     autocmd BufNewFile,BufRead *.tsx     setlocal tabstop=2 shiftwidth=2 filetype=typescript.tsx
-    autocmd BufNewFile,BufRead *.vue     setlocal tabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.go      setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
     autocmd BufNewFile,BufRead *.dart    setlocal tabstop=2 shiftwidth=2 expandtab
     autocmd BufNewFile,BufRead *.scss    setlocal tabstop=2 shiftwidth=2
@@ -89,7 +93,7 @@ nmap cp :let @+ = expand("%")<CR>
 " plugin installation
 call plug#begin('~/.vim/plugged')
   "" XXX: Make sure to use single quotes
-  Plug 'neoclide/coc.nvim', { 'branch': 'release'}
+  Plug 'neoclide/coc.nvim',                      { 'branch': 'release'}
   Plug 'itchyny/lightline.vim'
   Plug 'tpope/vim-fugitive'
   Plug 'scrooloose/nerdtree'
@@ -99,19 +103,18 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf',                           { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
   Plug 'groenewege/vim-less'
-  Plug 'fatih/vim-go',                           { 'do': ':GoUpdateBinaries' }
-  Plug 'vim-jp/vim-go-extra',                    { 'for': 'go' }
+  " Plug 'fatih/vim-go',                           { 'for': 'go', 'do': ':GoUpdateBinaries' }
+  " Plug 'vim-jp/vim-go-extra',                    { 'for': 'go' }
   " Plug 'kana/vim-filetype-haskell',              { 'for': 'haskell' }
   " Plug 'itchyny/vim-haskell-indent',             { 'for': 'haskell' }
+  " Plug 'elixir-editors/vim-elixir',              { 'for': 'elixir' }
+  " Plug 'mattreduce/vim-mix',                     { 'for': 'elixir' }
+  " Plug 'elmcast/elm-vim',                        { 'for': 'elm' }
   Plug 'othree/yajs.vim',                        { 'for': 'javascript' }
   Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
   Plug 'othree/es.next.syntax.vim',              { 'for': 'javascript' }
   Plug 'maxmellon/vim-jsx-pretty',               { 'for': 'javascript' }
   Plug 'leafgarland/typescript-vim',             { 'for': 'typescript' }
-  Plug 'posva/vim-vue',                          { 'for': 'vue' }
-  Plug 'elixir-editors/vim-elixir',              { 'for': 'elixir' }
-  Plug 'mattreduce/vim-mix',                     { 'for': 'elixir' }
-  Plug 'elmcast/elm-vim',                        { 'for': 'elm' }
   Plug 'slim-template/vim-slim',                 { 'for': 'slim' }
   Plug 'delphinus/vim-firestore',                { 'for': 'firestore' }
   Plug 'dart-lang/dart-vim-plugin',              { 'for': 'dart' }
@@ -214,7 +217,6 @@ nmap sg :NERDTreeFind<CR>
 " \ 'scss': ['stylelint'],
 " \ 'css': ['stylelint'],
 let g:ale_fixers = {
-      \ 'vue': ['prettier', 'eslint', 'stylelint'],
       \ 'ruby': ['rubocop'],
       \ 'elixir': ['mix_format'],
       \ 'elm': ['elm-format'],
@@ -224,8 +226,6 @@ let g:ale_fix_on_save = 1                    " setting for linter only run file 
 let g:ale_ruby_rubocop_executable = 'bundle' " fix rubucop executor
 "" elixir
 autocmd FileType elixir imap >> \|><Space>
-"" vue
-autocmd FileType vue syntax sync fromstart
 "" coc
 """ extensions
 let g:coc_global_extensions = [ 'coc-css', 'coc-eslint', 'coc-flutter', 'coc-prettier', 'coc-stylelintplus', 'coc-tsserver', 'coc-vetur', 'coc-html' ]

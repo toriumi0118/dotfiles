@@ -28,7 +28,7 @@ source ~/.asdf/asdf.fish
 
 ### Default Environments
 set --export EDITOR nvim
-set --export PATH /Users/toriumi0118/Dev/src/github.com/flutter/flutter/bin $PATH # flutter
+# set --export PATH /Users/toriumi0118/Dev/src/github.com/flutter/flutter/bin $PATH # flutter
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/toriumi0118/google-cloud-sdk/path.fish.inc' ]; . '/Users/toriumi0118/google-cloud-sdk/path.fish.inc'; end
+# if [ -f '/Users/toriumi0118/google-cloud-sdk/path.fish.inc' ]; . '/Users/toriumi0118/google-cloud-sdk/path.fish.inc'; end

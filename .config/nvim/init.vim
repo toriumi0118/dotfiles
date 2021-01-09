@@ -7,6 +7,7 @@ set t_BE=
 if has('python3')
   silent! python3 1
 endif
+
 " directory settings
 " スワップファイル用のディレクトリを指定する
 silent !mkdir $HOME/.vim/swp > /dev/null 2>&1
@@ -35,6 +36,12 @@ set autoindent   " 新しい行のインデントを現在行と同じにする
 set smarttab     " 新しい行を作ったときに高度な自動インデントを行う
 set smartindent  " 前の行末をみて改行時のインデントを判断する
 set synmaxcol=0  " シンタックスハイライトの行上限をなくす
+
+" https://dev.classmethod.jp/articles/trouble-shoot-ctrlv-in-vim/
+map ^[OA ^[ka
+map ^[OB ^[ja
+map ^[OC ^[la
+map ^[OD ^[ha
 
 augroup fileTypeIndent
     autocmd!

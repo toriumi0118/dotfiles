@@ -107,6 +107,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'delphinus/vim-firestore',                { 'for': 'firestore' }
   Plug 'w0rp/ale'               " auto linter
   Plug 'tomtom/tcomment_vim'    " commenter
+  Plug 'alunny/pegjs-vim'       " pegjs
 call plug#end()
 
 " display settings

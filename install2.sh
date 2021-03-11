@@ -4,23 +4,15 @@ echo '>>>>> START install2.sh'
 # install file utils
 echo ''
 echo '>>>>>>> INSTALL fish utils'
-brew install peco ghq tree macvim
-fisher add jethrokuan/z jethrokuan/fzf oh-my-fish/plugin-balias
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.1
+brew install peco ghq tree neovim
+fisher install jethrokuan/z jethrokuan/fzf oh-my-fish/plugin-balias
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf 
 echo 'source ~/.asdf/asdf.fish' >> ~/.config/fish/config.fish
 mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 brew install coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc gpg
 
 echo '>>>>>>> INSTALL vim utils'
-brew install ctags
 brew install the_silver_searcher
-brew install yarn --ignore-dependencies
-pip3 install neovim
-
-echo '>>>>>>> INSTALL yarn utils'
-yarn global add elm
-yarn global add elm-oracle
-yarn global add elm-format
 
 echo ''
 echo '>>>>> FINISH install2.sh'

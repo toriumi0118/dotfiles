@@ -20,13 +20,12 @@ cp -R .config ~/
 cp -R .vim ~/
 cp .tmux.conf ~/
 cp .vimrc ~/
-cp .ctags ~/
 
 # install vim plugins
 echo ''
 echo '>>>>>>> INSTALL vim-plug'
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 echo '>>>>>>> SWITCH default shell'
 echo '>>>>>>>>> ADD `/usr/local/bin/fish` to /etc/shells'

@@ -4,7 +4,7 @@ echo '>>>>> START install2.sh'
 # install file utils
 echo ''
 echo '>>>>>>> INSTALL fish utils'
-brew install peco ghq tree neovim
+brew install peco ghq tree neovim icu4c
 fisher install jethrokuan/z jethrokuan/fzf oh-my-fish/plugin-balias
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf 
 echo 'source ~/.asdf/asdf.fish' >> ~/.config/fish/config.fish

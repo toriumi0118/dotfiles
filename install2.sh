@@ -14,5 +14,10 @@ brew install coreutils automake autoconf openssl libyaml readline libxslt libtoo
 echo '>>>>>>> INSTALL vim utils'
 brew install the_silver_searcher
 
+echo '>>>>>>> INSTALL latest node'
+asdf plugin add nodejs
+asdf install nodejs latest
+asdf global nodejs latest
+
 echo ''
 echo '>>>>> FINISH install2.sh'

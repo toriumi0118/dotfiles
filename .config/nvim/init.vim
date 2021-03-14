@@ -124,6 +124,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'leafgarland/typescript-vim',             { 'for': 'typescript' }
   Plug 'slim-template/vim-slim',                 { 'for': 'slim' }
   Plug 'delphinus/vim-firestore',                { 'for': 'firestore' }
+  Plug 'rust-lang/rust.vim',                     { 'for': 'rust' }
   " Plug 'dart-lang/dart-vim-plugin',              { 'for': 'dart' }
   " Plug 'udalov/kotlin-vim',                      { 'for': 'kotlin' }
   " Plug 'kballard/vim-swift',                     { 'for': 'swift' }

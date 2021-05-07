@@ -1,0 +1,23 @@
+{
+    "coc.preferences.useQuickfixForLocations": true,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "dart", 
+        "javascript", 
+        "javascript.jsx", 
+        "javascriptreact",
+        "typescript", 
+        "typescript.tsx", 
+        "typescriptreact",
+        "scss", 
+        "sass", 
+        "elixir",
+        "rust"
+    ],
+    "tsserver.enableJavascript": false,
+    "stylelintplus.autoFixOnSave": true,
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "wxss.validate": false,
+    "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh"
+}

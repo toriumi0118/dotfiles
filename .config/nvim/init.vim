@@ -13,13 +13,10 @@ endif
 silent !mkdir $HOME/.vim/swp > /dev/null 2>&1
 silent !mkdir $HOME/.vim/undo > /dev/null 2>&1
 set directory=$HOME/.vim/swp
-set undofile " undoを使う
 set undodir=$HOME/.vim/undo
 set nobackup
-set nowritebackup
 
 " controll settings
-set nocompatible " vi互換をオフする
 set hidden       " 変更中のファイルでも、保存しないで他のファイルを表示する
 set incsearch    " インクリメンタルサーチを行う
 set ic           " ignore case
@@ -114,22 +111,21 @@ call plug#begin('~/.vim/plugged')
   " Plug 'vim-jp/vim-go-extra',                    { 'for': 'go' }
   " Plug 'kana/vim-filetype-haskell',              { 'for': 'haskell' }
   " Plug 'itchyny/vim-haskell-indent',             { 'for': 'haskell' }
-  " Plug 'elixir-editors/vim-elixir',              { 'for': 'elixir' }
-  " Plug 'mattreduce/vim-mix',                     { 'for': 'elixir' }
+  Plug 'elixir-editors/vim-elixir',              { 'for': 'elixir' }
+  Plug 'mattreduce/vim-mix',                     { 'for': 'elixir' }
   " Plug 'elmcast/elm-vim',                        { 'for': 'elm' }
   Plug 'othree/yajs.vim',                        { 'for': 'javascript' }
   Plug 'othree/javascript-libraries-syntax.vim', { 'for': 'javascript' }
   Plug 'othree/es.next.syntax.vim',              { 'for': 'javascript' }
   Plug 'maxmellon/vim-jsx-pretty',               { 'for': 'javascript' }
   Plug 'leafgarland/typescript-vim',             { 'for': 'typescript' }
-  Plug 'slim-template/vim-slim',                 { 'for': 'slim' }
+  " Plug 'slim-template/vim-slim',                 { 'for': 'slim' }
   Plug 'delphinus/vim-firestore',                { 'for': 'firestore' }
-  Plug 'rust-lang/rust.vim',                     { 'for': 'rust' }
+  " Plug 'rust-lang/rust.vim',                     { 'for': 'rust' }
   " Plug 'dart-lang/dart-vim-plugin',              { 'for': 'dart' }
   " Plug 'udalov/kotlin-vim',                      { 'for': 'kotlin' }
   " Plug 'kballard/vim-swift',                     { 'for': 'swift' }
   " Plug 'keith/swift.vim',                        { 'for': 'swift' }
-  Plug 'w0rp/ale'                    " auto linter
   Plug 'tomtom/tcomment_vim'         " commenter
   Plug 'mlaursen/vim-react-snippets' " react snippets
   Plug 'SirVer/ultisnips'            " react snippets
@@ -220,24 +216,21 @@ map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeMapOpenSplit = 'ss'
 let g:NERDTreeMapOpenVSplit = 'sv'
 nmap sg :NERDTreeFind<CR>
-"" ale
-" \ 'javascript': ['prettier', 'eslint'], cocに任せる
-" \ 'typescript': ['prettier', 'eslint'], cocに任せる
-" \ 'scss': ['stylelint'],
-" \ 'css': ['stylelint'],
-let g:ale_fixers = {
-      \ 'ruby': ['rubocop'],
-      \ 'elixir': ['mix_format'],
-      \ 'elm': ['elm-format'],
-      \ }
-let g:ale_lint_on_text_changed = 'never'     " setting for linter only run file changed
-let g:ale_fix_on_save = 1                    " setting for linter only run file changed
-let g:ale_ruby_rubocop_executable = 'bundle' " fix rubucop executor
 "" elixir
 autocmd FileType elixir imap >> \|><Space>
 "" coc
 """ extensions
-let g:coc_global_extensions = [ 'coc-css', 'coc-eslint', 'coc-flutter', 'coc-prettier', 'coc-stylelintplus', 'coc-tsserver', 'coc-vetur', 'coc-html' ]
+" 'coc-flutter',
+let g:coc_global_extensions = [
+            \ 'coc-css',
+            \ 'coc-eslint',
+            \ 'coc-prettier',
+            \ 'coc-stylelintplus',
+            \ 'coc-tsserver',
+            \ 'coc-html',
+            \ 'coc-elixir',
+            \ 'coc-rust-analyzer',
+            \ ]
 """ Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)

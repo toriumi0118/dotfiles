@@ -13,6 +13,7 @@
         "elixir",
         "rust"
     ],
+    "eslint.autoFixOnSave": true,
     "tsserver.enableJavascript": false,
     "stylelintplus.autoFixOnSave": true,
     "css.validate": false,

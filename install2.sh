@@ -4,7 +4,7 @@ echo '>>>>> START install2.sh'
 # install file utils
 echo ''
 echo '>>>>>>> INSTALL fish utils'
-brew install peco ghq tree neovim icu4c
+brew install peco ghq tree neovim icu4c python3
 fisher install jethrokuan/z jethrokuan/fzf oh-my-fish/plugin-balias
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf 
 echo 'source ~/.asdf/asdf.fish' >> ~/.config/fish/config.fish
@@ -13,6 +13,12 @@ brew install coreutils automake autoconf openssl libyaml readline libxslt libtoo
 
 echo '>>>>>>> INSTALL vim utils'
 brew install the_silver_searcher
+pip3 install -U neovim
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+# For example, we just use `~/.cache/dein` as installation directory
+sh ./installer.sh ~/.cache/nvim/dein
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
 
 echo '>>>>>>> INSTALL latest node'
 asdf plugin add nodejs

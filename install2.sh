@@ -4,14 +4,15 @@ echo '>>>>> START install2.sh'
 # install file utils
 echo ''
 echo '>>>>>>> INSTALL fish utils'
-brew install peco ghq tree neovim icu4c python3
+brew install peco ghq tree icu4c python3
+brew install --HEAD neovim
 fisher install jethrokuan/z jethrokuan/fzf oh-my-fish/plugin-balias
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf 
 echo 'source ~/.asdf/asdf.fish' >> ~/.config/fish/config.fish
 mkdir -p ~/.config/fish/completions; and cp ~/.asdf/completions/asdf.fish ~/.config/fish/completions
 brew install coreutils automake autoconf openssl libyaml readline libxslt libtool unixodbc gpg
 
-echo '>>>>>>> INSTALL vim utils'
+echo '>>>>>>> INSTALL nvim utils'
 brew install the_silver_searcher
 pip3 install -U neovim
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh

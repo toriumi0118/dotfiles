@@ -22,17 +22,10 @@ call dein#add('kyazdani42/nvim-web-devicons')
 call dein#add('Shougo/defx.nvim')
 call dein#add('junegunn/fzf', {'path': '~/.fzf', 'build': './install --all'})
 call dein#add('junegunn/fzf.vim')
-call dein#add('elixir-editors/vim-elixir')
-call dein#add('slime-lang/vim-slime-syntax')
-call dein#add('othree/yajs.vim')
-call dein#add('othree/es.next.syntax.vim')
-call dein#add('delphinus/vim-firestore')
-call dein#add('leafgarland/typescript-vim')
-call dein#add('maxmellon/vim-jsx-pretty')
 call dein#add('tomtom/tcomment_vim')
 call dein#add('mlaursen/vim-react-snippets')
 call dein#add('SirVer/ultisnips')
-call dein#add('alunny/pegjs-vim')
+call dein#add('nvim-treesitter/nvim-treesitter', { 'merged': 0, 'build': ':TSUpdate' })
 
 " Required:
 call dein#end()
@@ -278,6 +271,23 @@ nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = { "haskell" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    -- disable = { "c", "rust" },  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    -- additional_vim_regex_highlighting = false,
+  },
+}
+EOF
 
 """ --- display config ---
 set number                     " 行番号を表示する

@@ -45,6 +45,7 @@ silent !mkdir $HOME/.vim/swp > /dev/null 2>&1
 silent !mkdir $HOME/.vim/undo > /dev/null 2>&1
 set directory=$HOME/.vim/swp
 set undodir=$HOME/.vim/undo
+set undofile
 set nobackup
 
 """ --- control configs ---

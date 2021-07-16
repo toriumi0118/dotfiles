@@ -25,6 +25,8 @@ call dein#add('junegunn/fzf.vim')
 call dein#add('tomtom/tcomment_vim')
 call dein#add('mlaursen/vim-react-snippets')
 call dein#add('SirVer/ultisnips')
+call dein#add('elixir-editors/vim-elixir')
+call dein#add('slime-lang/vim-slime-syntax')
 call dein#add('nvim-treesitter/nvim-treesitter', { 'merged': 0, 'build': ':TSUpdate' })
 
 " Required:

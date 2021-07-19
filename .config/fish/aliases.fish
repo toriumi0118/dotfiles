@@ -4,6 +4,7 @@ balias gd  'git diff'
 balias gdd 'git branch --merged|egrep -v "\^\\* |develop\$|master\$"|xargs git branch -d'
 balias gdc 'git diff --cached'
 balias gp  'git push'
+balias gpl 'git pull'
 
 function gdv
   git diff -w $argv | view -

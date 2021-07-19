@@ -28,6 +28,7 @@ call dein#add('SirVer/ultisnips')
 call dein#add('elixir-editors/vim-elixir')
 call dein#add('slime-lang/vim-slime-syntax')
 call dein#add('nvim-treesitter/nvim-treesitter', { 'merged': 0, 'build': ':TSUpdate' })
+call dein#add('tpope/vim-fugitive')
 
 " Required:
 call dein#end()

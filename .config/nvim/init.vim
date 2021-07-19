@@ -274,6 +274,17 @@ nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+"" completion
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+""" C-spaceがmacだと食われるので
+""" システム環境設定 > キーボード > ショートカット > 入力ソースの「前の入力ソースを選択」と「入力ソースの次のソースを選択」のチェックを外す
+inoremap <silent><expr> <C-space>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
 
 " treesitter
 lua <<EOF

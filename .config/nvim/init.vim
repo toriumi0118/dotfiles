@@ -134,6 +134,7 @@ let g:user_emmet_expandabbr_key = '<c-e>'
 lua require('lualine').setup()
 
 " defx
+call defx#custom#column('indent', 'indent', '  ')
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
   " Define mappings

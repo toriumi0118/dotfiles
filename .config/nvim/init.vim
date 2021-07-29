@@ -287,6 +287,8 @@ inoremap <silent><expr> <C-space>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
+""" CocReference（gr）を使うとtext cursorが見えなくなるworkaround
+let g:coc_disable_transparent_cursor = 1
 
 " treesitter
 lua <<EOF

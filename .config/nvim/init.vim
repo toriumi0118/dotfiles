@@ -237,6 +237,7 @@ autocmd FileType elixir imap >> \|><Space>
 let g:coc_global_extensions = [
             \ 'coc-css',
             \ 'coc-eslint',
+            \ 'coc-eslint8',
             \ 'coc-prettier',
             \ 'coc-stylelintplus',
             \ 'coc-tsserver',

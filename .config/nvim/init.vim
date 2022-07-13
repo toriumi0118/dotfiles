@@ -1,6 +1,6 @@
 """ --- dein default configs --- 
 if &compatible
-  set nocompatible               " Be iMproved
+  set nocompatible " Be iMproved
 endif
 
 " Required:
@@ -19,7 +19,6 @@ call dein#add('junegunn/vim-easy-align')
 call dein#add('mattn/emmet-vim')
 call dein#add('hoob3rt/lualine.nvim')
 call dein#add('kyazdani42/nvim-web-devicons')
-call dein#add('Shougo/defx.nvim')
 call dein#add('junegunn/fzf', {'path': '~/.fzf', 'build': './install --all'})
 call dein#add('junegunn/fzf.vim')
 call dein#add('tomtom/tcomment_vim')
@@ -29,6 +28,8 @@ call dein#add('elixir-editors/vim-elixir')
 call dein#add('slime-lang/vim-slime-syntax')
 call dein#add('nvim-treesitter/nvim-treesitter', { 'merged': 0, 'build': ':TSUpdate' })
 call dein#add('tpope/vim-fugitive')
+call dein#add('hashivim/vim-terraform')
+call dein#add('jparise/vim-graphql')
 
 " Required:
 call dein#end()
@@ -82,11 +83,18 @@ augroup fileTypeIndent
   autocmd BufNewFile,BufRead Fastfile  setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
   autocmd BufNewFile,BufRead Matchfile setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
   autocmd BufNewFile,BufRead *.rules   setlocal tabstop=2 shiftwidth=2 filetype=firestore syntax=firestore
+  autocmd BufNewFile,BufRead *.graphql setlocal tabstop=2 shiftwidth=2
 augroup END
 
 """ --- keymap configs ---
 " 検索結果のハイライトをesc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
+
+" coc-explorer
+nnoremap <silent><C-n> <Cmd>CocCommand explorer<CR>
+nnoremap <silent>sg <Cmd>call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
+
+" screen
 " 主に画面分割系
 nnoremap s <Nop>
 nnoremap sj <C-w>j
@@ -133,82 +141,6 @@ let g:user_emmet_expandabbr_key = '<c-e>'
 " lualine
 lua require('lualine').setup()
 
-" defx
-call defx#custom#column('indent', 'indent', '  ')
-autocmd FileType defx call s:defx_my_settings()
-function! s:defx_my_settings() abort
-  " Define mappings
-  nnoremap <silent><buffer><expr> <CR>
-                          \ defx#is_directory() ?
-                          \ defx#do_action('open_tree') :
-                          \ defx#do_action('drop')
-  nnoremap <silent><buffer><expr> c
-                          \ defx#do_action('copy')
-  nnoremap <silent><buffer><expr> m
-                          \ defx#do_action('move')
-  nnoremap <silent><buffer><expr> p
-                          \ defx#do_action('paste')
-  nnoremap <silent><buffer><expr> l
-                          \ defx#do_action('open')
-  nnoremap <silent><buffer><expr> E
-                          \ defx#do_action('open', 'vsplit')
-  nnoremap <silent><buffer><expr> P
-                          \ defx#do_action('preview')
-  nnoremap <silent><buffer><expr> O
-                          \ defx#do_action('open_tree', 'recursive')
-  nnoremap <silent><buffer><expr> K
-                          \ defx#do_action('new_directory')
-  nnoremap <silent><buffer><expr> N
-                          \ defx#do_action('new_file')
-  nnoremap <silent><buffer><expr> M
-                          \ defx#do_action('new_multiple_files')
-  nnoremap <silent><buffer><expr> C
-                          \ defx#do_action('toggle_columns',
-                          \                'mark:indent:icon:filename:type:size:time')
-  nnoremap <silent><buffer><expr> S
-                          \ defx#do_action('toggle_sort', 'time')
-  nnoremap <silent><buffer><expr> d
-                          \ defx#do_action('remove')
-  nnoremap <silent><buffer><expr> r
-                          \ defx#do_action('rename')
-  nnoremap <silent><buffer><expr> !
-                          \ defx#do_action('execute_command')
-  nnoremap <silent><buffer><expr> x
-                          \ defx#do_action('execute_system')
-  nnoremap <silent><buffer><expr> yy
-                          \ defx#do_action('yank_path')
-  nnoremap <silent><buffer><expr> .
-                          \ defx#do_action('toggle_ignored_files')
-  nnoremap <silent><buffer><expr> ;
-                          \ defx#do_action('repeat')
-  nnoremap <silent><buffer><expr> h
-                          \ defx#do_action('cd', ['..'])
-  nnoremap <silent><buffer><expr> ~
-                          \ defx#do_action('cd')
-  nnoremap <silent><buffer><expr> q
-                          \ defx#do_action('quit')
-  nnoremap <silent><buffer><expr> <Space>
-                          \ defx#do_action('toggle_select') . 'j'
-  nnoremap <silent><buffer><expr> *
-                          \ defx#do_action('toggle_select_all')
-  nnoremap <silent><buffer><expr> j
-                          \ line('.') == line('$') ? 'gg' : 'j'
-  nnoremap <silent><buffer><expr> k
-                          \ line('.') == 1 ? 'G' : 'k'
-  nnoremap <silent><buffer><expr> <C-n>
-                          \ defx#do_action('quit')
-  nnoremap <silent><buffer><expr> <C-l>
-                          \ defx#do_action('redraw')
-  nnoremap <silent><buffer><expr> <C-g>
-                          \ defx#do_action('print')
-  nnoremap <silent><buffer><expr> cd
-                          \ defx#do_action('change_vim_cwd')
-endfunction
-"" C-nでdefxを開く
-nnoremap <silent><C-n> :Defx -split=vertical -winwidth=40 -direction=topleft -resume -buffer-name=`'defx' . tabpagenr()`<CR>
-"" sgで現在開いているファイルまでのpathを全展開する
-nnoremap <silent>sg    :Defx -split=vertical -winwidth=40 -direction=topleft -resume -buffer-name=`'defx' . tabpagenr()` -search=`expand('%:p')`<CR>
-
 " fzf
 function! s:build_quickfix_list(lines)
   call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
@@ -216,7 +148,7 @@ function! s:build_quickfix_list(lines)
   cc
 endfunction
 command! -bang -nargs=? -complete=dir HFiles
-  \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git -g ""'}, <bang>0) " hidden fileを含む
+  \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git --ignore "*.mp4" -g ""'}, <bang>0) " hidden fileを含む
 nnoremap <silent><C-h> :HFiles<CR>
 nnoremap <silent><C-p> :GFiles<CR>
 let g:fzf_action = {
@@ -225,6 +157,7 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+
 " ag
 nnoremap <silent><C-s> :Ag <C-R><C-W><CR>
 
@@ -269,25 +202,26 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 "" Remap for rename current word
 nmap <silent> <space>rn <Plug>(coc-rename)
 "" Using CocList
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <space>a :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>e :<C-u>CocList extensions<cr>
+nnoremap <silent> <space>c :<C-u>CocList commands<cr>
+nnoremap <silent> <space>o :<C-u>CocList outline<cr>
+nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>j :<C-u>CocNext<CR>
+nnoremap <silent> <space>k :<C-u>CocPrev<CR>
+nnoremap <silent> <space>p :<C-u>CocListResume<CR>
 "" completion
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 """ C-spaceがmacだと食われるので
 """ システム環境設定 > キーボード > ショートカット > 入力ソースの「前の入力ソースを選択」と「入力ソースの次のソースを選択」のチェックを外す
-inoremap <silent><expr> <C-space>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
+" inoremap <silent><expr> <Tab>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "aaa" :
+"       \ coc#refresh()
+inoremap <silent><expr> <c-space> coc#refresh()
 """ CocReference（gr）を使うとtext cursorが見えなくなるworkaround
 let g:coc_disable_transparent_cursor = 1
 
@@ -295,10 +229,10 @@ let g:coc_disable_transparent_cursor = 1
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  ignore_install = { "haskell" }, -- List of parsers to ignore installing
+  ignore_install = { "haskell"  }, -- List of parsers to ignore installing
   highlight = {
     enable = true,              -- false will disable the whole extension
-    -- disable = { "c", "rust" },  -- list of language that will be disabled
+    disable = { "vim" },  -- list of language that will be disabled
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.

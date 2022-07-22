@@ -82,7 +82,6 @@ augroup fileTypeIndent
   autocmd BufNewFile,BufRead Appfile   setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
   autocmd BufNewFile,BufRead Fastfile  setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
   autocmd BufNewFile,BufRead Matchfile setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
-  autocmd BufNewFile,BufRead *.rules   setlocal tabstop=2 shiftwidth=2 filetype=firestore syntax=firestore
   autocmd BufNewFile,BufRead *.graphql setlocal tabstop=2 shiftwidth=2
 augroup END
 

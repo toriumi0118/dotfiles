@@ -30,6 +30,8 @@ function fish_user_key_bindings
         bind \t '__fzf_complete'
     end
     ### fzf ###
+
+    fish_vi_key_bindings insert
 end
 
 fzf_key_bindings

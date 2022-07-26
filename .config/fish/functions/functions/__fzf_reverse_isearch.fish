@@ -1,0 +1,1 @@
+/Users/toriumi0118/.config/fisherman/fzf/functions/__fzf_reverse_isearch.fish

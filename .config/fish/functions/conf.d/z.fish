@@ -1,0 +1,1 @@
+/Users/toriumi0118/.config/fisherman/z/conf.d/z.fish

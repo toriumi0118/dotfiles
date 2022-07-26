@@ -1,0 +1,1 @@
+/Users/toriumi0118/.config/fisherman/z/functions/__z_complete.fish

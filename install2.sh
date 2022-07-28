@@ -4,8 +4,10 @@ echo '>>>>> START install2.sh'
 # install file utils
 echo ''
 echo '>>>>>>> INSTALL fish utils'
-brew install peco ghq tree icu4c python3 ripgrep fd
+brew install peco ghq tree icu4c python3 ripgrep fd fzf
+/usr/local/opt/fzf/install
 brew install --HEAD neovim
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 fisher install jethrokuan/z jethrokuan/fzf oh-my-fish/plugin-balias
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf 
 echo 'source ~/.asdf/asdf.fish' >> ~/.config/fish/config.fish
@@ -28,3 +30,4 @@ asdf global nodejs latest
 
 echo ''
 echo '>>>>> FINISH install2.sh'
+

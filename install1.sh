@@ -21,12 +21,8 @@ cp -R .vim ~/
 cp .tmux.conf ~/
 cp .vimrc ~/
 
-# install vim plugins
+# 一番最初にこれやって切り替えた後に実行するやつがあってもいいかもね。
 echo ''
-echo '>>>>>>> INSTALL vim-plug'
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
 echo '>>>>>>> SWITCH default shell'
 echo '>>>>>>>>> ADD `/usr/local/bin/fish` to /etc/shells'
 echo 'vim /etc/shells'

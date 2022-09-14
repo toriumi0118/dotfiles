@@ -51,6 +51,7 @@ set directory=$HOME/.vim/swp
 set undodir=$HOME/.vim/undo
 set undofile
 set nobackup
+set nowritebackup
 
 """ --- control configs ---
 set hidden       " 変更中のファイルでも、保存しないで他のファイルを表示する
@@ -134,9 +135,6 @@ set clipboard=unnamedplus          " system clipboardと連携
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
-" emmet
-let g:user_emmet_expandabbr_key = '<c-e>'
-
 " lualine
 lua require('lualine').setup()
 
@@ -210,19 +208,19 @@ nnoremap <silent> <space>j :<C-u>CocNext<CR>
 nnoremap <silent> <space>k :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p :<C-u>CocListResume<CR>
 "" completion
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-""" C-spaceがmacだと食われるので
-""" システム環境設定 > キーボード > ショートカット > 入力ソースの「前の入力ソースを選択」と「入力ソースの次のソースを選択」のチェックを外す
-" inoremap <silent><expr> <Tab>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "aaa" :
-"       \ coc#refresh()
 inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <c-n> coc#pum#visible() ? coc#pum#next(1) : coc#refresh()
+inoremap <expr><c-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <c-e> coc#pum#visible() ? coc#pum#cancel() : "<plug>(emmet-expand-abbr)"
 """ CocReference（gr）を使うとtext cursorが見えなくなるworkaround
 let g:coc_disable_transparent_cursor = 1
+
+" emmet
+let g:user_emmet_expandabbr_key = '<c-e>'
 
 " treesitter
 lua <<EOF

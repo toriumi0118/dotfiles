@@ -124,3 +124,8 @@ else
    hi LineNr          guifg=#BCBCBC guibg=#232526
    hi NonText         guifg=#BCBCBC guibg=#232526
 end
+
+" rust-analyzer color fix
+hi CocInlayHint gui=underline guifg=#75715E
+" completion color fix
+hi link CocMenuSel PmenuSel

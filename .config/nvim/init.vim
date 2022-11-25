@@ -158,9 +158,6 @@ let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 " ag
 nnoremap <silent><C-s> :Ag <C-R><C-W><CR>
 
-" elixir
-autocmd FileType elixir imap >> \|><Space>
-
 " coc
 "" \ 'coc-flutter',
 "" \ 'coc-go',

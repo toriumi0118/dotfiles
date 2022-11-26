@@ -72,23 +72,22 @@ set smartindent  " 改行時にブロックに応じて自動でインデント�
 set smarttab     " 行の先頭で<Tab>キーを入力するとインデントを挿入する
 set synmaxcol=0  " シンタックスハイライトの行上限をなくす
 
-" augroup fileTypeIndent
-"   autocmd!
-"   autocmd BufNewFile,BufRead *.elm     setlocal tabstop=4 shiftwidth=4
-"   autocmd BufNewFile,BufRead *.py      setlocal tabstop=4 shiftwidth=4
-"   autocmd BufNewFile,BufRead *.rb      setlocal tabstop=2 shiftwidth=2
-"   autocmd BufNewFile,BufRead *.js      setlocal tabstop=2 shiftwidth=2
-"   autocmd BufNewFile,BufRead *.ts      setlocal tabstop=2 shiftwidth=2
-"   autocmd BufNewFile,BufRead *.jsx     setlocal tabstop=2 shiftwidth=2 filetype=javascript.jsx
-"   autocmd BufNewFile,BufRead *.tsx     setlocal tabstop=2 shiftwidth=2 filetype=typescript.tsx
-"   autocmd BufNewFile,BufRead *.go      setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
-"   autocmd BufNewFile,BufRead *.dart    setlocal tabstop=2 shiftwidth=2 expandtab
-"   autocmd BufNewFile,BufRead *.scss    setlocal tabstop=2 shiftwidth=2
-"   autocmd BufNewFile,BufRead Appfile   setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
-"   autocmd BufNewFile,BufRead Fastfile  setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
-"   autocmd BufNewFile,BufRead Matchfile setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
-"   autocmd BufNewFile,BufRead *.graphql setlocal tabstop=2 shiftwidth=2
-" augroup END
+augroup fileTypeIndent
+  autocmd!
+  autocmd BufNewFile,BufRead *.py      setlocal tabstop=4 shiftwidth=4
+  autocmd BufNewFile,BufRead *.rb      setlocal tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.js      setlocal tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.ts      setlocal tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.jsx     setlocal tabstop=2 shiftwidth=2 filetype=javascript.jsx
+  autocmd BufNewFile,BufRead *.tsx     setlocal tabstop=2 shiftwidth=2 filetype=typescript.tsx
+  autocmd BufNewFile,BufRead *.go      setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
+  autocmd BufNewFile,BufRead *.dart    setlocal tabstop=2 shiftwidth=2 expandtab
+  autocmd BufNewFile,BufRead *.scss    setlocal tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead Appfile   setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
+  autocmd BufNewFile,BufRead Fastfile  setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
+  autocmd BufNewFile,BufRead Matchfile setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
+  autocmd BufNewFile,BufRead *.graphql setlocal tabstop=2 shiftwidth=2
+augroup END
 """ --- display config ---
 set number                     " 行番号を表示する
 set showmatch                  " 閉括弧が入力された時、対応する括弧を強調する
@@ -260,6 +259,7 @@ augroup fern-custom
 augroup END
 
 let g:fern#renderer = "nerdfont"
+let g:fern#renderer#nerdfont#indent_markers = 1
 
 " telescope
 lua require('telescope').load_extension('coc')

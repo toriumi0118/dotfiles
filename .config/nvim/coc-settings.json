@@ -1,18 +1,6 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "dart",
-    "javascript",
-    "javascript.jsx",
-    "javascriptreact",
-    "typescript",
-    "typescript.tsx",
-    "typescriptreact",
-    "elixir",
-    "rust",
-    "json",
-    "html",
-    "graphql"
-  ],
+  "suggest.noselect": true,
+  "coc.preferences.formatOnSave": true,
   "eslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",
@@ -25,88 +13,14 @@
   "less.validate": false,
   "scss.validate": false,
   "wxss.validate": false,
-  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
 
-  "explorer.keyMappings.global": {
-    "<c-o>": "noop",
-    "[Tab]": false,
-
-    "gk": ["wait", "expandablePrev"],
-    "gj": ["wait", "expandableNext"],
-    "h": ["wait", "collapse"],
-    "l": ["wait", "expandable?", "expand", "open"],
-    "H": ["wait", "gotoParent"],
-    "L": ["wait", "expandable?", "cd", "open"],
-    "J": ["wait", "toggleSelection", "normal:j"],
-    "K": ["wait", "toggleSelection", "normal:k"],
-    "gl": ["wait", "expand:recursive"],
-    "gh": ["wait", "collapse:recursive"],
-    "<2-LeftMouse>": false,
-    "o": ["wait", "expanded?", "collapse", "expand"],
-    "<cr>": [
-      "wait",
-      "expandable?",
-      ["expanded?", "collapse", "expand"],
-      "open"
-    ],
-    "e": "open:vsplit",
-    "s": false,
-    "E": "open:split",
-    "t": "open:tab",
-    "gs": ["wait", "reveal:select"],
-    "il": "previewOnHover:toggle:labeling",
-    "ic": "previewOnHover:toggle:content",
-    "ii": "previewOnHover:disable",
-    "Il": false,
-    "Ic": false,
-    "II": false,
-
-    "yp": "copyFilepath",
-    "yn": "copyFilename",
-    "yy": "copyFile",
-    "dd": "cutFile",
-    "p": "pasteFile",
-    "df": "delete",
-    "dF": "deleteForever",
-
-    "a": "addFile",
-    "A": "addDirectory",
-    "r": "rename",
-
-    "zh": false,
-    "<dot>": "toggleHidden",
-    "g<dot>": false,
-    "R": "refresh",
-
-    "?": "help",
-    "q": "quit",
-    "<esc>": "esc",
-    "X": "systemExecute",
-    "gd": "listDrive",
-
-    "f": "search",
-    "F": "searchRecursive",
-
-    "gf": "gotoSource:file",
-    "gb": "gotoSource:buffer",
-
-    "[[": false,
-    "]]": false,
-
-    "[i": false,
-    "]i": false,
-
-    "[m": false,
-    "]m": false,
-
-    "[d": false,
-    "]d": false,
-    "[D": false,
-    "]D": false,
-
-    "[c": false,
-    "]c": false,
-    "<<": false,
-    ">>": false
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {},
+      "settings": {}
+    }
   }
 }

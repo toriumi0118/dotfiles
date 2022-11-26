@@ -13,8 +13,6 @@ call dein#add('~/.cache/nvim/dein/repos/github.com/Shougo/dein.vim')
 
 " Add or remove your plugins here like this:
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
-call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
-call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 call dein#add('junegunn/vim-easy-align')
 call dein#add('lambdalisue/fern.vim')
 call dein#add('lambdalisue/nerdfont.vim')
@@ -117,27 +115,8 @@ nmap ga <Plug>(EasyAlign)
 lua require('lualine').setup()
 
 " fzf
-function! s:build_quickfix_list(lines)
-  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-  copen
-  cc
-endfunction
-command! -bang -nargs=? -complete=dir HFiles
-  \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git --ignore "*.mp4" -g ""'}, <bang>0) " hidden fileを含む
-nnoremap <silent><C-h> :HFiles<CR>
-let g:fzf_action = {
-  \ 'ctrl-q': function('s:build_quickfix_list'),
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
-
-" ag
-nnoremap <silent><C-s> :Ag <C-R><C-W><CR>
 
 " coc
-"" \ 'coc-flutter',
-"" \ 'coc-go',
 let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-eslint',
@@ -147,7 +126,7 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-html',
   \ 'coc-json',
-  \ 'coc-elixir',
+  \ 'coc-flutter',
   \ 'coc-rust-analyzer',
   \ ]
 "" Use `[g` and `]g` to navigate diagnostics
@@ -267,8 +246,10 @@ lua require('telescope').load_extension('coc')
 nnoremap <silent> <space>ff <cmd>Telescope find_files<cr>
 nnoremap <silent> <space>fg <cmd>Telescope live_grep<cr>
 nnoremap <silent> <space>fb <cmd>Telescope buffers<cr>
-nnoremap <silent> <space>fh <cmd>Telescope help_tags<cr>
+nnoremap <silent> <space>fh <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
+nnoremap <silent> <space>fs <cmd>Telescope grep_string<cr>
 nnoremap <silent> <space>fr <cmd>Telescope resume<cr>
+nnoremap <silent> <space>ft <cmd>Telescope help_tags<cr>
 
 " screen
 " 主に画面分割系

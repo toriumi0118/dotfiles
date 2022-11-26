@@ -16,6 +16,7 @@ brew install coreutils automake autoconf openssl libyaml readline libxslt libtoo
 
 echo '>>>>>>> INSTALL nvim utils'
 brew install the_silver_searcher
+brew install ripgrep # こっちが主流かも
 pip3 install -U neovim
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 # For example, we just use `~/.cache/dein` as installation directory

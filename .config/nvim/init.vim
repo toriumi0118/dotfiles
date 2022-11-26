@@ -1,7 +1,5 @@
 """ --- dein default configs --- 
-if &compatible
-  set nocompatible " Be iMproved
-endif
+set nocompatible " Be iMproved
 
 " Required:
 set runtimepath+=~/.cache/nvim/dein/repos/github.com/Shougo/dein.vim
@@ -14,22 +12,28 @@ call dein#begin('~/.cache/nvim/dein')
 call dein#add('~/.cache/nvim/dein/repos/github.com/Shougo/dein.vim')
 
 " Add or remove your plugins here like this:
-call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
+call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
+call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
+call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 call dein#add('junegunn/vim-easy-align')
+call dein#add('lambdalisue/fern.vim')
+call dein#add('lambdalisue/nerdfont.vim')
+call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
+call dein#add('lambdalisue/fern-git-status.vim')
 call dein#add('mattn/emmet-vim')
 call dein#add('hoob3rt/lualine.nvim')
-call dein#add('kyazdani42/nvim-web-devicons')
-call dein#add('junegunn/fzf', {'path': '~/.fzf', 'build': './install --all'})
-call dein#add('junegunn/fzf.vim')
+call dein#add('nvim-tree/nvim-web-devicons')
 call dein#add('tomtom/tcomment_vim')
-call dein#add('mlaursen/vim-react-snippets')
+call dein#add('mlaursen/vim-react-snippets', { 'depends': 'ultisnips' })
 call dein#add('SirVer/ultisnips')
-call dein#add('elixir-editors/vim-elixir')
-call dein#add('slime-lang/vim-slime-syntax')
 call dein#add('nvim-treesitter/nvim-treesitter', { 'merged': 0, 'build': ':TSUpdate' })
-call dein#add('tpope/vim-fugitive')
 call dein#add('hashivim/vim-terraform')
 call dein#add('jparise/vim-graphql')
+call dein#add('tpope/vim-fugitive')
+call dein#add('sainnhe/sonokai')
+call dein#add('nvim-lua/plenary.nvim')
+call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.0' })
+call dein#add('fannheyward/telescope-coc.nvim')
 
 " Required:
 call dein#end()
@@ -68,62 +72,37 @@ set smartindent  " 改行時にブロックに応じて自動でインデント�
 set smarttab     " 行の先頭で<Tab>キーを入力するとインデントを挿入する
 set synmaxcol=0  " シンタックスハイライトの行上限をなくす
 
-augroup fileTypeIndent
-  autocmd!
-  autocmd BufNewFile,BufRead *.elm     setlocal tabstop=4 shiftwidth=4
-  autocmd BufNewFile,BufRead *.py      setlocal tabstop=4 shiftwidth=4
-  autocmd BufNewFile,BufRead *.rb      setlocal tabstop=2 shiftwidth=2
-  autocmd BufNewFile,BufRead *.js      setlocal tabstop=2 shiftwidth=2
-  autocmd BufNewFile,BufRead *.ts      setlocal tabstop=2 shiftwidth=2
-  autocmd BufNewFile,BufRead *.jsx     setlocal tabstop=2 shiftwidth=2 filetype=javascript.jsx
-  autocmd BufNewFile,BufRead *.tsx     setlocal tabstop=2 shiftwidth=2 filetype=typescript.tsx
-  autocmd BufNewFile,BufRead *.go      setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
-  autocmd BufNewFile,BufRead *.dart    setlocal tabstop=2 shiftwidth=2 expandtab
-  autocmd BufNewFile,BufRead *.scss    setlocal tabstop=2 shiftwidth=2
-  autocmd BufNewFile,BufRead Appfile   setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
-  autocmd BufNewFile,BufRead Fastfile  setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
-  autocmd BufNewFile,BufRead Matchfile setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
-  autocmd BufNewFile,BufRead *.graphql setlocal tabstop=2 shiftwidth=2
-augroup END
+" augroup fileTypeIndent
+"   autocmd!
+"   autocmd BufNewFile,BufRead *.elm     setlocal tabstop=4 shiftwidth=4
+"   autocmd BufNewFile,BufRead *.py      setlocal tabstop=4 shiftwidth=4
+"   autocmd BufNewFile,BufRead *.rb      setlocal tabstop=2 shiftwidth=2
+"   autocmd BufNewFile,BufRead *.js      setlocal tabstop=2 shiftwidth=2
+"   autocmd BufNewFile,BufRead *.ts      setlocal tabstop=2 shiftwidth=2
+"   autocmd BufNewFile,BufRead *.jsx     setlocal tabstop=2 shiftwidth=2 filetype=javascript.jsx
+"   autocmd BufNewFile,BufRead *.tsx     setlocal tabstop=2 shiftwidth=2 filetype=typescript.tsx
+"   autocmd BufNewFile,BufRead *.go      setlocal tabstop=4 shiftwidth=4 noexpandtab completeopt=menu,preview
+"   autocmd BufNewFile,BufRead *.dart    setlocal tabstop=2 shiftwidth=2 expandtab
+"   autocmd BufNewFile,BufRead *.scss    setlocal tabstop=2 shiftwidth=2
+"   autocmd BufNewFile,BufRead Appfile   setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
+"   autocmd BufNewFile,BufRead Fastfile  setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
+"   autocmd BufNewFile,BufRead Matchfile setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
+"   autocmd BufNewFile,BufRead *.graphql setlocal tabstop=2 shiftwidth=2
+" augroup END
+""" --- display config ---
+set number                     " 行番号を表示する
+set showmatch                  " 閉括弧が入力された時、対応する括弧を強調する
+set showcmd                    " コマンドの表示
+set smartcase                  " smartcase
+set termguicolors              " true color
+set showtabline=2              " 常にタブラインを表示
+syntax enable                  " 色設定
+colorscheme sonokai
+
 
 """ --- keymap configs ---
 " 検索結果のハイライトをesc連打でクリアする
 nnoremap <ESC><ESC> :nohlsearch<CR>
-
-" coc-explorer
-nnoremap <silent><C-n> <Cmd>CocCommand explorer<CR>
-nnoremap <silent>sg <Cmd>call CocAction('runCommand', 'explorer.doAction', 'closest', ['reveal:0'], [['relative', 0, 'file']])<CR>
-
-" screen
-" 主に画面分割系
-nnoremap s <Nop>
-nnoremap sj <C-w>j
-nnoremap sk <C-w>k
-nnoremap sl <C-w>l
-nnoremap sh <C-w>h
-nnoremap sJ <C-w>J
-nnoremap sK <C-w>K
-nnoremap sL <C-w>L
-nnoremap sH <C-w>H
-nnoremap s= <C-w>=
-nnoremap so <C-w>_<C-w>|
-nnoremap ss :<C-u>sp<CR>
-nnoremap sv :<C-u>vs<CR>
-nnoremap s> <C-w>>
-nnoremap s< <C-w><
-nnoremap s+ <C-w>+
-nnoremap s- <C-w>-
-" Tab
-map [Tab] <Nop>
-map s [Tab]
-for n in range(1, 9)
-  execute 'nnoremap <silent> [Tab]'.n ':<C-u>tabnext'.n.'<CR>'
-  execute 'nnoremap <silent> [Tab]m'.n ':<C-u>tabmove'.n.'<CR>'
-endfor
-map <silent> [Tab]t :tablast <bar> :tabnew<CR>
-map <silent> [Tab]x :tabclose<CR>
-map <silent> [Tab]n :tabnext<CR>
-map <silent> [Tab]p :tabprevious<CR>
 
 """ --- clipboard config ---
 " cpで現在のファイルをclipboardへ
@@ -147,7 +126,6 @@ endfunction
 command! -bang -nargs=? -complete=dir HFiles
   \ call fzf#vim#files(<q-args>, {'source': 'ag --hidden --ignore .git --ignore "*.mp4" -g ""'}, <bang>0) " hidden fileを含む
 nnoremap <silent><C-h> :HFiles<CR>
-nnoremap <silent><C-p> :GFiles<CR>
 let g:fzf_action = {
   \ 'ctrl-q': function('s:build_quickfix_list'),
   \ 'ctrl-t': 'tab split',
@@ -162,17 +140,17 @@ nnoremap <silent><C-s> :Ag <C-R><C-W><CR>
 "" \ 'coc-flutter',
 "" \ 'coc-go',
 let g:coc_global_extensions = [
-            \ 'coc-css',
-            \ 'coc-eslint',
-            \ 'coc-eslint8',
-            \ 'coc-prettier',
-            \ 'coc-stylelintplus',
-            \ 'coc-tsserver',
-            \ 'coc-html',
-            \ 'coc-json',
-            \ 'coc-elixir',
-            \ 'coc-rust-analyzer',
-            \ ]
+  \ 'coc-css',
+  \ 'coc-eslint',
+  \ 'coc-eslint8',
+  \ 'coc-prettier',
+  \ 'coc-stylelintplus',
+  \ 'coc-tsserver',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-elixir',
+  \ 'coc-rust-analyzer',
+  \ ]
 "" Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -180,23 +158,22 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gr :<C-u>Telescope coc references<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   elseif (coc#rpc#ready())
     call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :<C-u>call <SID>show_documentation()<CR>
 "" Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 "" Remap for rename current word
 nmap <silent> <space>rn <Plug>(coc-rename)
+nmap <silent> <space>a  <Plug>(coc-codeaction-selected)iw
 "" Using CocList
-nnoremap <silent> <space>a :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <space>e :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>c :<C-u>CocList commands<cr>
 nnoremap <silent> <space>o :<C-u>CocList outline<cr>
@@ -236,12 +213,91 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-""" --- display config ---
-set number                     " 行番号を表示する
-set showmatch                  " 閉括弧が入力された時、対応する括弧を強調する
-set showcmd                    " コマンドの表示
-set smartcase                  " smartcase
-set termguicolors              " true color
-set showtabline=2              " 常にタブラインを表示
-syntax enable                  " 色設定
-colorscheme molokai
+" fern
+nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=40<CR>
+
+function! s:init_fern() abort
+  " Define NERDTree like mappings
+  nmap <buffer> o <Plug>(fern-action-open:edit)
+  nmap <buffer> go <Plug>(fern-action-open:edit)<C-w>p
+  nmap <buffer> t <Plug>(fern-action-open:tabedit)
+  nmap <buffer> T <Plug>(fern-action-open:tabedit)gT
+  nmap <buffer> i <Plug>(fern-action-open:split)
+  nmap <buffer> gi <Plug>(fern-action-open:split)<C-w>p
+  nmap <buffer> e <Plug>(fern-action-open:vsplit)
+  nmap <buffer> ge <Plug>(fern-action-open:vsplit)<C-w>p
+  nmap <buffer> ma <Plug>(fern-action-new-path)
+
+  nmap <buffer> C <Plug>(fern-action-enter)<Plug>(fern-wait)<Plug>(fern-action-tcd:root)
+  nmap <buffer> U <Plug>(fern-action-leave)<Plug>(fern-wait)<Plug>(fern-action-tcd:root)
+  nmap <buffer> r <Plug>(fern-action-reload)
+  nmap <buffer> R gg<Plug>(fern-action-reload)<C-o>
+  nmap <buffer> cd <Plug>(fern-action-cd)
+  nmap <buffer> CD gg<Plug>(fern-action-cd)<C-o>
+
+  nmap <buffer> I <Plug>(fern-action-hidden:toggle)
+
+  nmap <buffer><expr>
+      \ <Plug>(fern-my-expand-or-collapse)
+      \ fern#smart#leaf(
+      \   "\<Plug>(fern-action-collapse)",
+      \   "\<Plug>(fern-action-expand)",
+      \   "\<Plug>(fern-action-collapse)",
+      \ )
+
+  nmap <buffer><nowait> l <Plug>(fern-my-expand-or-collapse)
+  nmap <buffer><nowait> <Enter> <Plug>(fern-my-expand-or-collapse)
+
+  nmap <buffer> q :<C-u>quit<CR>
+
+  " disable default mapping
+  nunmap <buffer> s
+endfunction
+
+augroup fern-custom
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
+augroup END
+
+let g:fern#renderer = "nerdfont"
+
+" telescope
+lua require('telescope').load_extension('coc')
+
+nnoremap <silent> <space>ff <cmd>Telescope find_files<cr>
+nnoremap <silent> <space>fg <cmd>Telescope live_grep<cr>
+nnoremap <silent> <space>fb <cmd>Telescope buffers<cr>
+nnoremap <silent> <space>fh <cmd>Telescope help_tags<cr>
+nnoremap <silent> <space>fr <cmd>Telescope resume<cr>
+
+" screen
+" 主に画面分割系
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap sJ <C-w>J
+nnoremap sK <C-w>K
+nnoremap sL <C-w>L
+nnoremap sH <C-w>H
+nnoremap s= <C-w>=
+nnoremap so <C-w>_<C-w>|
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
+nnoremap s> <C-w>>
+nnoremap s< <C-w><
+nnoremap s+ <C-w>+
+nnoremap s- <C-w>-
+" Tab
+map [Tab] <Nop>
+map s [Tab]
+for n in range(1, 9)
+  execute 'nnoremap <silent> [Tab]'.n ':<C-u>tabnext'.n.'<CR>'
+  execute 'nnoremap <silent> [Tab]m'.n ':<C-u>tabmove'.n.'<CR>'
+endfor
+map <silent> [Tab]t :tablast <bar> :tabnew<CR>
+map <silent> [Tab]x :tabclose<CR>
+map <silent> [Tab]n :tabnext<CR>
+map <silent> [Tab]p :tabprevious<CR>
+

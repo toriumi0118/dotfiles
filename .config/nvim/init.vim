@@ -251,7 +251,7 @@ function! s:init_fern() abort
   nmap <buffer> q :<C-u>quit<CR>
 
   " disable default mapping
-  nunmap <buffer> s
+  silent! nunmap <buffer> s
 endfunction
 
 augroup fern-custom

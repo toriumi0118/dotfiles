@@ -205,10 +205,10 @@ function! s:init_fern() abort
   nmap <buffer> e <Plug>(fern-action-open:vsplit)
   nmap <buffer> ge <Plug>(fern-action-open:vsplit)<C-w>p
   nmap <buffer> ma <Plug>(fern-action-new-path)
+  nmap <buffer> r <Plug>(fern-action-rename)
 
   nmap <buffer> C <Plug>(fern-action-enter)<Plug>(fern-wait)<Plug>(fern-action-tcd:root)
   nmap <buffer> U <Plug>(fern-action-leave)<Plug>(fern-wait)<Plug>(fern-action-tcd:root)
-  nmap <buffer> r <Plug>(fern-action-reload)
   nmap <buffer> R gg<Plug>(fern-action-reload)<C-o>
   nmap <buffer> cd <Plug>(fern-action-cd)
   nmap <buffer> CD gg<Plug>(fern-action-cd)<C-o>

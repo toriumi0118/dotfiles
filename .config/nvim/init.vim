@@ -192,7 +192,8 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 " fern
-nnoremap <C-n> :Fern . -reveal=% -drawer -toggle -width=40<CR>
+nnoremap <C-n> :<C-u>Fern . -reveal=% -drawer -toggle -width=40<CR>
+nnoremap <silent> sg :<C-u>Fern . -drawer -reveal=% -width=40 -wait<CR><C-w>=
 
 function! s:init_fern() abort
   " Define NERDTree like mappings

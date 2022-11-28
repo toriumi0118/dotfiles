@@ -31,6 +31,7 @@ call dein#add('tpope/vim-fugitive')
 call dein#add('sainnhe/sonokai')
 call dein#add('nvim-lua/plenary.nvim')
 call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.0' })
+call dein#add('nvim-telescope/telescope-fzf-native.nvim', { 'build': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' })
 call dein#add('fannheyward/telescope-coc.nvim')
 
 " Required:
@@ -243,6 +244,7 @@ let g:fern#renderer#nerdfont#indent_markers = 1
 
 " telescope
 lua require('telescope').load_extension('coc')
+lua require('telescope').load_extension('fzf')
 
 nnoremap <silent> <space>ff <cmd>Telescope find_files<cr>
 nnoremap <silent> <space>fg <cmd>Telescope live_grep<cr>

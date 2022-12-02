@@ -245,6 +245,13 @@ let g:fern#renderer#nerdfont#indent_markers = 1
 " telescope
 lua require('telescope').load_extension('coc')
 lua require('telescope').load_extension('fzf')
+lua <<EOF
+local actions = require'telescope.actions'
+require'telescope'.setup { defaults = { mappings = { i = {
+  ["<esc>"] = actions.close,
+  ["<C-space>"] = actions.send_selected_to_qflist + actions.open_qflist,
+} } } }
+EOF
 
 nnoremap <silent> <space>ff <cmd>Telescope find_files<cr>
 nnoremap <silent> <space>fg <cmd>Telescope live_grep<cr>

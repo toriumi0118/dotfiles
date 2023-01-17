@@ -73,6 +73,7 @@ set synmaxcol=0  " シンタックスハイライトの行上限をなくす
 
 augroup fileTypeIndent
   autocmd!
+  autocmd BufNewFile,BufRead *.java    setlocal tabstop=4 shiftwidth=4
   autocmd BufNewFile,BufRead *.py      setlocal tabstop=4 shiftwidth=4
   autocmd BufNewFile,BufRead *.rb      setlocal tabstop=2 shiftwidth=2
   autocmd BufNewFile,BufRead *.js      setlocal tabstop=2 shiftwidth=2
@@ -260,6 +261,16 @@ nnoremap <silent> <space>fh <cmd>Telescope find_files find_command=rg,--ignore,-
 nnoremap <silent> <space>fs <cmd>Telescope grep_string<cr>
 nnoremap <silent> <space>fr <cmd>Telescope resume<cr>
 nnoremap <silent> <space>ft <cmd>Telescope help_tags<cr>
+
+" fugitiveo
+nnoremap [fugitive]  <Nop>
+nmap <space>g [fugitive]
+nnoremap <silent> [fugitive]s :G<CR>
+nnoremap <silent> [fugitive]a :Gwrite<CR>
+nnoremap <silent> [fugitive]c :G commit -v<CR>
+nnoremap <silent> [fugitive]b :G blame<CR>
+nnoremap <silent> [fugitive]d :Gvdiffsplit!<CR>
+nnoremap <silent> [fugitive]m :G merge<CR>
 
 " screen
 " 主に画面分割系

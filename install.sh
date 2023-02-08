@@ -3,6 +3,8 @@ brew update
 brew install --cask hyper
 brew install --cask raycast
 brew install --cask docker
+brew install --cask skitch
+brew install --cask tableplus
 
 # hyper
 hyper i hyper-material-theme

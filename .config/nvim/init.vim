@@ -233,6 +233,7 @@ function! s:init_fern() abort
 
   " disable default mapping
   silent! nunmap <buffer> s
+  silent! nunmap <buffer> z
 endfunction
 
 augroup fern-custom
@@ -270,7 +271,7 @@ nnoremap <silent> [fugitive]a :Gwrite<CR>
 nnoremap <silent> [fugitive]c :G commit -v<CR>
 nnoremap <silent> [fugitive]b :G blame<CR>
 nnoremap <silent> [fugitive]d :Gvdiffsplit!<CR>
-nnoremap <silent> [fugitive]m :G merge<CR>
+nnoremap <silent> [fugitive]m :G mergetool<CR>
 
 " screen
 " 主に画面分割系

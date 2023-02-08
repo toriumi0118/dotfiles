@@ -6,13 +6,11 @@
   "eslint.nodePath": ".yarn/sdks",
   "workspace.workspaceFolderCheckCwd": false,
   "_tsserver.tsdk": ".yarn/sdks/typescript/lib",
-  "tsserver.enableJavascript": false,
   "stylelintplus.autoFixOnSave": true,
   "stylelintplus.validateOnSave": true,
   "css.validate": false,
   "less.validate": false,
   "scss.validate": false,
-  "wxss.validate": false,
 
   "languageserver": {
     "terraform": {
@@ -22,5 +20,15 @@
       "initializationOptions": {},
       "settings": {}
     }
-  }
+  },
+
+  "rust-analyzer.checkOnSave.overrideCommand": [
+    "cargo",
+    "clippy",
+    "--workspace",
+    "--all-targets",
+    "--all-features",
+    "--tests",
+    "--message-format=json"
+  ]
 }

@@ -1,10 +1,22 @@
 #!/bin/bash
-echo '>>>>> START install1.sh'
+brew update
+brew install --cask hyper
+brew install --cask raycast
 
-# install fish
-echo ''
-echo '>>>>>>> INSTALL fish'
-brew install fish reattach-to-user-namespace direnv
+# hyper
+hyper i hyper-material-theme
+hyper i hyperminimal
+
+brew install \
+        fish \
+        reattach-to-user-namespace \
+        gh \
+        ghq
+
+
+
+
+
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 
 # install tmux

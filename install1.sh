@@ -2,6 +2,7 @@
 brew update
 brew install --cask hyper
 brew install --cask raycast
+brew install --cask docker
 
 # hyper
 hyper i hyper-material-theme
@@ -11,35 +12,37 @@ brew install \
         fish \
         reattach-to-user-namespace \
         gh \
-        ghq
+        ghq \
+        tmux \
+        nvim \
+	peco \
+	tree \
+	icu4c \
+	ripgrep \
+	fd \
+	fzf \
+	asdf \
+        coreutils \
+        automake \
+        autoconf \
+        openssl \
+        libyaml \
+        readline \
+        libxslt \
+        libtool \
+        unixodbc \
+        gpg
 
+# fish
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+fisher install jethrokuan/z jethrokuan/fzf oh-my-fish/plugin-balias
+/opt/homebrew/opt/fzf/install
 
+# nvim
+python3 -m pip install --user --upgrade pynvim
+asdf plugin add nodejs
+asdf install nodejs lts
+asdf global nodejs lts
 
-
-
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-
-# install tmux
-echo ''
-echo '>>>>>>> INSTALL tmux'
-brew install tmux
-
-# copy setting files
-echo ''
-echo '>>>>>>> COPY setting files'
-cp -R .ssh ~/
-cp -R .config ~/
-cp -R .vim ~/
-cp .tmux.conf ~/
-cp .vimrc ~/
-
-# 一番最初にこれやって切り替えた後に実行するやつがあってもいいかもね。
-echo ''
-echo '>>>>>>> SWITCH default shell'
-echo '>>>>>>>>> ADD `/usr/local/bin/fish` to /etc/shells'
-echo 'vim /etc/shells'
-echo '>>>>>>>>> CHANGE DEFAULT SHELL'
-echo 'chsh -s /usr/local/bin/fish'
-
-echo ''
-echo '>>>>> FINISH install1.sh'
+echo 'Download and use Cica fonts: it includes nerdfonts etc. https://github.com/miiton/Cica'

@@ -32,6 +32,7 @@ brew install \
         libxslt \
         libtool \
         unixodbc \
+        curl \
         gpg
 
 # fish

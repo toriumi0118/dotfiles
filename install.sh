@@ -12,7 +12,6 @@ hyper i hyperminimal
 
 brew install \
         fish \
-        reattach-to-user-namespace \
         gh \
         ghq \
         tmux \

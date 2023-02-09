@@ -31,10 +31,14 @@ brew install \
         readline \
         libxslt \
         libtool \
+        libpq \
         unixodbc \
         curl \
         gawk \
-        gpg
+        gpg \
+        cmake
+
+brew link --force libpq
 
 # fish
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher

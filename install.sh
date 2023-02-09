@@ -33,6 +33,7 @@ brew install \
         libtool \
         unixodbc \
         curl \
+        gawk \
         gpg
 
 # fish

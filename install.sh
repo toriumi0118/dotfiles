@@ -39,7 +39,8 @@ brew install \
         curl \
         gawk \
         gpg \
-        cmake
+        cmake \
+        hashicorp/tap/terraform-ls
 
 brew link --force libpq
 

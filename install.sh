@@ -10,6 +10,9 @@ brew install --cask tableplus
 hyper i hyper-material-theme
 hyper i hyperminimal
 
+# tmux(package manager: tpm)
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 brew install \
         fish \
         gh \
@@ -53,3 +56,4 @@ asdf install nodejs lts
 asdf global nodejs lts
 
 echo 'Download and use Cica fonts: it includes nerdfonts etc. https://github.com/miiton/Cica'
+echo 'Install tpm plugin type: "[Ctrl-j] + I"'

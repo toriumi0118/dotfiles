@@ -7,12 +7,12 @@ function fish_user_key_bindings
     bind \cf '__fzf_find_file'
     bind \cr '__fzf_reverse_isearch'
     bind \co '__fzf_cd'
-    bind \ch '__fzf_cd --hidden'
+    bind \ci '__fzf_cd --hidden'
     if bind -M insert >/dev/null 2>/dev/null
         bind -M insert \cf '__fzf_find_file'
         bind -M insert \cr '__fzf_reverse_isearch'
         bind -M insert \co '__fzf_cd'
-        bind -M insert \ch '__fzf_cd --hidden'
+        bind -M insert \ci '__fzf_cd --hidden'
     end
     if set -q FZF_COMPLETE
         bind \t '__fzf_complete'

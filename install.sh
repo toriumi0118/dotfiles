@@ -6,6 +6,8 @@ brew install --cask docker
 brew install --cask skitch
 brew install --cask tableplus
 brew install --cask google-cloud-sdk
+brew install --cask licecap
+brew install fastlane
 
 # hyper
 hyper i hyper-material-theme

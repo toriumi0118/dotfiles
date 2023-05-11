@@ -7,7 +7,12 @@ brew install --cask skitch
 brew install --cask tableplus
 brew install --cask google-cloud-sdk
 brew install --cask licecap
-brew install fastlane
+
+# terraform + terragrunt
+brew install tfenv
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
+brew install terragrunt
 
 # hyper
 hyper i hyper-material-theme
@@ -43,7 +48,9 @@ brew install \
         gawk \
         gpg \
         cmake \
-        hashicorp/tap/terraform-ls
+        hashicorp/tap/terraform-ls \
+        fastlane \
+        sccache
 
 brew link --force libpq
 

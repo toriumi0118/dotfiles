@@ -266,13 +266,13 @@ lua <<EOF
 local actions = require'telescope.actions'
 require'telescope'.setup { defaults = { mappings = { i = {
   ["<esc>"] = actions.close,
-  ["<C-space>"] = actions.send_selected_to_qflist + actions.open_qflist,
+  ["<C-f>"] = actions.send_selected_to_qflist + actions.open_qflist,
 } } } }
 EOF
 
 nnoremap <silent> <space>ff <cmd>Telescope find_files<cr>
-" nnoremap <silent> <space>fg <cmd>Telescope live_grep<cr>
-nnoremap <silent> <space>fg <cmd>lua require'telescope.builtin'.grep_string{ shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }<cr>
+nnoremap <silent> <space>fg <cmd>Telescope live_grep<cr>
+" nnoremap <silent> <space>fg <cmd>lua require'telescope.builtin'.grep_string{ shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }<cr>
 nnoremap <silent> <space>fb <cmd>Telescope buffers<cr>
 nnoremap <silent> <space>fh <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
 nnoremap <silent> <space>fs <cmd>Telescope grep_string<cr>

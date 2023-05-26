@@ -1,6 +1,6 @@
 #!/bin/bash
 brew update
-brew install --cask hyper
+brew install --cask iterm2
 brew install --cask raycast
 brew install --cask docker
 brew install --cask skitch
@@ -13,10 +13,6 @@ brew install tfenv
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 brew install terragrunt
-
-# hyper
-hyper i hyper-material-theme
-hyper i hyperminimal
 
 # tmux(package manager: tpm)
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

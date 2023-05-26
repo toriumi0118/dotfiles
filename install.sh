@@ -62,5 +62,10 @@ asdf plugin add nodejs
 asdf install nodejs lts
 asdf global nodejs lts
 
-echo 'Download and use Cica fonts: it includes nerdfonts etc. https://github.com/miiton/Cica'
+# font
+brew tap homebrew/cask-fonts
+brew install font-plemol-jp-nfj
+brew install --cask font-plemol-jp-nfj
+echo '*** ダウンロードに失敗しているかもしれないので、https://github.com/yuru7/PlemolJP check!! ***'
+
 echo 'Install tpm plugin type: "[Ctrl-j] + I"'

@@ -29,6 +29,9 @@ call dein#add('~/.cache/nvim/dein/repos/github.com/Shougo/dein.vim')
 " Add or remove your plugins here like this:
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
 call dein#add('junegunn/vim-easy-align')
+call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
+call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+call dein#add('antoinemadec/coc-fzf')
 call dein#add('lambdalisue/fern.vim')
 call dein#add('lambdalisue/nerdfont.vim')
 call dein#add('lambdalisue/fern-renderer-nerdfont.vim')
@@ -45,9 +48,6 @@ call dein#add('jparise/vim-graphql')
 call dein#add('tpope/vim-fugitive')
 call dein#add('sainnhe/sonokai')
 call dein#add('nvim-lua/plenary.nvim')
-call dein#add('nvim-telescope/telescope.nvim', { 'rev': '0.1.0' })
-call dein#add('nvim-telescope/telescope-fzf-native.nvim', { 'build': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' })
-call dein#add('fannheyward/telescope-coc.nvim')
 
 " Required:
 call dein#end()
@@ -132,6 +132,33 @@ nmap ga <Plug>(EasyAlign)
 lua require('lualine').setup()
 
 " fzf
+nnoremap <silent> <space>f :Files<CR>
+nnoremap <silent> <space>G :GFiles?<CR>
+nnoremap <silent> <space>b :Buffers<CR>
+nnoremap <silent> <space>h :History<CR>
+nnoremap <silent> <space>l :Rg<CR>
+nnoremap <silent> <space>s :Rg <C-R><C-W><CR>
+
+"" markしたものをquickfix listに送る
+function! s:build_quickfix_list(lines)
+  if len(a:lines) == 1
+    execute ':e ' . a:lines[0]
+  else
+    call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+    copen
+    cc
+  endif
+endfunction
+let g:fzf_action = {
+  \ 'enter': function('s:build_quickfix_list'),
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
+let $FZF_DEFAULT_COMMAND = 'rg --files' " .gitignoreを尊重する
+
+" coc-fzf
+let g:coc_fzf_preview = "right:50%"
 
 " coc
 let g:coc_global_extensions = [
@@ -150,10 +177,11 @@ let g:coc_global_extensions = [
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 "" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr :<C-u>Telescope coc references<CR>
+nmap <silent> <space>d <Plug>(coc-definition)
+nmap <silent> <space>y <Plug>(coc-type-definition)
+nmap <silent> <space>i <Plug>(coc-implementation)
+nmap <silent> <space>r <Plug>(coc-references)
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -161,21 +189,21 @@ function! s:show_documentation()
     call CocActionAsync('doHover')
   endif
 endfunction
-nnoremap <silent> K :<C-u>call <SID>show_documentation()<CR>
+nnoremap <silent> <space>k :<C-u>call <SID>show_documentation()<CR>
 "" Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 "" Remap for rename current word
-nmap <silent> <space>rn <Plug>(coc-rename)
+nmap <silent> <space>n <Plug>(coc-rename)
 nmap <silent> <space>a  <Plug>(coc-codeaction-selected)iw
 "" Using CocList
-nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <space>e :<C-u>CocList extensions<cr>
-nnoremap <silent> <space>c :<C-u>CocList commands<cr>
-nnoremap <silent> <space>o :<C-u>CocList outline<cr>
-nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <space>j :<C-u>CocNext<CR>
-nnoremap <silent> <space>k :<C-u>CocPrev<CR>
-nnoremap <silent> <space>p :<C-u>CocListResume<CR>
+nnoremap <silent> <space>cd :<C-u>CocFzfList diagnostics<cr>
+nnoremap <silent> <space>ce :<C-u>CocFzfList extensions<cr>
+nnoremap <silent> <space>cc :<C-u>CocFzfList commands<cr>
+nnoremap <silent> <space>co :<C-u>CocFzfList outline<cr>
+nnoremap <silent> <space>cs :<C-u>CocFzfList -I symbols<cr>
+nnoremap <silent> <space>cj :<C-u>CocNext<CR>
+nnoremap <silent> <space>ck :<C-u>CocPrev<CR>
+nnoremap <silent> <space>cp :<C-u>CocFzfListResume<CR>
 "" completion
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <silent><expr> <c-n> coc#pum#visible() ? coc#pum#next(1) : coc#refresh()
@@ -260,26 +288,6 @@ augroup END
 
 let g:fern#renderer = "nerdfont"
 let g:fern#renderer#nerdfont#indent_markers = 1
-
-" telescope
-lua require('telescope').load_extension('coc')
-lua require('telescope').load_extension('fzf')
-lua <<EOF
-local actions = require'telescope.actions'
-require'telescope'.setup { defaults = { mappings = { i = {
-  ["<esc>"] = actions.close,
-  ["<C-f>"] = actions.send_selected_to_qflist + actions.open_qflist,
-} } } }
-EOF
-
-nnoremap <silent> <space>ff <cmd>Telescope find_files<cr>
-nnoremap <silent> <space>fg <cmd>Telescope live_grep<cr>
-" nnoremap <silent> <space>fg <cmd>lua require'telescope.builtin'.grep_string{ shorten_path = true, word_match = "-w", only_sort_text = true, search = '' }<cr>
-nnoremap <silent> <space>fb <cmd>Telescope buffers<cr>
-nnoremap <silent> <space>fh <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
-nnoremap <silent> <space>fs <cmd>Telescope grep_string<cr>
-nnoremap <silent> <space>fr <cmd>Telescope resume<cr>
-nnoremap <silent> <space>ft <cmd>Telescope help_tags<cr>
 
 " fugitiveo
 nnoremap [fugitive]  <Nop>

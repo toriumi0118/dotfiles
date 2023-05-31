@@ -136,7 +136,7 @@ nnoremap <silent> <space>f :Files<CR>
 nnoremap <silent> <space>G :GFiles?<CR>
 nnoremap <silent> <space>b :Buffers<CR>
 nnoremap <silent> <space>h :History<CR>
-nnoremap <silent> <space>l :Rg<CR>
+nnoremap <silent> <space>k :Rg<CR>
 nnoremap <silent> <space>s :Rg <C-R><C-W><CR>
 
 "" markしたものをquickfix listに送る
@@ -189,7 +189,7 @@ function! s:show_documentation()
     call CocActionAsync('doHover')
   endif
 endfunction
-nnoremap <silent> <space>k :<C-u>call <SID>show_documentation()<CR>
+nnoremap <silent> <space>D :<C-u>call <SID>show_documentation()<CR>
 "" Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 "" Remap for rename current word

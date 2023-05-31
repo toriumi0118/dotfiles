@@ -185,6 +185,8 @@ inoremap <expr><c-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <c-e> coc#pum#visible() ? coc#pum#cancel() : "<plug>(emmet-expand-abbr)"
+" rust-analyzerだとcheckOnSaveが激おそなのでcheckはコマンドで行う
+nnoremap <silent> <space>l :<C-u>CocCommand rust-analyzer.runFlycheck<cr>
 """ CocReference（gr）を使うとtext cursorが見えなくなるworkaround
 let g:coc_disable_transparent_cursor = 1
 
@@ -288,6 +290,7 @@ nnoremap <silent> [fugitive]c :G commit -v<CR>
 nnoremap <silent> [fugitive]b :G blame<CR>
 nnoremap <silent> [fugitive]d :Gvdiffsplit!<CR>
 nnoremap <silent> [fugitive]m :G mergetool<CR>
+nnoremap <silent> [fugitive]p :G push -u<CR>
 
 " screen
 " 主に画面分割系

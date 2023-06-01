@@ -46,7 +46,8 @@ brew install \
         cmake \
         hashicorp/tap/terraform-ls \
         fastlane \
-        sccache
+        sccache \
+        bat
 
 brew link --force libpq
 

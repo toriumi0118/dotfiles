@@ -137,7 +137,7 @@ nnoremap <silent> <space>f :Files<CR>
 nnoremap <silent> <space>G :GFiles?<CR>
 nnoremap <silent> <space>b :Buffers<CR>
 nnoremap <silent> <space>h :History<CR>
-nnoremap <silent> <space>k :Rg<CR>
+nnoremap <silent> <space>l :Rg<CR>
 nnoremap <silent> <space>s :Rg <C-R><C-W><CR>
 
 "" markしたものをquickfix listに送る
@@ -215,7 +215,7 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <c-e> coc#pum#visible() ? coc#pum#cancel() : "<plug>(emmet-expand-abbr)"
 " rust-analyzerだとcheckOnSaveが激おそなのでcheckはコマンドで行う
-nnoremap <silent> <space>l :<C-u>CocCommand rust-analyzer.runFlycheck<cr>
+nnoremap <silent> <c-k> :<C-u>CocCommand rust-analyzer.runFlycheck<cr>
 """ CocReference（gr）を使うとtext cursorが見えなくなるworkaround
 let g:coc_disable_transparent_cursor = 1
 

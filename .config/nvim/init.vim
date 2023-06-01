@@ -102,6 +102,7 @@ augroup fileTypeIndent
   autocmd BufNewFile,BufRead Fastfile  setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
   autocmd BufNewFile,BufRead Matchfile setlocal tabstop=2 shiftwidth=2 filetype=rb syntax=ruby
   autocmd BufNewFile,BufRead *.graphql setlocal tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.vim     setlocal tabstop=2 shiftwidth=2
 augroup END
 """ --- display config ---
 set number                     " 行番号を表示する
@@ -150,7 +151,7 @@ function! s:build_quickfix_list(lines)
   endif
 endfunction
 let g:fzf_action = {
-  \ 'enter': function('s:build_quickfix_list'),
+  \ 'ctrl-f': function('s:build_quickfix_list'),
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }

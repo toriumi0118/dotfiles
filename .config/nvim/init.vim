@@ -157,6 +157,7 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 let $FZF_DEFAULT_COMMAND = 'rg --files' " .gitignoreを尊重する
+let $FZF_PREVIEW_COMMAND="COLORTERM=truecolor bat --style=numbers --color=always --theme='Monokai Extended' --line-range :500 {}" 
 
 " coc-fzf
 let g:coc_fzf_preview = "right:50%"

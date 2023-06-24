@@ -1,7 +1,7 @@
 #!/bin/bash
 brew update
 brew install --cask iterm2
-brew install --cask raycast
+brew install --cask alfred
 brew install --cask docker
 brew install --cask skitch
 brew install --cask tableplus

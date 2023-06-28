@@ -130,7 +130,7 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " lualine
-lua require('lualine').setup()
+lua require('lualine').setup({ sections = { lualine_c = { { 'filename', path = 1 } } } })
 
 " fzf
 nnoremap <silent> <space>f :Files<CR>
@@ -157,7 +157,7 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all'
 let $FZF_DEFAULT_COMMAND = 'rg --files' " .gitignoreを尊重する
-let $FZF_PREVIEW_COMMAND="COLORTERM=truecolor bat --style=numbers --color=always --theme='Monokai Extended' --line-range :500 {}" 
+let $FZF_PREVIEW_COMMAND="COLORTERM=truecolor bat --style=numbers --color=always --theme='Monokai Extended' {}" 
 
 " coc-fzf
 let g:coc_fzf_preview = "right:50%"

@@ -48,6 +48,7 @@ call dein#add('jparise/vim-graphql')
 call dein#add('tpope/vim-fugitive')
 call dein#add('sainnhe/sonokai')
 call dein#add('nvim-lua/plenary.nvim')
+call dein#add('dart-lang/dart-vim-plugin')
 
 " Required:
 call dein#end()

@@ -43,8 +43,8 @@ call dein#add('mattn/emmet-vim')
 call dein#add('hoob3rt/lualine.nvim')
 call dein#add('nvim-tree/nvim-web-devicons')
 call dein#add('tomtom/tcomment_vim')
-call dein#add('mlaursen/vim-react-snippets', { 'depends': 'ultisnips' })
 call dein#add('SirVer/ultisnips')
+call dein#add('mlaursen/vim-react-snippets')
 call dein#add('nvim-treesitter/nvim-treesitter', { 'merged': 0, 'build': ':TSUpdate' })
 call dein#add('hashivim/vim-terraform')
 call dein#add('jparise/vim-graphql')
@@ -52,6 +52,7 @@ call dein#add('tpope/vim-fugitive')
 call dein#add('sainnhe/sonokai')
 call dein#add('nvim-lua/plenary.nvim')
 call dein#add('dart-lang/dart-vim-plugin')
+call dein#add('github/copilot.vim')
 
 " Required:
 call dein#end()
@@ -178,6 +179,7 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-flutter',
   \ 'coc-rust-analyzer',
+  \ 'coc-snippets',
   \ ]
 "" Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -337,3 +339,13 @@ map <silent> [Tab]x :tabclose<CR>
 map <silent> [Tab]n :tabnext<CR>
 map <silent> [Tab]p :tabprevious<CR>
 
+" snippets
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+let g:coc_snippet_next = '<c-n>'
+let g:coc_snippet_prev = '<c-p>'
+
+" copilot
+imap <C-s> <Plug>(copilot-next)
+imap <C-a> <Plug>(copilot-previous)
+imap <C-]> <Plug>(copilot-suggest)

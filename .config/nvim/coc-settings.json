@@ -1,6 +1,7 @@
 {
   "suggest.noselect": true,
   "coc.preferences.formatOnSave": true,
+  "snippets.textmateSnippetsRoots": ["~/.config/nvim/snippets"],
   "eslint.autoFixOnSave": true,
   "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",
@@ -21,9 +22,6 @@
     }
   },
 
-  "_rust-analyzer.updates.channel": "nightly",
-  "_rust-analyzer.diagnostics.disabled": ["unresolved-proc-macro"],
-  "_rust-analyzer.procMacro.enable": false,
   "rust-analyzer.inlayHints.chainingHints.enable": true,
   "rust-analyzer.imports.prefix": "crate",
   "rust-analyzer.diagnostics.disabled": [

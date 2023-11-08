@@ -1,26 +1,27 @@
 {
   "Part statement": {
-    "prefix": "frdzpts",
+    "prefix": "frezdpts",
     "body": ["part '${TM_FILENAME_BASE}.g.dart';"],
     "description": "Creates a filled-in part statement"
   },
   "Part 'Freezed' statement": {
-    "prefix": "frdzptf",
+    "prefix": "frezdptf",
     "body": ["part '${TM_FILENAME_BASE}.freezed.dart';"],
     "description": "Creates a filled-in freezed part statement"
   },
   "Freezed Data Class": {
-    "prefix": "frdz",
+    "prefix": "frezd",
     "body": [
       "@freezed",
       "abstract class ${1:DataClass} with _$${1:DataClass}{",
       "  const factory ${1:DataClass}(${2}) = _${1:DataClass};",
+      "  factory ${1:DataClass}.fromJson(Map<String, dynamic> json) => _$${1}FromJson(json);"
       "}"
     ],
     "description": "Freezed Data Class"
   },
   "Freezed Union": {
-    "prefix": "frdzunion",
+    "prefix": "frezdunion",
     "body": [
       "@freezed",
       "abstract class ${1:Union} with _$${1:Union}{",
@@ -30,12 +31,12 @@
     "description": "Freezed Union"
   },
   "Freezed Union Case": {
-    "prefix": "frdzunioncase",
+    "prefix": "frezdunioncase",
     "body": ["const factory ${1:Union}.${2}(${4}) = ${3};"],
     "description": "Freezed Union Case"
   },
   "From JSON": {
-    "prefix": "frdzfromjson",
+    "prefix": "frezdfromjson",
     "body": [
       "factory ${1}.fromJson(Map<String, dynamic> json) => _$${1}FromJson(json);"
     ],

@@ -190,6 +190,9 @@ nmap <silent> <space>y <Plug>(coc-type-definition)
 nmap <silent> <space>i <Plug>(coc-implementation)
 nmap <silent> <space>r <Plug>(coc-references)
 
+"" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -198,8 +201,6 @@ function! s:show_documentation()
   endif
 endfunction
 nnoremap <silent> <space>D :<C-u>call <SID>show_documentation()<CR>
-"" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
 "" Remap for rename current word
 nmap <silent> <space>n <Plug>(coc-rename)
 nmap <silent> <space>a  <Plug>(coc-codeaction-selected)iw
@@ -342,10 +343,11 @@ map <silent> [Tab]p :tabprevious<CR>
 " snippets
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
-let g:coc_snippet_next = '<c-n>'
-let g:coc_snippet_prev = '<c-p>'
+let g:coc_snippet_next = '<c-]>'
+let g:coc_snippet_prev = '<c-[>'
 
 " copilot
 imap <C-s> <Plug>(copilot-next)
 imap <C-a> <Plug>(copilot-previous)
-imap <C-]> <Plug>(copilot-suggest)
+imap <C-k> <Plug>(copilot-suggest)
+imap <C-d> <Plug>(copilot-dismiss)

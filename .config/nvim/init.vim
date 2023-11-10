@@ -350,4 +350,3 @@ let g:coc_snippet_prev = '<c-[>'
 imap <C-s> <Plug>(copilot-next)
 imap <C-a> <Plug>(copilot-previous)
 imap <C-k> <Plug>(copilot-suggest)
-imap <C-d> <Plug>(copilot-dismiss)

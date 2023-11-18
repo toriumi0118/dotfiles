@@ -342,9 +342,9 @@ map <silent> [Tab]p :tabprevious<CR>
 
 " snippets
 " Use <C-l> for trigger snippet expand.
-imap <C-l> <Plug>(coc-snippets-expand)
-let g:coc_snippet_next = '<c-]>'
-let g:coc_snippet_prev = '<c-[>'
+" imap <C-l> <Plug>(coc-snippets-expand)
+" let g:coc_snippet_next = '<c-]>'
+" let g:coc_snippet_prev = '<c-[>'
 
 " copilot
 imap <C-s> <Plug>(copilot-next)

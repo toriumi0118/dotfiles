@@ -53,6 +53,6 @@
   "rust-analyzer.check.command": "clippy",
   "_rust-analyzer.rustfmt.overrideCommand": ["cargo", "make", "fmt-check"],
 
-  "flutter.sdk.flutter-lookup": "which flutter",
+  "flutter.sdk.flutter-lookup": "asdf which flutter",
   "flutter.workspaceFolder.ignore": ["~/.pub-cache/"]
 }

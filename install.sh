@@ -14,6 +14,7 @@ brew install tfenv
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 brew install terragrunt
+brew install java
 
 # tmux(package manager: tpm)
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

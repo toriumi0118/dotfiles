@@ -29,6 +29,11 @@ if status is-interactive
 
     # flutter script
     set --export PATH $PATH $HOME/.pub-cache/bin # flutter
+
+    set --export ANDROID_HOME $HOME/Library/Android/sdk
+    set --export PATH $PATH $ANDROID_HOME/tools
+    set --export PATH $PATH $ANDROID_HOME/tools/bin
+    set --export PATH $PATH $ANDROID_HOME/platform-tools
 end
 
 source /opt/homebrew/opt/asdf/libexec/asdf.fish

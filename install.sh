@@ -1,4 +1,10 @@
 #!/bin/bash
+# fish
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+fisher install jethrokuan/z jethrokuan/fzf oh-my-fish/plugin-balias
+/opt/homebrew/opt/fzf/install
+
 brew update
 brew install --cask iterm2
 brew install --cask alfred
@@ -53,11 +59,8 @@ brew install \
 
 brew link --force libpq
 
-# fish
-curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-fisher install jethrokuan/z jethrokuan/fzf oh-my-fish/plugin-balias
-/opt/homebrew/opt/fzf/install
+# rust
+brew install rust-analyzer
 
 # nvim
 python3 -m pip install --user --upgrade pynvim

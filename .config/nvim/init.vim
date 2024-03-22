@@ -53,6 +53,7 @@ call dein#add('sainnhe/sonokai')
 call dein#add('nvim-lua/plenary.nvim')
 call dein#add('dart-lang/dart-vim-plugin')
 call dein#add('github/copilot.vim')
+call dein#add('rust-lang/rust.vim')
 
 " Required:
 call dein#end()

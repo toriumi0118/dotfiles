@@ -177,7 +177,7 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-html',
   \ 'coc-json',
-  \ 'coc-flutter-tools',
+  \ 'coc-flutter',
   \ 'coc-rust-analyzer',
   \ 'coc-snippets',
   \ ]

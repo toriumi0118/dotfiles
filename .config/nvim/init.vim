@@ -177,7 +177,7 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-html',
   \ 'coc-json',
-  \ 'coc-flutter',
+  \ 'coc-flutter-tools',
   \ 'coc-rust-analyzer',
   \ 'coc-snippets',
   \ ]
@@ -203,7 +203,7 @@ endfunction
 nnoremap <silent> <space>D :<C-u>call <SID>show_documentation()<CR>
 "" Remap for rename current word
 nmap <silent> <space>n <Plug>(coc-rename)
-nmap <silent> <space>a  <Plug>(coc-codeaction-selected)iw
+nmap <silent> <space>a <Plug>(coc-codeaction-selected)iw
 "" Using CocList
 nnoremap <silent> <space>cd :<C-u>CocFzfList diagnostics<cr>
 nnoremap <silent> <space>ce :<C-u>CocFzfList extensions<cr>

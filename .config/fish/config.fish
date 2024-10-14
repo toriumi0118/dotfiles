@@ -22,18 +22,15 @@ if status is-interactive
     
     # Default Environments
     set --export EDITOR nvim
-    set --export PATH $PATH /Users/toriumi0118/.bin # terrafrom-lsp
+
+    fish_add_path /opt/homebrew/bin
+    set --export PATH /Users/toriumi0118/.bin $PATH # terrafrom-lsp
 
     # Set PATH, MANPATH, etc., for Homebrew.
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
     # flutter script
     set --export PATH $PATH $HOME/.pub-cache/bin # flutter
-
-    set --export ANDROID_HOME $HOME/Library/Android/sdk
-    set --export PATH $PATH $ANDROID_HOME/tools
-    set --export PATH $PATH $ANDROID_HOME/tools/bin
-    set --export PATH $PATH $ANDROID_HOME/platform-tools
 end
 
 source /opt/homebrew/opt/asdf/libexec/asdf.fish

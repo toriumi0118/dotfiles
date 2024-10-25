@@ -309,6 +309,7 @@ nnoremap <silent> [fugitive]b :G blame<CR>
 nnoremap <silent> [fugitive]d :Gvdiffsplit!<CR>
 nnoremap <silent> [fugitive]m :G mergetool<CR>
 nnoremap <silent> [fugitive]p :G push -u<CR>
+nnoremap <silent> [fugitive]l :Gclog<CR>
 
 " screen
 " 主に画面分割系

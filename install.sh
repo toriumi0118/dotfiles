@@ -9,7 +9,7 @@ chsh -s /opt/homebrew/bin/fish
 
 # fish
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+# curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 fisher install jethrokuan/z jethrokuan/fzf oh-my-fish/plugin-balias
 /opt/homebrew/opt/fzf/install
 

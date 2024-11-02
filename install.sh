@@ -17,7 +17,7 @@ brew update
 brew install --cask iterm2
 brew install --cask alfred
 brew install --cask docker
-brew install --cask skitch
+# brew install --cask skitch
 brew install --cask tableplus
 brew install --cask google-cloud-sdk
 brew install --cask licecap

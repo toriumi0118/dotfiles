@@ -83,3 +83,5 @@ brew install --cask font-plemol-jp-hs
 echo '*** ダウンロードに失敗しているかもしれないので、https://github.com/yuru7/PlemolJP check!! ***'
 
 echo 'Install tpm plugin type: "[Ctrl-j] + I"'
+echo 'tmux with iterm2 might work with ctrl + j to switch clients, then you should turn on `Report modifier using CSI u` in iterm2 preference'
+echo 'ref: https://github.com/tmux/tmux/wiki/Modifier-Keys'

@@ -63,7 +63,8 @@ brew install \
         hashicorp/tap/terraform-ls \
         fastlane \
         sccache \
-        bat
+        bat \
+        cocoapods
 
 brew link --force libpq
 

@@ -21,6 +21,7 @@ brew install --cask docker
 brew install --cask tableplus
 brew install --cask google-cloud-sdk
 brew install --cask licecap
+brew install --cask slack
 
 # terraform + terragrunt
 brew install tfenv

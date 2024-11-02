@@ -13,7 +13,6 @@ brew install --cask skitch
 brew install --cask tableplus
 brew install --cask google-cloud-sdk
 brew install --cask licecap
-brew install --cask clipy
 
 # terraform + terragrunt
 brew install tfenv

@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 # fish
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish

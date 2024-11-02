@@ -76,9 +76,9 @@ asdf install nodejs lts
 asdf global nodejs lts
 
 # font
-brew tap homebrew/cask-fonts
-brew install font-plemol-jp-nfj
-brew install --cask font-plemol-jp-nfj
+brew install --cask font-plemol-jp
+brew install --cask font-plemol-jp-nf
+brew install --cask font-plemol-jp-hs
 echo '*** ダウンロードに失敗しているかもしれないので、https://github.com/yuru7/PlemolJP check!! ***'
 
 echo 'Install tpm plugin type: "[Ctrl-j] + I"'

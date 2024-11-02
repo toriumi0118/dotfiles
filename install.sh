@@ -3,6 +3,10 @@
 # brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+brew install fish
+echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
+chsh -s /opt/homebrew/bin/fish
+
 # fish
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish

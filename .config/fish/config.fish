@@ -4,22 +4,6 @@ if status is-interactive
     alias vim='nvim'
     alias tmux='tmux -u'
 
-    # Add Command for peco with z
-    function peco_z
-      set -l query (commandline)
-    
-      if test -n $query
-        set peco_flags --query "$query"
-      end
-    
-      z -l | peco $peco_flags | awk '{ print $2 }' | read recent
-      if [ $recent ]
-        cd $recent
-        commandline -r ''
-        commandline -f repaint
-        end
-    end
-    
     # Default Environments
     set --export EDITOR nvim
 
@@ -33,4 +17,16 @@ if status is-interactive
     set --export PATH $PATH $HOME/.pub-cache/bin # flutter
 end
 
-source /opt/homebrew/opt/asdf/libexec/asdf.fish
+zoxide init fish | source
+
+set _asdf_shims "$HOME/.asdf/shims"
+set -gx --prepend PATH $_asdf_shims
+set --erase _asdf_shims
+
+fzf_configure_bindings \
+	--directory=\cf \
+	--git_log=\cl \
+	--git_status=\cs \
+	--history=\cr \
+	--processes=\cp \
+	--variables=\cv

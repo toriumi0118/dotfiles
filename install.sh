@@ -82,11 +82,4 @@ asdf install ruby latest
 asdf global ruby latest
 gem install neovim
 
-# # font
-# brew install --cask font-plemol-jp
-# brew install --cask font-plemol-jp-nf
-# brew install --cask font-plemol-jp-hs
-# echo '*** ダウンロードに失敗しているかもしれないので、https://github.com/yuru7/PlemolJP check!! ***'
-# ghosttyに任せるのでいらない
-
 echo 'Install tpm plugin type: "[Ctrl-j] + I"'

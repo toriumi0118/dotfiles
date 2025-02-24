@@ -10,7 +10,7 @@ chsh -s /opt/homebrew/bin/fish
 # fish
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 # curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-fisher install jethrokuan/z PatrickF1/fzf.fish oh-my-fish/plugin-balias
+fisher install PatrickF1/fzf.fish oh-my-fish/plugin-balias
 
 # tmux(package manager: tpm)
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

@@ -22,37 +22,12 @@
     }
   },
 
-  "rust-analyzer.inlayHints.chainingHints.enable": true,
-  "rust-analyzer.imports.prefix": "crate",
-  "rust-analyzer.diagnostics.disabled": [
-    "inactive-code",
-    "unlinked-file",
-    "type-mismatch"
-  ],
-  "rust-analyzer.diagnostics.experimental.enable": false,
-  "rust-analyzer.updates.channel": "stable",
-  "rust-analyzer.procMacro.enable": false,
-  "rust-analyzer.procMacro.attributes.enable": false,
-  "rust-analyzer.updates.prompt": false,
-  "rust-analyzer.checkOnSave": false,
-  "rust-analyzer.lens.enable": false,
-  "rust-analyzer.lens.run.enable": false,
-  "rust-analyzer.lens.references.method.enable": false,
-  "rust-analyzer.check.allTargets": true,
-  "rust-analyzer.cargo.buildScripts.enable": false,
-  "rust-analyzer.cargo.features": "all",
-  "rust-analyzer.lens.implementations.enable": false,
-  "rust-analyzer.completion.postfix.enable": false,
-  "rust-analyzer.trace.server": "off",
-  "rust-analyzer.debug.runtime": "vimspector",
-  "rust-analyzer.debug.vimspector.configuration.name": "rust - launch",
-  "rust-analyzer.terminal.startinsert": true,
-  "rust-analyzer.completion.autoimport.enable": true,
-  "rust-analyzer.rustfmt.rangeFormatting.enable": false,
-  "rust-analyzer.notifications.cargoTomlNotFound": false,
   "rust-analyzer.check.command": "clippy",
-  "_rust-analyzer.rustfmt.overrideCommand": ["cargo", "make", "fmt-check"],
 
   "flutter.sdk.flutter-lookup": "asdf which flutter",
-  "flutter.workspaceFolder.ignore": ["~/.pub-cache/"]
+  "flutter.workspaceFolder.ignore": ["~/.pub-cache/"],
+  "inlayHint.enable": false,
+
+  "workspace.ignoredFolders": ["$HOME", "$HOME/.cargo/**", "$HOME/.rustup/**"],
+  "snippets.ultisnips.pythonPrompt": false
 }

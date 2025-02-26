@@ -26,35 +26,35 @@ brew install --cask licecap
 brew install --cask slack
 
 brew install \
-        gh \
-        ghq \
-        tmux \
-        nvim \
-	tree \
-	ripgrep \
-	fd \
-	fzf \
-	asdf \
-        coreutils \
-        automake \
-        autoconf \
-        openssl \
-        libyaml \
-        readline \
-        libxslt \
-        libtool \
-        libpq \
-        unixodbc \
-        curl \
-        gawk \
-        gpg \
-        cmake \
-        fastlane \
-        sccache \
-        bat \
-        cocoapods \
-	java \
-	zoxide
+  gh \
+  ghq \
+  tmux \
+  nvim \
+  tree \
+  ripgrep \
+  fd \
+  fzf \
+  asdf \
+  coreutils \
+  automake \
+  autoconf \
+  openssl \
+  libyaml \
+  readline \
+  libxslt \
+  libtool \
+  libpq \
+  unixodbc \
+  curl \
+  gawk \
+  gpg \
+  cmake \
+  fastlane \
+  sccache \
+  bat \
+  cocoapods \
+  java \
+  zoxide
 
 # terraform + terragrunt
 # brew install tfenv # please use asdf instead

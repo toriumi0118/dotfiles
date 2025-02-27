@@ -27,8 +27,8 @@ local M = {
         -- scss = formatters.lsp,
         -- sh = formatters.shfmt,
         -- terraform = formatters.lsp,
-        -- typescript = formatters.prettierd,
-        -- typescriptreact = formatters.prettierd,
+        typescript = formatters.prettierd,
+        typescriptreact = formatters.prettierd,
         -- dart = formatters.lsp,
         yaml = formatters.prettierd,
 

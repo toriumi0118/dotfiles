@@ -72,8 +72,8 @@ asdf global nodejs lts
 npm install -g neovim
 
 asdf plugin add ruby
-asdf install ruby latest
-asdf global ruby latest
+asdf install ruby 3.4.2
+asdf global ruby 3.4.2
 gem install neovim
 
 echo 'Install tpm plugin type: "[Ctrl-j] + I"'

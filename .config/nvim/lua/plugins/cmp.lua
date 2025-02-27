@@ -53,7 +53,7 @@ return {
             end
           end),
 
-          ["<Tab>"] = cmp.mapping(function(fallback)
+          ["<C-n>"] = cmp.mapping(function(fallback)
             if luasnip.locally_jumpable(1) then
               luasnip.jump(1)
             elseif cmp.visible() then
@@ -63,7 +63,7 @@ return {
             end
           end, { "i", "s" }),
 
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
+          ["<C-p>"] = cmp.mapping(function(fallback)
             if luasnip.locally_jumpable(-1) then
               luasnip.jump(-1)
             elseif cmp.visible() then

@@ -44,9 +44,7 @@ return {
               if luasnip.expandable() then
                 luasnip.expand()
               else
-                cmp.confirm({
-                  select = true,
-                })
+                cmp.confirm({ select = true })
               end
             else
               fallback()

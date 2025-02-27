@@ -9,17 +9,17 @@ local M = {
         enabled = true,
         auto_trigger = true,
         hide_during_completion = false,
-        debounce = 75,
+        debounce = 15,
         keymap = {
-          accept = "<Tab>",
-          next = "<C-k><C-k>",
-          prev = "<C-i><C-i>",
+          accept = "<C-l>",
+          next = "<C-k>",
+          prev = "<C-i>",
           dismiss = false
         },
       },
       filetypes = {
         yaml = true,
-        cvs = true,
+        csv = true,
       },
     })
   end,

@@ -3,8 +3,8 @@ local M = {
     "lambdalisue/fern.vim",
     lazy = false,
     keys = {
-      { "<C-n>", ":Fern . -reveal=% -drawer -toggle -width=40<CR>", desc = "toggle fern" },
-      { "sg", ":Fern . -drawer -reveal=% -width=40 -wait<CR><C-w>=", desc = "jump to current file", mode = "n", noremap = true, silent = true },
+      { "<C-n>", ":Fern . -reveal=% -drawer -toggle -width=40<CR>",     desc = "toggle fern" },
+      { "sg",    ":Fern . -drawer -reveal=% -width=40 -wait<CR><C-w>=", desc = "jump to current file", mode = "n", noremap = true, silent = true },
     },
     dependencies = {
       { 'lambdalisue/nerdfont.vim' },

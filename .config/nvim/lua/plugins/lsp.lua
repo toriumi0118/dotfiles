@@ -67,6 +67,7 @@ local M = {
     require("mason-tool-installer").setup({
       ensure_installed = {
         'prettierd', -- JS/TSのフォーマッタ
+        'eslint_d',  -- JS/TSのフォーマッタ
       },
     })
     require("mason-lspconfig").setup({

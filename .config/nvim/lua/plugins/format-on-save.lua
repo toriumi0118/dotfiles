@@ -4,6 +4,14 @@ local M = {
     local format_on_save = require("format-on-save")
     local formatters = require("format-on-save.formatters")
 
+    local ts = {
+      formatters.if_file_exists({
+        pattern = ".eslintrc.*",
+        formatter = formatters.eslint_d,
+      }),
+      formatters.prettierd
+    }
+
     format_on_save.setup({
       experiments = {
         partial_update = 'diff', -- or 'line-by-line'
@@ -27,8 +35,6 @@ local M = {
         -- scss = formatters.lsp,
         -- sh = formatters.shfmt,
         -- terraform = formatters.lsp,
-        typescript = formatters.prettierd,
-        typescriptreact = formatters.prettierd,
         -- dart = formatters.lsp,
         yaml = formatters.prettierd,
 
@@ -73,27 +79,10 @@ local M = {
         --           formatters.shell({ cmd = { "gofmt" } }),
         --         },
 
-        --         -- Add conditional formatter that only runs if a certain file exists
-        --         -- in one of the parent directories.
-        --         javascript = {
-        --           formatters.if_file_exists({
-        --             pattern = ".eslintrc.*",
-        --             formatter = formatters.eslint_d_fix
-        --           }),
-        --           formatters.if_file_exists({
-        --             pattern = { ".prettierrc", ".prettierrc.*", "prettier.config.*" },
-        --             formatter = formatters.prettierd,
-        --           }),
-        --           -- By default it stops at the git repo root (or "/" if git repo not found)
-        --           -- but it can be customized with the `stop_path` option:
-        --           formatters.if_file_exists({
-        --             pattern = ".prettierrc",
-        --             formatter = formatters.prettierd,
-        --             stop_path = function()
-        --               return "/my/custom/stop/path"
-        --             end
-        --           }),
-        --         },
+        -- Add conditional formatter that only runs if a certain file exists
+        -- in one of the parent directories.
+        typescript = ts,
+        typescriptreact = ts
       },
     })
   end

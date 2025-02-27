@@ -64,11 +64,6 @@ brew install hashicorp/tap/terraform-ls
 
 brew link --force libpq
 
-asdf completion fish > ~/.config/fish/completions/asdf.fish
-
-# rust
-brew install rust-analyzer
-
 # nvim
 python3 -m pip install --user --upgrade pynvim
 asdf plugin add nodejs

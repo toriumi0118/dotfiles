@@ -8,15 +8,13 @@ echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
 chsh -s /opt/homebrew/bin/fish
 
 # fish
-curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-# curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 fisher install PatrickF1/fzf.fish oh-my-fish/plugin-balias
 
 # tmux(package manager: tpm)
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 brew update
-brew install --cask ghostty
 brew install --cask alfred
 brew install --cask docker
 # brew install --cask skitch
@@ -24,6 +22,7 @@ brew install --cask tableplus
 brew install --cask google-cloud-sdk
 brew install --cask licecap
 brew install --cask slack
+brew install --cask ghostty
 
 brew install \
   gh \

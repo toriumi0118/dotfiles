@@ -12,7 +12,6 @@ local M = {
         'lambdalisue/fern-renderer-nerdfont.vim',
         config = function()
           vim.g['fern#renderer'] = "nerdfont"
-          vim.g['fern#renderer#nerdfont#indent_markers'] = 1
         end
       },
       { 'lambdalisue/fern-git-status.vim' }

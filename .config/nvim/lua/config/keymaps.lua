@@ -18,11 +18,11 @@ vim.keymap.set('n', 's+', '<C-w>+')
 vim.keymap.set('n', 's-', '<C-w>-')
 
 -- タブ操作
-vim.keymap.set('n', 'st', ':tab split<CR>', { silent = true })   -- 現在のバッファを新規タブで複製
+vim.keymap.set('n', 'st', ':tabnew<CR>', { silent = true })      -- 新規タブを開く
 vim.keymap.set('n', 'sn', ':tabnext<CR>', { silent = true })     -- 次のタブへ
 vim.keymap.set('n', 'sp', ':tabprevious<CR>', { silent = true }) -- 前のタブへ
 vim.keymap.set('n', 'sx', ':tabclose<CR>', { silent = true })    -- タブを閉じる
-vim.keymap.set('n', 'sN', ':tabnew<CR>', { silent = true })      -- 新規タブを開く
+vim.keymap.set('n', 'sN', ':tab split<CR>', { silent = true })   -- 現在のバッファを新規タブで複製
 
 -- 特定の番号のタブに移動（s1〜s9）
 for i = 1, 9 do

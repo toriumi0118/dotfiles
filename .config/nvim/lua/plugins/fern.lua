@@ -3,8 +3,19 @@ local M = {
     "lambdalisue/fern.vim",
     lazy = false,
     keys = {
-      { "<C-n>", ":Fern . -reveal=% -drawer -toggle -width=40<CR>",     desc = "toggle fern" },
-      { "sg",    ":Fern . -drawer -reveal=% -width=40 -wait<CR><C-w>=", desc = "jump to current file", mode = "n", noremap = true, silent = true },
+      {
+        "<C-n>",
+        ":Fern . -reveal=% -drawer -toggle -width=40<CR>",
+        desc = "toggle fern"
+      },
+      {
+        "sg",
+        ":Fern . -drawer -reveal=% -width=40 -wait<CR><C-w>=",
+        desc = "jump to current file",
+        mode = "n",
+        noremap = true,
+        silent = true
+      },
     },
     dependencies = {
       { 'lambdalisue/nerdfont.vim' },
@@ -64,11 +75,18 @@ end
 
 -- autocmd の設定
 vim.api.nvim_create_augroup('fern_custom', { clear = true })
-
 vim.api.nvim_create_autocmd('FileType', {
   group = 'fern_custom',
   pattern = 'fern',
   callback = init_fern,
+})
+
+vim.api.nvim_create_augroup("fern_startup", { clear = true })
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = 'fern_startup',
+  pattern = "*",
+  nested = true,
+  command = "silent! lcd %:h | Fern . -reveal=% -drawer -toggle -width=40"
 })
 
 return { M }

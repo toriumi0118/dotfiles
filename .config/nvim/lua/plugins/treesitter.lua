@@ -1,14 +1,14 @@
 local M = {
-    "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-    build = ":TSUpdate",
-    dependencies = {
-      { "windwp/nvim-ts-autotag" },
-    },
-    config = function ()
-      local configs = require("nvim-treesitter.configs")
+  "nvim-treesitter/nvim-treesitter",
+  lazy = false,
+  build = ":TSUpdate",
+  dependencies = {
+    { "windwp/nvim-ts-autotag" },
+  },
+  config = function()
+    local configs = require("nvim-treesitter.configs")
 
-      configs.setup({
+    configs.setup({
       ensure_installed = {
         "bash",
         "c",

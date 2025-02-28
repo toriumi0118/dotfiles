@@ -26,6 +26,7 @@ local M = {
 				-- java = formatters.lsp,
 				-- javascript = formatters.lsp,
 				-- json = formatters.lsp,
+				rust = formatters.lsp,
 				lua = formatters.stylua,
 				-- markdown = formatters.prettierd,
 				-- openscad = formatters.lsp,

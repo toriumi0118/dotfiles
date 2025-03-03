@@ -22,6 +22,10 @@ local M = {
 				csv = true,
 			},
 		})
+
+		vim.keymap.set("i", "<Tab>", function()
+			vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+		end, { desc = "Normal Tab" })
 	end,
 }
 

@@ -55,7 +55,7 @@ local M = {
 		require("mason").setup()
 		require("mason-tool-installer").setup({
 			ensure_installed = {
-				"prettierd", -- JS/TSのフォーマッタ
+				"prettier", -- JS/TSのフォーマッタ
 				"eslint_d", -- JS/TSのフォーマッタ
 				"stylua", -- Luaのフォーマッタ
 			},
@@ -69,7 +69,7 @@ local M = {
 				"graphql",
 				"html",
 				"ts_ls",
-				"eslint",
+				"eslint_d",
 				"jsonls",
 				"lua_ls",
 				"vacuum",

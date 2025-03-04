@@ -7,9 +7,9 @@ local M = {
 		local ts = {
 			formatters.if_file_exists({
 				pattern = ".eslintrc.*",
-				formatter = formatters.eslint_d,
+				formatter = formatters.eslint_d_fix,
 			}),
-			formatters.prettierd,
+			formatters.prettier,
 		}
 
 		format_on_save.setup({
@@ -28,7 +28,7 @@ local M = {
 				-- json = formatters.lsp,
 				rust = formatters.lsp,
 				lua = formatters.stylua,
-				-- markdown = formatters.prettierd,
+				-- markdown = formatters.prettier,
 				-- openscad = formatters.lsp,
 				-- python = formatters.black,
 				-- rust = formatters.lsp,
@@ -37,8 +37,8 @@ local M = {
 				-- sh = formatters.shfmt,
 				-- terraform = formatters.lsp,
 				-- dart = formatters.lsp,
-				graphql = formatters.prettierd,
-				yaml = formatters.prettierd,
+				graphql = formatters.prettier,
+				yaml = formatters.prettier,
 
 				--         -- Add your own shell formatters:
 				--         myfiletype = formatters.shell({ cmd = { "myformatter", "%" } }),
@@ -46,7 +46,7 @@ local M = {
 				--         -- Add lazy formatter that will only run when formatting:
 				--         my_custom_formatter = function()
 				--           if vim.api.nvim_buf_get_name(0):match("/README.md$") then
-				--             return formatters.prettierd
+				--             return formatters.prettier
 				--           else
 				--             return formatters.lsp()
 				--           end

@@ -23,25 +23,23 @@ On_attach = function(client, bufnr)
 	vim.diagnostic.config({ severity_sort = true })
 end
 
--- local function setup_rust(config)
---   config.on_attach = function(client, bufnr)
---     -- if client.server_capabilities.documentFormattingProvider then
---     --   -- formatterのキーマップ設定
---     --   vim.api.nvim_buf_set_keymap(
---     --     bufnr,
---     --     "n",
---     --     "<leader>f",
---     --     ":lua vim.lsp.buf.format({ async = true })<CR>",
---     --     { noremap = true, silent = true }
---     --   )
---     -- end
---     On_attach(client, bufnr)
---   end
--- end
+local function setup_eslint(config)
+	config.on_attach = function(client, bufnr)
+		client.server_capabilities.documentFormattingProvider = false
+
+		-- ESLintの診断を有効化
+		-- vim.api.nvim_create_autocmd("BufWritePost", {
+		-- 	buffer = bufnr,
+		-- 	command = "EslintFixAll", -- Eslintのエラーメッセージを更新
+		-- })
+
+		On_attach(client, bufnr)
+	end
+end
 
 -- 言語サーバーごとの個別設定
 local server_configs = {
-	-- rust_analyzer = setup_rust,
+	-- eslint = setup_eslint,
 }
 
 local M = {
@@ -56,6 +54,7 @@ local M = {
 		require("mason-tool-installer").setup({
 			ensure_installed = {
 				"prettier", -- JS/TSのフォーマッタ
+				"eslint", -- JS/TSのフォーマッタ
 				"eslint_d", -- JS/TSのフォーマッタ
 				"stylua", -- Luaのフォーマッタ
 			},
@@ -69,6 +68,7 @@ local M = {
 				"graphql",
 				"html",
 				"ts_ls",
+				"eslint",
 				"eslint_d",
 				"jsonls",
 				"lua_ls",

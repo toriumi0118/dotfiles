@@ -40,7 +40,7 @@ local M = {
 				-- scss = formatters.lsp,
 				-- sh = formatters.shfmt,
 				-- terraform = formatters.lsp,
-				-- dart = formatters.lsp,
+				dart = formatters.lsp,
 				graphql = formatters.prettier,
 				yaml = formatters.prettier,
 

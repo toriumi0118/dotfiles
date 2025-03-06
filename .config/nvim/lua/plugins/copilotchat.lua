@@ -17,6 +17,8 @@ local M = {
 		local user = vim.env.USER or "User"
 		user = user:sub(1, 1):upper() .. user:sub(2)
 		return {
+			-- model = "gpt-4o", -- Default model to use, see ':CopilotChatModels' for available models (can be specified manually in prompt via $).
+			model = "claude-3.7-sonnet",
 			auto_insert_mode = true,
 			question_header = "  " .. user .. " ",
 			answer_header = "  Copilot ",

@@ -42,6 +42,8 @@ local M = {
 				-- terraform = formatters.lsp,
 				dart = formatters.lsp,
 				graphql = formatters.lsp,
+				-- yaml = formatters.shell({ cmd = { "prettier", "--write", "%" } }),
+				yaml = formatters.shell({ cmd = { "prettier", "--stdin-filepath", "%" } }),
 
 				--         -- Add your own shell formatters:
 				--         myfiletype = formatters.shell({ cmd = { "myformatter", "%" } }),

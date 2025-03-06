@@ -13,7 +13,7 @@ local M = {
 				pattern = ".eslintrc.*",
 				formatter = formatters.eslint_d_fix,
 			}),
-			formatters.prettier,
+			formatters.prettierd,
 		}
 
 		format_on_save.setup({
@@ -41,8 +41,7 @@ local M = {
 				-- sh = formatters.shfmt,
 				-- terraform = formatters.lsp,
 				dart = formatters.lsp,
-				graphql = formatters.prettier,
-				yaml = formatters.prettier,
+				graphql = formatters.lsp,
 
 				--         -- Add your own shell formatters:
 				--         myfiletype = formatters.shell({ cmd = { "myformatter", "%" } }),

@@ -14,7 +14,7 @@ On_attach = function(client, bufnr)
 	set("i", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 	set("n", "<leader>k", "<cmd>lua vim.lsp.buf.hover()<CR>")
 	set("n", "<leader>n", "<cmd>lua vim.lsp.buf.rename()<CR>")
-	set("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+	set("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 	set("n", "<leader>ll", "<cmd>lua vim.diagnostic.open_float()<CR>")
 	set("n", "<leader>ld", "<cmd>lua vim.diagnostic.setqflist()<CR>")
 	set("n", "<leader>lp", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
@@ -23,23 +23,16 @@ On_attach = function(client, bufnr)
 	vim.diagnostic.config({ severity_sort = true })
 end
 
-local function setup_eslint(config)
-	config.on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = false
-
-		-- ESLintの診断を有効化
-		-- vim.api.nvim_create_autocmd("BufWritePost", {
-		-- 	buffer = bufnr,
-		-- 	command = "EslintFixAll", -- Eslintのエラーメッセージを更新
-		-- })
-
-		On_attach(client, bufnr)
-	end
-end
+-- local function setup_yamlls(config)
+-- 	config.on_attach = function(client, bufnr)
+-- 		client.server_capabilities.documentFormattingProvider = true
+-- 		On_attach(client, bufnr)
+-- 	end
+-- end
 
 -- 言語サーバーごとの個別設定
 local server_configs = {
-	-- eslint = setup_eslint,
+	-- yamlls = setup_yamlls,
 }
 
 local M = {
@@ -54,6 +47,7 @@ local M = {
 		require("mason-tool-installer").setup({
 			ensure_installed = {
 				"prettier", -- JS/TSのフォーマッタ
+				"prettierd", -- JS/TSのフォーマッタ
 				"eslint", -- JS/TSのフォーマッタ
 				"eslint_d", -- JS/TSのフォーマッタ
 				"stylua", -- Luaのフォーマッタ
@@ -69,7 +63,6 @@ local M = {
 				"html",
 				"ts_ls",
 				"eslint",
-				"eslint_d",
 				"jsonls",
 				"lua_ls",
 				"vacuum",
@@ -77,7 +70,7 @@ local M = {
 				"rubocop",
 				"rust_analyzer",
 				"sqlls",
-				"yamlls",
+				-- "yamlls",
 				"terraformls",
 				"tflint",
 			},

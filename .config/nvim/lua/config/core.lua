@@ -7,7 +7,7 @@ vim.o.encoding = "utf-8"
 vim.scriptencoding = "utf-8"
 
 -- visual
-vim.o.ambiwidth = "double"
+-- vim.o.ambiwidth = "double"
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
@@ -49,3 +49,6 @@ vim.o.undodir = home .. "/.vim/undo"
 
 vim.o.backup = false
 vim.o.writebackup = false
+
+-- views can only be fully collapsed with the global statusline. by avante.nvim
+vim.opt.laststatus = 3

@@ -30,3 +30,5 @@ fzf_configure_bindings \
 	--history=\cr \
 	--processes=\cp \
 	--variables=\cv
+
+set --export ANTHROPIC_API_KEY $(security find-generic-password -s "ANTHROPIC_API_KEY" -w)

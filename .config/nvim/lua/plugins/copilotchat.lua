@@ -77,6 +77,7 @@ local M = {
 			end,
 		})
 
+		vim.opt.splitright = true
 		chat.setup(opts)
 	end,
 }

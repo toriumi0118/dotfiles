@@ -7,6 +7,7 @@ local M = {
 		{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
 		{
 			"ibhagwan/fzf-lua",
+			lazy = false,
 			dependencies = { "nvim-tree/nvim-web-devicons" },
 			config = function()
 				require("fzf-lua").register_ui_select()
@@ -68,8 +69,6 @@ local M = {
 		},
 	},
 	config = function(_, opts)
-		require("fzf-lua").register_ui_select()
-
 		local chat = require("CopilotChat")
 		vim.api.nvim_create_autocmd("BufEnter", {
 			pattern = "copilot-chat",

@@ -76,4 +76,7 @@ asdf install ruby 3.4.2
 asdf global ruby 3.4.2
 gem install neovim
 
+# rust
+# rustup component add rust-analyzer
+
 echo 'Install tpm plugin type: "[Ctrl-j] + I"'

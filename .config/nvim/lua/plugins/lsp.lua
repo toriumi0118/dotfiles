@@ -21,18 +21,29 @@ On_attach = function(client, bufnr)
 	set("n", "<leader>ln", "<cmd>lua vim.diagnostic.goto_next()<CR>")
 
 	vim.diagnostic.config({ severity_sort = true })
+
+	-- フォーマット機能を有効化
+	if client.supports_method("textDocument/formatting") then
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			buffer = bufnr,
+			callback = function()
+				vim.lsp.buf.format({ bufnr = bufnr, async = false })
+			end,
+		})
+	end
 end
 
--- local function setup_yamlls(config)
--- 	config.on_attach = function(client, bufnr)
--- 		client.server_capabilities.documentFormattingProvider = true
--- 		On_attach(client, bufnr)
--- 	end
--- end
+local function setup_prettierd(config)
+	config.on_attach = function(client, bufnr)
+		client.server_capabilities.documentFormattingProvider = true
+		On_attach(client, bufnr)
+	end
+end
 
 -- 言語サーバーごとの個別設定
 local server_configs = {
-	-- yamlls = setup_yamlls,
+	-- prettierd = setup_prettierd
+	-- lua_ls = setup_lua,
 }
 
 local M = {
@@ -40,18 +51,11 @@ local M = {
 	dependencies = {
 		{ "williamboman/mason-lspconfig.nvim" },
 		{ "hrsh7th/cmp-nvim-lsp" },
-		{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
+		{ "neovim/nvim-lspconfig" },
 	},
 	config = function()
-		require("mason").setup()
-		require("mason-tool-installer").setup({
-			ensure_installed = {
-				"prettier", -- JS/TSのフォーマッタ
-				"prettierd", -- JS/TSのフォーマッタ
-				"eslint", -- JS/TSのフォーマッタ
-				"eslint_d", -- JS/TSのフォーマッタ
-				"stylua", -- Luaのフォーマッタ
-			},
+		require("mason").setup({
+			PATH = "append",
 		})
 		require("mason-lspconfig").setup({
 			ensure_installed = {
@@ -65,12 +69,8 @@ local M = {
 				"eslint",
 				"jsonls",
 				"lua_ls",
-				"vacuum",
 				"ruby_lsp",
-				"rubocop",
-				"rust_analyzer",
 				"sqlls",
-				-- "yamlls",
 				"terraformls",
 				"tflint",
 			},
@@ -90,6 +90,13 @@ local M = {
 
 				require("lspconfig")[server_name].setup(config)
 			end,
+		})
+
+		local lspconfig = require("lspconfig")
+		lspconfig.rust_analyzer.setup({
+			capabilities = require("cmp_nvim_lsp").default_capabilities(),
+			on_attach = On_attach,
+			settings = { ["rust-analyzer"] = {} },
 		})
 	end,
 }

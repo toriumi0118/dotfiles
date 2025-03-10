@@ -7,11 +7,8 @@ local M = {
 		local ts = {
 			formatters.if_file_exists({
 				pattern = ".eslintrc.*",
-				formatter = formatters.eslint,
-			}),
-			formatters.if_file_exists({
-				pattern = ".eslintrc.*",
-				formatter = formatters.eslint_d_fix,
+				formatter = formatters.lsp,
+				-- command = "EslintFixAll",
 			}),
 			formatters.prettierd,
 		}

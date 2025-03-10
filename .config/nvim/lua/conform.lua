@@ -13,9 +13,9 @@ local M = {
 				rust = { "rustfmt", lsp_format = "fallback" },
 				-- Conform will run the first available formatter
 				-- javascript = { "eslint_d_fix", "prettierd", "prettier", stop_after_first = true },
-				typescript = { "prettierd", "eslint", stop_after_first = true },
+				typescript = { "eslint", "prettierd" },
 				-- javascriptreact = { "eslint", "prettierd", "prettier", stop_after_first = true },
-				typescriptreact = { "prettierd", "eslint", stop_after_first = true },
+				typescriptreact = { "eslint", "prettierd" },
 			},
 			format_on_save = {
 				-- These options will be passed to conform.format()

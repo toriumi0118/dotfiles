@@ -52,6 +52,7 @@ local M = {
 		{ "williamboman/mason-lspconfig.nvim" },
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "neovim/nvim-lspconfig" },
+		{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 	},
 	config = function()
 		require("mason").setup({
@@ -97,6 +98,44 @@ local M = {
 			capabilities = require("cmp_nvim_lsp").default_capabilities(),
 			on_attach = On_attach,
 			settings = { ["rust-analyzer"] = {} },
+		})
+
+		require("mason-tool-installer").setup({
+			ensure_installed = {
+				-- 				-- you can pin a tool to a particular version
+				-- 				{ "golangci-lint", version = "v1.47.0" },
+
+				-- 				-- you can turn off/on auto_update per tool
+				-- 				{ "bash-language-server", auto_update = true },
+
+				-- 				-- you can do conditional installing
+				-- 				{
+				-- 					"gopls",
+				-- 					condition = function()
+				-- 						return not os.execute("go version")
+				-- 					end,
+				-- 				},
+				-- 				"lua-language-server",
+				-- 				"vim-language-server",
+				-- 				"stylua",
+				-- 				"shellcheck",
+				-- 				"editorconfig-checker",
+				-- 				"gofumpt",
+				-- 				"golines",
+				-- 				"gomodifytags",
+				-- 				"gotests",
+				-- 				"impl",
+				-- 				"json-to-struct",
+				-- 				"luacheck",
+				-- 				"misspell",
+				-- 				"revive",
+				-- 				"shellcheck",
+				-- 				"shfmt",
+				-- 				"staticcheck",
+				-- 				"vint",
+				"eslint",
+				"prettierd",
+			},
 		})
 	end,
 }

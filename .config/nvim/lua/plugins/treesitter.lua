@@ -10,10 +10,7 @@ local M = {
 
 		configs.setup({
 			ensure_installed = {
-				"bash",
-				"c",
-				"diff",
-				"html",
+				-- "bash",
 				"javascript",
 				"jsdoc",
 				"json",
@@ -23,27 +20,16 @@ local M = {
 				"luap",
 				"markdown",
 				"markdown_inline",
-				"printf",
-				"python",
-				"query",
-				"regex",
-				"toml",
+				-- "toml",
 				"tsx",
 				"typescript",
-				"vim",
-				"vimdoc",
-				"xml",
 				"yaml",
-				"dart",
-				"rust",
-				"graphql",
+				-- "dart",
+				-- "rust",
+				-- "graphql",
 			},
 			sync_install = true,
 			highlight = { enable = true },
-			indent = {
-				enable = true,
-				disable = { "dart" },
-			},
 		})
 	end,
 }

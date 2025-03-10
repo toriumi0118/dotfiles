@@ -87,12 +87,4 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.api.nvim_create_augroup("fern_startup", { clear = true })
-vim.api.nvim_create_autocmd("VimEnter", {
-	group = "fern_startup",
-	pattern = "*",
-	nested = true,
-	command = "silent! lcd %:h | Fern . -reveal=% -drawer -toggle -width=40",
-})
-
 return { M }

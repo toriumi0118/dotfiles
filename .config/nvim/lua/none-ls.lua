@@ -7,7 +7,7 @@ local M = {
 	},
 	config = function()
 		require("mason-null-ls").setup({
-			ensure_installed = { "stylua", "prettierd" },
+			ensure_installed = { "stylua", "eslint" },
 			automatic_installation = true,
 			handlers = {},
 		})
@@ -21,7 +21,7 @@ local M = {
 						group = augroup,
 						buffer = bufnr,
 						callback = function()
-							vim.lsp.buf.format({ bufnr = bufnr, async = false })
+							vim.lsp.buf.format({ bufnr = bufnr, async = true })
 						end,
 					})
 				end

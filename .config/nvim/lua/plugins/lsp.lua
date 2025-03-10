@@ -22,18 +22,18 @@ On_attach = function(client, bufnr)
 
 	vim.diagnostic.config({ severity_sort = true })
 
-	-- フォーマット機能を有効化
-	if client.supports_method("textDocument/formatting") then
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			buffer = bufnr,
-			callback = function()
-				vim.lsp.buf.format({ bufnr = bufnr, async = false })
-			end,
-		})
-	end
+	--   -- フォーマット機能を有効化
+	--   if client.supports_method('textDocument/formatting') then
+	--     vim.api.nvim_create_autocmd("BufWritePre", {
+	--       buffer = bufnr,
+	--       callback = function()
+	--         vim.lsp.buf.format({ bufnr = bufnr, async = false })
+	--       end,
+	--     })
+	--   end
 end
 
-local function setup_prettierd(config)
+local function setup_lua(config)
 	config.on_attach = function(client, bufnr)
 		client.server_capabilities.documentFormattingProvider = true
 		On_attach(client, bufnr)

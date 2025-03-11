@@ -62,14 +62,10 @@ local M = {
 				-- javascript = formatters.lsp,
 				-- rust = formatters.lsp,
 				-- markdown = formatters.prettier,
-				-- openscad = formatters.lsp,
 				-- python = formatters.black,
 				-- rust = formatters.lsp,
-				-- scad = formatters.lsp,
 				-- scss = formatters.lsp,
-				-- sh = formatters.shfmt,
 				-- terraform = formatters.lsp,
-				-- dart = formatters.lsp,
 				-- graphql = formatters.lsp,
 				-- yaml = formatters.shell({ cmd = { "prettier", "--write", "%" } }),
 
@@ -113,9 +109,6 @@ local M = {
 				-- 	}),
 				-- 	formatters.shell({ cmd = { "gofmt" } }),
 				-- },
-
-				-- Add conditional formatter that only runs if a certain file exists
-				-- in one of the parent directories.
 			},
 		})
 	end,

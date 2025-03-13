@@ -48,6 +48,7 @@ local M = {
 			ensure_installed = {
 				"lua_ls",
 				"ts_ls",
+				"eslint",
 				"rust_analyzer",
 			},
 		})

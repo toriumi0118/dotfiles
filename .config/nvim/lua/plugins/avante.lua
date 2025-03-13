@@ -14,7 +14,19 @@ local M = {
 		-- 	temperature = 0, -- adjust if needed
 		-- 	max_tokens = 4096,
 		-- 	-- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
-		-- },
+		windows = {
+			width = 50, -- default % based on available width
+			input = {
+				prefix = "> ",
+				height = 20, -- Height of the input window in vertical layout
+			},
+			edit = {
+				start_insert = false, -- Start insert mode when opening the edit window
+			},
+			ask = {
+				start_insert = false, -- Start insert mode when opening the ask window
+			},
+		}, -- },
 	},
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	build = "make",

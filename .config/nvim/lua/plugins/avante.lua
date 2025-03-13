@@ -14,6 +14,9 @@ local M = {
 		-- 	temperature = 0, -- adjust if needed
 		-- 	max_tokens = 4096,
 		-- 	-- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+		behaviour = {
+			use_cwd_as_project_root = true,
+		},
 		windows = {
 			width = 50, -- default % based on available width
 			input = {

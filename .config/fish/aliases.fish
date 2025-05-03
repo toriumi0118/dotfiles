@@ -3,10 +3,12 @@ balias g   'git'
 balias gst 'git status'
 balias gd  'git diff'
 balias gdd 'git branch --merged|egrep -v "\^\\* |develop\$|master\$"|xargs git branch -d'
+balias gdg "git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D"
 balias gdc 'git diff --cached'
 balias gdn 'git diff --name-only'
 balias gp  'git push'
 balias gpl 'git pull'
+balias glf 'git diff --name-only $(git merge-base HEAD main)'
 
 function gdv
   git diff -w $argv | view -
@@ -29,7 +31,7 @@ balias glog 'git log --oneline --graph'
 balias gss  'git status -s'
 balias ga   'git add'
 balias gm   'git merge'
-balias ggg  'gru; and gpl; and gdd'
+balias ggg  'gru; and gpl; and gdd; and gdg'
 
 # docker
 # Get latest container ID

@@ -23,14 +23,4 @@ set _asdf_shims "$HOME/.asdf/shims"
 set -gx --prepend PATH $_asdf_shims
 set --erase _asdf_shims
 
-fzf_configure_bindings \
-	--directory=\cf \
-	--git_log=\cl \
-	--git_status=\cs \
-	--history=\cr \
-	--processes=\cp \
-	--variables=\cv
-
-bind -M normal \c] "zi"
-
 set --export ANTHROPIC_API_KEY $(security find-generic-password -s "ANTHROPIC_API_KEY" -w)

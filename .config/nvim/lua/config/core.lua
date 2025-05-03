@@ -52,3 +52,5 @@ vim.o.writebackup = false
 
 -- views can only be fully collapsed with the global statusline. by avante.nvim
 vim.opt.laststatus = 3
+
+vim.env.PATH = os.getenv("HOME") .. "/.asdf/installs/nodejs/22.14.0/bin:" .. vim.env.PATH

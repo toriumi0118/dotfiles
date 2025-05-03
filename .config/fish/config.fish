@@ -31,4 +31,6 @@ fzf_configure_bindings \
 	--processes=\cp \
 	--variables=\cv
 
+bind -M normal \c] "zi"
+
 set --export ANTHROPIC_API_KEY $(security find-generic-password -s "ANTHROPIC_API_KEY" -w)

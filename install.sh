@@ -80,6 +80,12 @@ asdf install ruby 3.4.2
 asdf global ruby 3.4.2
 gem install neovim
 
+git clone https://github.com/toriumi0118/LazyVim ~/.config/nvim
+cd ~/.config/nvim
+git checkout local
+
+cd -
+
 # rust
 # rustup component add rust-analyzer
 

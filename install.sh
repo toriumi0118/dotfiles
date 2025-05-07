@@ -64,6 +64,10 @@ brew install hashicorp/tap/terraform-ls
 
 brew link --force libpq
 
+# lazygit
+brew install jesseduffield/lazygit/lazygit
+brew install lazygit
+
 # nvim
 python3 -m pip install --user --upgrade pynvim
 asdf plugin add nodejs

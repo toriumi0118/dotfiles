@@ -24,6 +24,11 @@ brew install --cask licecap
 brew install --cask slack
 brew install --cask ghostty
 
+## asdfの代わりにこっちにしたほうがいいかも。
+curl https://mise.run | sh
+echo '~/.local/bin/mise activate fish | source' >>~/.config/fish/config.fish
+##
+
 brew install \
   gh \
   ghq \
@@ -67,6 +72,9 @@ brew link --force libpq
 # lazygit
 brew install jesseduffield/lazygit/lazygit
 brew install lazygit
+
+# fsSL
+brew install git-lfs
 
 # nvim
 python3 -m pip install --user --upgrade pynvim

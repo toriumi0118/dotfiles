@@ -19,8 +19,4 @@ end
 
 zoxide init fish | source
 
-set _asdf_shims "$HOME/.asdf/shims"
-set -gx --prepend PATH $_asdf_shims
-set --erase _asdf_shims
-
 set --export ANTHROPIC_API_KEY $(security find-generic-password -s "ANTHROPIC_API_KEY" -w)

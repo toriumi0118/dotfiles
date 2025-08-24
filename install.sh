@@ -38,7 +38,6 @@ brew install \
   ripgrep \
   fd \
   fzf \
-  asdf \
   coreutils \
   automake \
   autoconf \

@@ -57,7 +57,8 @@ brew install \
   bat \
   cocoapods \
   java \
-  zoxide
+  zoxide \
+  satococoa/tap/wtp
 
 # terraform + terragrunt
 # brew install tfenv # please use asdf instead

@@ -4,6 +4,7 @@ balias gst 'git status'
 balias gd 'git diff'
 balias gdd 'git branch --merged|egrep -v "\^\\* |develop\$|master\$"|xargs git branch -d'
 balias gdg 'git branch -vv | grep ": gone]" | awk \'{print $1}\' | xargs -r git branch -D'
+balias gdw 'git branch -vv | grep "^+.*: gone]" | awk \'{print $2}\' | xargs -n1 -I{} wtp rm --with-branch --force-branch {}'
 balias gdc 'git diff --cached'
 balias gdn 'git diff --name-only'
 balias gp 'git push'
@@ -31,73 +32,7 @@ balias glog 'git log --oneline --graph'
 balias gss 'git status -s'
 balias ga 'git add'
 balias gm 'git merge'
-balias ggg 'gru; and gpl; and gdd; and gdg'
-
-# worktree
-function gwa # 既存のbranchをworktreeに追加
-    set branch $argv[1]
-    if test -z "$branch"
-        echo "Usage: gwa <branch-name> <dir_name>"
-        return 1
-    end
-
-    # .gitディレクトリを取得
-    set gitdir (git rev-parse --git-dir)
-    if test $status -ne 0
-        echo "Not a git repository"
-        return 1
-    end
-
-    # ブランチ名の/以降の末尾を取得
-    set dir_name $argv[2]
-
-    # 作成先ディレクトリ
-    set worktree_dir "$gitdir/wktrs/$dir_name"
-
-    # ディレクトリ作成（念のため）
-    mkdir -p $worktree_dir
-
-    # git worktree add 実行
-    git worktree add $branch $worktree_dir
-end
-
-function gwb # 新しくブランチを作成してworktreeに追加
-    set branch $argv[1]
-    if test -z "$branch"
-        echo "Usage: gwb <branch-name> <dir_name>"
-        return 1
-    end
-
-    # .gitディレクトリを取得
-    set gitdir (git rev-parse --git-dir)
-    if test $status -ne 0
-        echo "Not a git repository"
-        return 1
-    end
-
-    # ブランチ名の/以降の末尾を取得
-    set dir_name $argv[2]
-
-    # 作成先ディレクトリ
-    set worktree_dir "$gitdir/wktrs/$dir_name"
-
-    # ディレクトリ作成（念のため）
-    mkdir -p $worktree_dir
-
-    # git worktree add 実行
-    git worktree add -b $branch $worktree_dir
-end
-
-function gwcd # worktreeのディレクトリに移動
-    set dir_name $argv[1]
-
-    # 対応する worktree path
-    set gitdir (git rev-parse --git-dir)
-    cd "$gitdir/wktrs/$dir_name"
-end
-
-balias gwl 'git worktree list'
-balias gwr 'git worktree remove'
+balias ggg 'gru; and gpl; and gdw; and gdd; or gdg'
 
 # docker
 # Get latest container ID

@@ -25,5 +25,9 @@
       "allowUnixSockets": ["/var/run/docker.sock"],
       "allowLocalBinding": true
     }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline-command.sh"
   }
 }

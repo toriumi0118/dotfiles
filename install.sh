@@ -59,7 +59,8 @@ brew install \
   java \
   zoxide \
   satococoa/tap/wtp \
-  skim
+  skim \
+  text-live-utility
 
 # terraform + terragrunt
 # brew install tfenv # please use asdf instead

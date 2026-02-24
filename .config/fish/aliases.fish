@@ -84,3 +84,6 @@ end
 function dbash
     docker exec -it (docker ps -qf "name=$1") bash
 end
+
+# claude
+balias clc claude

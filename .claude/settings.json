@@ -1,6 +1,26 @@
 {
   "permissions": {
-    "defaultMode": "plan",
+    "allow": [
+      "Bash(yarn lint*)",
+      "Bash(yarn typecheck*)",
+      "Bash(gh pr list*)",
+      "Bash(gh pr view*)",
+      "Bash(gh pr diff*)",
+      "Bash(gh pr checks*)",
+      "Bash(gh issue list*)",
+      "Bash(gh issue view*)",
+      "Bash(gh repo view*)",
+      "Bash(gh repo list*)",
+      "Bash(gh release list*)",
+      "Bash(gh release view*)",
+      "Bash(gh run list*)",
+      "Bash(gh run view*)",
+      "Bash(gh workflow list*)",
+      "Bash(gh workflow view*)",
+      "Bash(gh label list*)",
+      "Bash(gh search*)",
+      "Bash(gh api*)"
+    ],
     "deny": [
       "Read(~/.aws/**)",
       "Read(./build)",
@@ -10,25 +30,6 @@
       "Read(**/secrets/**)",
       "Read(**/credentials.json)"
     ]
-  },
-  "enabledPlugins": {
-    "frontend-design@claude-plugins-official": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "example-skills@anthropic-agent-skills": true
-  },
-  "alwaysThinkingEnabled": true,
-  "sandbox": {
-    "enabled": true,
-    "autoAllowBashIfSandboxed": true,
-    "excludedCommands": ["docker"],
-    "network": {
-      "allowUnixSockets": ["/var/run/docker.sock"],
-      "allowLocalBinding": true
-    }
-  },
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline-command.sh"
   },
   "hooks": {
     "Notification": [
@@ -41,5 +42,30 @@
         ]
       }
     ]
-  }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "example-skills@anthropic-agent-skills": true,
+    "feature-dev@claude-plugins-official": true
+  },
+  "language": "日本語",
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "network": {
+      "allowUnixSockets": ["/var/run/docker.sock"],
+      "allowLocalBinding": true
+    },
+    "excludedCommands": ["docker", "yarn lint", "yarn typecheck"]
+  },
+  "alwaysThinkingEnabled": true,
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "true"
+  },
+  "teammateMode": "tmux"
 }

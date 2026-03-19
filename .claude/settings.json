@@ -1,25 +1,25 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "permissions": {
     "allow": [
       "Bash(yarn lint*)",
       "Bash(yarn typecheck*)",
       "Bash(gh pr list*)",
       "Bash(gh pr view*)",
+      "Bash(gh pr status*)",
       "Bash(gh pr diff*)",
       "Bash(gh pr checks*)",
       "Bash(gh issue list*)",
       "Bash(gh issue view*)",
+      "Bash(gh issue status*)",
       "Bash(gh repo view*)",
-      "Bash(gh repo list*)",
-      "Bash(gh release list*)",
       "Bash(gh release view*)",
-      "Bash(gh run list*)",
+      "Bash(gh release list*)",
       "Bash(gh run view*)",
-      "Bash(gh workflow list*)",
-      "Bash(gh workflow view*)",
-      "Bash(gh label list*)",
-      "Bash(gh search*)",
-      "Bash(gh api*)"
+      "Bash(gh run list*)",
+      "Bash(gh auth status*)"
     ],
     "deny": [
       "Read(~/.aws/**)",
@@ -51,6 +51,7 @@
     "frontend-design@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "example-skills@anthropic-agent-skills": true,
+    "ralph-loop@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true
   },
   "language": "日本語",
@@ -63,9 +64,5 @@
     },
     "excludedCommands": ["docker", "yarn lint", "yarn typecheck"]
   },
-  "alwaysThinkingEnabled": true,
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "true"
-  },
-  "teammateMode": "tmux"
+  "alwaysThinkingEnabled": true
 }

@@ -23,6 +23,7 @@ brew install --cask google-cloud-sdk
 brew install --cask licecap
 brew install --cask slack
 brew install --cask ghostty
+brew install --cask mactex-no-gui
 
 ## asdfの代わりにこっちにしたほうがいいかも。
 curl https://mise.run | sh
@@ -100,3 +101,7 @@ cd -
 # rustup component add rust-analyzer
 
 echo 'Install tpm plugin type: "[Ctrl-j] + I"'
+
+# tex
+sudo tlmgr update --self --all
+sudo tlmgr paper a4

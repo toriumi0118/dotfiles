@@ -24,6 +24,7 @@ brew install --cask licecap
 brew install --cask slack
 brew install --cask ghostty
 brew install --cask mactex-no-gui
+brew install --cask godot
 
 ## asdfの代わりにこっちにしたほうがいいかも。
 curl https://mise.run | sh
